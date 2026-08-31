@@ -75,10 +75,10 @@ We are using the newest [Android Studio](http://developer.android.com/sdk/instal
 
 ### Bouncy Castle
 
-OpenKeychain uses a forked version with some small changes. These changes will been sent to Bouncy Castle.
-
-see
-* Fork: https://github.com/open-keychain/bouncycastle
+The provider (`bcprov`) is used as a published artifact. The OpenPGP layer (`bcpg`)
+is built from source in `extern/bouncycastle-pg`, because OpenKeychain needs a
+handful of changes upstream does not carry — see that directory's `README.md` for
+the list and for how to move it to a newer Bouncy Castle release.
 
 #### Bouncy Castle resources
 

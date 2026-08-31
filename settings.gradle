@@ -1,6 +1,6 @@
 include ':OpenKeychain'
 include ':nfcsweetspot'
-include ':extern:bouncycastle:pg'
+include ':extern:bouncycastle-pg'
 include ':extern:MaterialChipsInput:library'
 include ':extern:html-textview'
 include ':extern:nordpol'

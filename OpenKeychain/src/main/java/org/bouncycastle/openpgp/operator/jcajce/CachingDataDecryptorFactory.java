@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bouncycastle.bcpg.AEADEncDataPacket;
+import org.bouncycastle.bcpg.InputStreamPacket;
+import org.bouncycastle.bcpg.PublicKeyEncSessionPacket;
 import org.bouncycastle.bcpg.SymmetricEncIntegrityPacket;
 import org.bouncycastle.jcajce.util.NamedJcaJceHelper;
 import org.bouncycastle.openpgp.PGPException;
@@ -65,19 +67,44 @@ public class CachingDataDecryptorFactory implements PublicKeyDataDecryptorFactor
     }
 
     @Override
-    public byte[] recoverSessionData(int keyAlgorithm, byte[][] secKeyData) throws PGPException {
-        ByteBuffer bi = ByteBuffer.wrap(secKeyData[0]);  // encoded MPI
-        if (mSessionKeyCache.containsKey(bi)) {
-            return mSessionKeyCache.get(bi);
+    public byte[] recoverSessionData(PublicKeyEncSessionPacket pkesk, InputStreamPacket encData)
+            throws PGPException {
+        ByteBuffer bi = ByteBuffer.wrap(pkesk.getEncSessionKey()[0]);  // encoded MPI
+        byte[] cachedSessionData = mSessionKeyCache.get(bi);
+        if (cachedSessionData != null) {
+            return cachedSessionData;
         }
 
+        byte[] sessionData = requireWrappedDecryptor().recoverSessionData(pkesk, encData);
+        mSessionKeyCache.put(bi, sessionData);
+        return sessionData;
+    }
+
+    @Override
+    public byte[] recoverSessionData(int keyAlgorithm, byte[][] secKeyData) throws PGPException {
+        return recoverSessionData(keyAlgorithm, secKeyData, PublicKeyEncSessionPacket.VERSION_3);
+    }
+
+    @Override
+    public byte[] recoverSessionData(int keyAlgorithm, byte[][] secKeyData, int pkeskVersion)
+            throws PGPException {
+        ByteBuffer bi = ByteBuffer.wrap(secKeyData[0]);  // encoded MPI
+        byte[] cachedSessionData = mSessionKeyCache.get(bi);
+        if (cachedSessionData != null) {
+            return cachedSessionData;
+        }
+
+        byte[] sessionData =
+                requireWrappedDecryptor().recoverSessionData(keyAlgorithm, secKeyData, pkeskVersion);
+        mSessionKeyCache.put(bi, sessionData);
+        return sessionData;
+    }
+
+    private PublicKeyDataDecryptorFactory requireWrappedDecryptor() {
         if (mWrappedDecryptor == null) {
             throw new IllegalStateException("tried to decrypt without wrapped decryptor, this is a bug!");
         }
-
-        byte[] sessionData = mWrappedDecryptor.recoverSessionData(keyAlgorithm, secKeyData);
-        mSessionKeyCache.put(bi, sessionData);
-        return sessionData;
+        return mWrappedDecryptor;
     }
 
     @Override

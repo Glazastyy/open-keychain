@@ -32,6 +32,10 @@ ext {
     targetSdkVersion = 36
 
     androidxAnnotationVersion = '1.10.0'
+
+    // OpenPGP / crypto stack
+    bouncyCastleProvVersion = '1.85.2'
+    bouncyCastleUtilVersion = '1.85'
 }
 
 // Compile every Android module against the same Java language level.

@@ -39,7 +39,6 @@ import android.webkit.MimeTypeMap;
 import androidx.annotation.NonNull;
 import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.openpgp.PGPCompressedData;
-import org.bouncycastle.openpgp.PGPDataValidationException;
 import org.bouncycastle.openpgp.PGPEncryptedData;
 import org.bouncycastle.openpgp.PGPEncryptedDataList;
 import org.bouncycastle.openpgp.PGPException;
@@ -795,7 +794,10 @@ public class PgpDecryptVerifyOperation extends BaseOperation<PgpDecryptVerifyInp
 
             try {
                 result.cleartextStream = encryptedDataSymmetric.getDataStream(decryptorFactory);
-            } catch (PGPDataValidationException e) {
+            } catch (PGPException e) {
+                // The passphrase is the only input here, so any failure to open the stream means
+                // it was the wrong one: either the session key did not decrypt into something
+                // usable, or it did and the quick check on the plaintext prefix failed.
                 log.add(LogType.MSG_DC_ERROR_SYM_PASSPHRASE, indent + 1);
                 RequiredInputParcel requiredInputParcel = customRequiredInputParcel != null ?
                         customRequiredInputParcel : RequiredInputParcel.createRequiredSymmetricPassphrase();
