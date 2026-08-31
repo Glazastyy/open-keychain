@@ -120,7 +120,7 @@ public class CachingDataDecryptorFactory implements PublicKeyDataDecryptorFactor
     public PGPDataDecryptor createDataDecryptor(AEADEncDataPacket aeadEncDataPacket,
             PGPSessionKey sessionKey) throws PGPException {
         if (mWrappedDecryptor != null) {
-            mWrappedDecryptor.createDataDecryptor(aeadEncDataPacket, sessionKey);
+            return mWrappedDecryptor.createDataDecryptor(aeadEncDataPacket, sessionKey);
         }
         return mAeadHelper.createOpenPgpV5DataDecryptor(aeadEncDataPacket, sessionKey);
     }
@@ -129,7 +129,7 @@ public class CachingDataDecryptorFactory implements PublicKeyDataDecryptorFactor
     public PGPDataDecryptor createDataDecryptor(SymmetricEncIntegrityPacket seipd,
             PGPSessionKey sessionKey) throws PGPException {
         if (mWrappedDecryptor != null) {
-            mWrappedDecryptor.createDataDecryptor(seipd, sessionKey);
+            return mWrappedDecryptor.createDataDecryptor(seipd, sessionKey);
         }
         return mAeadHelper.createOpenPgpV6DataDecryptor(seipd, sessionKey);
     }

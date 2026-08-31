@@ -562,6 +562,11 @@ public class PgpDecryptVerifyOperation extends BaseOperation<PgpDecryptVerifyInp
                     log.add(LogType.MSG_DC_ERROR_INTEGRITY_CHECK, indent);
                     return new DecryptVerifyResult(DecryptVerifyResult.RESULT_ERROR, log);
                 }
+            } else if (esResult.encryptedData.isAEAD()) {
+                // A v5 style AEAD packet carries no MDC because it does not need one: the
+                // authentication tag is the integrity check, and it is checked while the
+                // stream is read, which has already happened by the time we get here.
+                log.add(LogType.MSG_DC_INTEGRITY_CHECK_OK, indent);
             } else if ( ! signatureChecker.isInitialized() ) {
                 // If no signature is present, we *require* an MDC!
                 // Handle missing integrity protection like failed integrity protection!

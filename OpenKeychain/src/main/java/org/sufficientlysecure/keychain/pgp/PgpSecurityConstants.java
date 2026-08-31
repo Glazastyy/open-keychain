@@ -83,8 +83,10 @@ public class PgpSecurityConstants {
             // HAVAL_5_160: not used widely
             HashAlgorithmTags.SHA256, // solid default
             HashAlgorithmTags.SHA384, // affine padding attacks; unproven status of RSA-PKCSv15
-            HashAlgorithmTags.SHA512
+            HashAlgorithmTags.SHA512,
             // SHA224: issues with collision resistance of 112-bits, Not used widely
+            HashAlgorithmTags.SHA3_256, // RFC 9580
+            HashAlgorithmTags.SHA3_512 // RFC 9580
     ));
 
     static InsecureSigningAlgorithm checkSignatureAlgorithmForSecurityProblems(int hashAlgorithm) {
@@ -150,7 +152,14 @@ public class PgpSecurityConstants {
                 }
                 return null;
             }
-            case PublicKeyAlgorithmTags.EDDSA: {
+            case PublicKeyAlgorithmTags.EDDSA_LEGACY:
+            // The dedicated algorithm IDs RFC 9580 assigns to the same curves. A key using one
+            // of these carries no curve OID and no bit strength to check - the algorithm ID is
+            // the whole specification.
+            case PublicKeyAlgorithmTags.X25519:
+            case PublicKeyAlgorithmTags.X448:
+            case PublicKeyAlgorithmTags.Ed25519:
+            case PublicKeyAlgorithmTags.Ed448: {
                 return null;
             }
             // ELGAMAL_GENERAL: deprecated in RFC 4880, use ELGAMAL_ENCRYPT
