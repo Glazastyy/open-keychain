@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 
 android {
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion rootProject.ext.minSdkVersion
         versionCode 3
         versionName "3.0"
         namespace 'org.openintents.ssh.authentication'
@@ -15,7 +15,7 @@ android {
     }
 
     // Do not abort build if lint finds errors
-    lintOptions {
+    lint {
         abortOnError false
     }
     buildFeatures {

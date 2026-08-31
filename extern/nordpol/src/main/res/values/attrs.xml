@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <declare-styleable name="NfcGuideView">
+    <attr name="nfc_device">
+      <enum name="card_ruby" value="0" />
+      <enum name="card_black" value="1" />
+      <enum name="usb_black" value="2" />
+      <enum name="usb_black_fidesmo" value="3" />
+    </attr>
+    <attr name="transaction_item_icon" format="reference"/>
+  </declare-styleable>
+</resources>

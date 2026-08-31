@@ -3,7 +3,7 @@ package org.sufficientlysecure.keychain.daos;
 
 import java.util.List;
 
-import com.squareup.sqldelight.TransactionWithoutReturn;
+import app.cash.sqldelight.TransactionWithoutReturn;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import org.sufficientlysecure.keychain.Certs;

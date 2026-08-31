@@ -30,7 +30,8 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory;
-import com.squareup.sqldelight.android.AndroidSqliteDriver;
+import app.cash.sqldelight.adapter.primitive.IntColumnAdapter;
+import app.cash.sqldelight.driver.android.AndroidSqliteDriver;
 import org.sufficientlysecure.keychain.model.CustomColumnAdapters;
 import org.sufficientlysecure.keychain.util.Preferences;
 import timber.log.Timber;
@@ -101,7 +102,9 @@ public class KeychainDatabase {
                         CustomColumnAdapters.GOSSIP_ORIGIN_ADAPTER),
                 new Certs.Adapter(CustomColumnAdapters.VERIFICATON_STATUS_ADAPTER),
                 new Key_metadata.Adapter(CustomColumnAdapters.DATE_ADAPTER),
-                new Keys.Adapter(CustomColumnAdapters.SECRET_KEY_TYPE_ADAPTER)
+                new Keys.Adapter(IntColumnAdapter.INSTANCE, IntColumnAdapter.INSTANCE,
+                        CustomColumnAdapters.SECRET_KEY_TYPE_ADAPTER),
+                new User_packets.Adapter(IntColumnAdapter.INSTANCE)
         );
     }
 

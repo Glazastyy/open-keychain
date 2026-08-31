@@ -1,7 +1,6 @@
 package org.sufficientlysecure.keychain.daos;
 
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +8,6 @@ import java.util.Map;
 
 import android.content.Context;
 
-import com.squareup.sqldelight.Query;
-import com.squareup.sqldelight.db.SqlCursor;
 import org.sufficientlysecure.keychain.KeychainDatabase;
 import org.sufficientlysecure.keychain.UidStatus;
 import org.sufficientlysecure.keychain.model.UserId;
@@ -35,31 +32,23 @@ public class UserIdDao extends AbstractDao {
     }
 
     public Map<String, UidStatus> getUidStatusByEmail(String... emails) {
-        Query<UidStatus> q = getDatabase().getUserPacketsQueries()
-                .selectUserIdStatusByEmail(Arrays.asList(emails));
-        Map<String, UidStatus> result = new HashMap<>();
-        try (SqlCursor cursor = q.execute()) {
-            while (cursor.next()) {
-                UidStatus item = q.getMapper().invoke(cursor);
-                result.put(item.getEmail(), item);
-            }
-        } catch (IOException e) {
-            // oops
-        }
-        return result;
+        List<UidStatus> items = getDatabase().getUserPacketsQueries()
+                .selectUserIdStatusByEmail(Arrays.asList(emails))
+                .executeAsList();
+        return toStatusByEmailMap(items);
     }
 
     public Map<String, UidStatus> getUidStatusByEmailLike(String query) {
-        Query<UidStatus> q = getDatabase().getUserPacketsQueries()
-                .selectUserIdStatusByEmailLike(query);
+        List<UidStatus> items = getDatabase().getUserPacketsQueries()
+                .selectUserIdStatusByEmailLike(query)
+                .executeAsList();
+        return toStatusByEmailMap(items);
+    }
+
+    private static Map<String, UidStatus> toStatusByEmailMap(List<UidStatus> items) {
         Map<String, UidStatus> result = new HashMap<>();
-        try (SqlCursor cursor = q.execute()) {
-            while (cursor.next()) {
-                UidStatus item = q.getMapper().invoke(cursor);
-                result.put(item.getEmail(), item);
-            }
-        } catch (IOException e) {
-            // oops
+        for (UidStatus item : items) {
+            result.put(item.getEmail(), item);
         }
         return result;
     }

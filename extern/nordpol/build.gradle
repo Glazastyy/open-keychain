@@ -1,0 +1,19 @@
+// Vendored copy of https://github.com/fidesmo/nordpol (v0.1.23, MIT).
+// The upstream project is deprecated and only ever published binaries to JCenter,
+// which has been shut down, so the sources are built from this repository instead.
+// The upstream "core" and "android" sbt modules are merged into a single Android library.
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        namespace 'nordpol.android'
+    }
+
+    // Do not abort build if lint finds errors
+    lint {
+        abortOnError false
+    }
+}

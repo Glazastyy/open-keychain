@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS autocrypt_peers (
     identifier TEXT NOT NULL,
     last_seen INTEGER AS Date,
     last_seen_key INTEGER AS Date,
-    is_mutual INTEGER AS Boolean NOT NULL DEFAULT 0,
+    is_mutual INTEGER AS kotlin.Boolean NOT NULL DEFAULT 0,
     master_key_id INTEGER,
     gossip_master_key_id INTEGER,
     gossip_last_seen_key INTEGER AS Date,

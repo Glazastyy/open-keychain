@@ -4,12 +4,12 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion rootProject.ext.minSdkVersion
         namespace 'de.cotech.sweetspot'
     }
 
     // Do not abort build if lint finds errors
-    lintOptions {
+    lint {
         abortOnError false
     }
 }

@@ -1,0 +1,22 @@
+// Vendored copy of https://github.com/SufficientlySecure/html-textview (v4.0, Apache-2.0).
+// The upstream project is deprecated and its only binary release lived on JCenter,
+// which has been shut down, so the sources are built from this repository instead.
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        namespace 'org.sufficientlysecure.htmltextview'
+    }
+
+    // Do not abort build if lint finds errors
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
+}
