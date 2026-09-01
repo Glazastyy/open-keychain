@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Enkriptatu</string>
   <string name="title_encrypt_files">Enkriptatu</string>
@@ -402,10 +402,10 @@
     <item quantity="other">Hutsegitea %d giltzen egiaztagiritzean!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Dekriptatu Agiria OpenKeychain-rekin</string>
-  <string name="intent_import_key">Inportatu Giltza OpenKeychain-rekin</string>
-  <string name="intent_send_encrypt">Enkriptatu OpenKeychain-rekin</string>
-  <string name="intent_send_decrypt">Dekriptatu OpenKeychain-rekin</string>
+  <string name="intent_decrypt_file">Dekriptatu Agiria Glazastov Keychain-rekin</string>
+  <string name="intent_import_key">Inportatu Giltza Glazastov Keychain-rekin</string>
+  <string name="intent_send_encrypt">Enkriptatu Glazastov Keychain-rekin</string>
+  <string name="intent_send_decrypt">Dekriptatu Glazastov Keychain-rekin</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Sortu giltza berria</string>
   <string name="api_settings_save">Gorde</string>
@@ -414,12 +414,12 @@
   <string name="api_settings_package_certificate">Pakete Egiaztagiriaren SHA-256</string>
   <string name="api_settings_advanced">Aurreratua</string>
   <string name="api_settings_allowed_keys">Ahalbidetutako Giltzak</string>
-  <string name="api_register_title">Ahalbidetu sarbidea OpenKeychain-era?</string>
+  <string name="api_register_title">Ahalbidetu sarbidea Glazastov Keychain-era?</string>
   <string name="api_select_pub_keys_missing_text">Ez da giltzarik aurkitu posta helbide hauentzat:</string>
   <string name="api_select_pub_keys_dublicates_text">Giltza bat baino gehiago daude posta helbide honekin:</string>
   <string name="api_select_pub_keys_text">Mesedez berrikusi jasotzaile zerrenda!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Mesedez hautatu jasotzaileak!</string>
-  <string name="api_error_wrong_signature">Sinadura egiaztapen hutsegitea! Aplikazio hau beste iturburu batetik duzu ezarrita? Zihur bazaude hau ez dela eraso bat, ukatu aplikazio honen erregistrazioa OpenKeychain eta orduan erregistratu aplikazioa berriro.</string>
+  <string name="api_error_wrong_signature">Sinadura egiaztapen hutsegitea! Aplikazio hau beste iturburu batetik duzu ezarrita? Zihur bazaude hau ez dela eraso bat, ukatu aplikazio honen erregistrazioa Glazastov Keychain eta orduan erregistratu aplikazioa berriro.</string>
   <string name="api_select_sign_key_text">Mesedez hautatu zure giltzetako bat edo sortu berri bat.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Elkarbanatu QR Kodearekin</string>
@@ -429,7 +429,7 @@
   <string name="retry_up_dialog_btn_reupload">Bersaiatu Eragiketa</string>
   <string name="retry_up_dialog_btn_cancel">Ezeztatu Eragiketa</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Ez baduzu giltza hau gehiago erabiltzerik nahi, ukatu eta igo egin behar da. Hautatu \'EZABATU BAKARRIK\' giltza OpenKeychain-etik kendu baina beste nonbait erabiltzea nahi baduzu.</string>
+  <string name="del_rev_dialog_message">Ez baduzu giltza hau gehiago erabiltzerik nahi, ukatu eta igo egin behar da. Hautatu \'EZABATU BAKARRIK\' giltza Glazastov Keychain-etik kendu baina beste nonbait erabiltzea nahi baduzu.</string>
   <string name="del_rev_dialog_title">Ukatu/Ezabatu \'%s\' giltza</string>
   <string name="del_rev_dialog_btn_revoke">Ukatu eta igo</string>
   <string name="del_rev_dialog_btn_delete">Ezabatu bakarrik</string>
@@ -999,7 +999,7 @@
   <string name="filename_keys">Giltza Babeskopia (ikutu inportatzeko)</string>
   <string name="intent_show">Erakutsi Sinatutako/Enkriptatutako Edukia</string>
   <string name="intent_share">Elkarbanatu Sinatutako/Enkriptatutako Edukia</string>
-  <string name="view_internal">Ikusi OpenKeychain-en</string>
+  <string name="view_internal">Ikusi Glazastov Keychain-en</string>
   <string name="error_preparing_data">Akatsa datuak gertatzerakoan!</string>
   <string name="label_clip_title">Enkriptatutako Datuak</string>
   <string name="progress_processing">Prozesatzen...</string>
@@ -1022,11 +1022,11 @@
   <string name="snack_backup_error_saving">Akats babeskopia gordetzerakoan!</string>
   <string name="snack_backup_saved">Babeskopia gordeta</string>
   <string name="snack_backup_exists">Babeskopia jadanik badago!</string>
-  <string name="snack_backup_saved_dir">OpenKeychain zuzenbidean gordeta</string>
+  <string name="snack_backup_saved_dir">Glazastov Keychain zuzenbidean gordeta</string>
   <string name="snack_text_too_long">Idazkia luzeegia da osorik erakusteko!</string>
   <string name="snack_shared_text_too_long">Elkarbanatutako idazkia moztu egin da luzeegia delako!</string>
   <string name="share_log_dialog_title">Elkarbanatu oharra?</string>
-  <string name="share_log_dialog_message">Oharrak oso lagungarriak izan badaitezke ere garatzaileentzat OpenKeychain-en akatsak aurkitzeko, hauek argibide sentikorrak dituzte, eguneratutako giltzen datuei buruz bezala. Mesedez zihurtatu onartzen duzula argibide hauek elkarbanatzea.</string>
+  <string name="share_log_dialog_message">Oharrak oso lagungarriak izan badaitezke ere garatzaileentzat Glazastov Keychain-en akatsak aurkitzeko, hauek argibide sentikorrak dituzte, eguneratutako giltzen datuei buruz bezala. Mesedez zihurtatu onartzen duzula argibide hauek elkarbanatzea.</string>
   <string name="share_log_dialog_share_button">Elkarbanatu</string>
   <string name="share_log_dialog_cancel_button">Ezeztatu</string>
   <string name="toast_wrong_mimetype">Datu mota okerra, idazkia itxaroten zen!</string>
@@ -1048,7 +1048,7 @@
   <string name="prompt_fidesmo_app_install_message">PGP ezartzeko Fidesmo Android aplikazioa behar duzu.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Ezarri</string>
   <string name="prompt_fidesmo_app_install_button_negative">Ezeztatu</string>
-  <string name="redirect_import_key_title">Eskaneatu OpenKeychain-erekin!</string>
+  <string name="redirect_import_key_title">Eskaneatu Glazastov Keychain-erekin!</string>
   <string name="redirect_import_key_yes">Eskaneatu berriro</string>
   <string name="redirect_import_key_no">Itxi</string>
   <string name="request_permission_title">Ahalbidetu sarbidea zure giltzara?</string>
@@ -1149,7 +1149,7 @@
   <string name="error_save_key_internal">Barneko akats bat giltza gordetzean!</string>
   <string name="menu_list_unrelated_keys">Zerrendatu antzekoak ez diren giltzak</string>
   <string name="no_keys_gen_title">Hau helbide berri bat da</string>
-  <string name="no_keys_gen_subtitle">Sortu amai-amai giltza berria OpenKeychain-en</string>
+  <string name="no_keys_gen_subtitle">Sortu amai-amai giltza berria Glazastov Keychain-en</string>
   <string name="no_keys_import_title">Jadanik badut biltza bat</string>
   <string name="no_keys_import_subtitle">Inportatu amai-amai giltza beste gailutik</string>
   <string name="key_list_import">Erabili beste giltza bat</string>
@@ -1158,7 +1158,7 @@
   <string name="key_gen_finish">Amaitu</string>
   <string name="key_gen_done">Sortuta amai-amai giltza!</string>
   <string name="key_gen_finishing">Ezarpena amaitzen...</string>
-  <string name="button_goto_openkeychain">Joan OpenKeychain-era</string>
+  <string name="button_goto_openkeychain">Joan Glazastov Keychain-era</string>
   <string name="snack_keylist_clipboard_action">Ikusi</string>
   <string name="notify_channel_permission">Baimen eskaera</string>
   <string name="notify_channel_passcache">Sar-esaldi katxea</string>

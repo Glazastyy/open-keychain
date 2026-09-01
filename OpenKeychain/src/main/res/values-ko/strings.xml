@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">암호화</string>
   <string name="title_encrypt_files">암호화</string>
@@ -402,10 +402,10 @@
     <item quantity="other">%d 개의 키를 확인 실패!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">OpenKeychain으로 파일 복호화</string>
-  <string name="intent_import_key">OpenKeychain으로 키 가져오기</string>
-  <string name="intent_send_encrypt">OpenKeychain으로 암호화</string>
-  <string name="intent_send_decrypt">OpenKeychain으로 복호화</string>
+  <string name="intent_decrypt_file">Glazastov Keychain으로 파일 복호화</string>
+  <string name="intent_import_key">Glazastov Keychain으로 키 가져오기</string>
+  <string name="intent_send_encrypt">Glazastov Keychain으로 암호화</string>
+  <string name="intent_send_decrypt">Glazastov Keychain으로 복호화</string>
   <string name="intent_autocrypt_setup">자동암호화 설정 메시지 들여오기</string>
   <!--Remote API-->
   <string name="api_settings_create_key">새로운 키 만들기</string>
@@ -415,13 +415,13 @@
   <string name="api_settings_package_certificate">패키지 인증서의 SHA-256 해시</string>
   <string name="api_settings_advanced">고급</string>
   <string name="api_settings_allowed_keys">혀용된 키</string>
-  <string name="api_register_title">OpenKeychain로 접속을 허용합니까?</string>
-  <string name="api_register_text">%s 은/는 OpenKeychain을 암호 제공자로 사용하도록 요청합니다. 앱이 암호 해독을 위해 키를 사용할 수 있기 전에 여전히 허가를 요청받을 것입니다.\n\n 당신은 나중에 OpenKeychain의 \'Apps\' 화면에서 액세스를 취소할 수 있습니다.</string>
+  <string name="api_register_title">Glazastov Keychain로 접속을 허용합니까?</string>
+  <string name="api_register_text">%s 은/는 Glazastov Keychain을 암호 제공자로 사용하도록 요청합니다. 앱이 암호 해독을 위해 키를 사용할 수 있기 전에 여전히 허가를 요청받을 것입니다.\n\n 당신은 나중에 Glazastov Keychain의 \'Apps\' 화면에서 액세스를 취소할 수 있습니다.</string>
   <string name="api_select_pub_keys_missing_text">이 이메일 주소로 키를 찾을 수 없었습니다:</string>
   <string name="api_select_pub_keys_dublicates_text">이 이메일 주소에 하나 초과의 키가 존재합니다:</string>
   <string name="api_select_pub_keys_text">받는 사람 리스트를 검토해주세요!</string>
   <string name="api_select_pub_keys_text_no_user_ids">받는 사람을 선택해 주세요!</string>
-  <string name="api_error_wrong_signature">서명 검사에 실패했습니다! 다른 소스에서 이 앱을 설치했나요? 공격이 아니라고 확신한다면 이 앱의 OpenKeychain 등록을 취소한 다음 다시 앱을 등록하기 바랍니다.</string>
+  <string name="api_error_wrong_signature">서명 검사에 실패했습니다! 다른 소스에서 이 앱을 설치했나요? 공격이 아니라고 확신한다면 이 앱의 Glazastov Keychain 등록을 취소한 다음 다시 앱을 등록하기 바랍니다.</string>
   <string name="api_select_sign_key_text">기존의 키 하나를 선택하거나 새로운 것을 만들어 주세요.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">QR 코드로 공유</string>

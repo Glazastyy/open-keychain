@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Zašifrovat</string>
   <string name="title_encrypt_files">Zašifrovat</string>
@@ -454,10 +454,10 @@
     <item quantity="other">Certifikace pro %d klíčů selhala!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Dešifrovat soubor pomocí OpenKeychain</string>
-  <string name="intent_import_key">Importovat kíč pomocí OpenKeychain</string>
-  <string name="intent_send_encrypt">Zašifrovat pomocí OpenKeychain</string>
-  <string name="intent_send_decrypt">Dešifrovat pomocí OpenKeychain</string>
+  <string name="intent_decrypt_file">Dešifrovat soubor pomocí Glazastov Keychain</string>
+  <string name="intent_import_key">Importovat kíč pomocí Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Zašifrovat pomocí Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Dešifrovat pomocí Glazastov Keychain</string>
   <string name="intent_autocrypt_setup">Importovat zprávu Autocrypt Setup</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Vytvořit nový klíč</string>
@@ -467,13 +467,13 @@
   <string name="api_settings_package_certificate">SHA-256 z certifikátu balíčku</string>
   <string name="api_settings_advanced">Pokročilé</string>
   <string name="api_settings_allowed_keys">Povolené klíče</string>
-  <string name="api_register_title">Povolit přístup pro OpenKeychain?</string>
-  <string name="api_register_text">%s požadavek použít OpenKeychain jako poskytovatele kryptografie. Než bude aplikace smět použít jakýkoli z Vašich klíčů k rozšifrování, budete ještě dotázáni na udělení oprávnění. </string>
+  <string name="api_register_title">Povolit přístup pro Glazastov Keychain?</string>
+  <string name="api_register_text">%s požadavek použít Glazastov Keychain jako poskytovatele kryptografie. Než bude aplikace smět použít jakýkoli z Vašich klíčů k rozšifrování, budete ještě dotázáni na udělení oprávnění. </string>
   <string name="api_select_pub_keys_missing_text">Pro tyto emailové adresy nebyl nalezen žádný klíč:</string>
   <string name="api_select_pub_keys_dublicates_text">Pro tyto emailové adresy existuje více jak jeden klíč:</string>
   <string name="api_select_pub_keys_text">Zkontrolujte prosím seznam příjemců!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Vyberte prosím příjemce!</string>
-  <string name="api_error_wrong_signature">Selhala kontrola podpisu! Instalovali jste tuto aplikaci z jiného zdroje? Pokud jste si jistí, že toto není útok, zneplatněte registraci této aplikace v OpenKeychain a poté ji znovu zaregistrujte.</string>
+  <string name="api_error_wrong_signature">Selhala kontrola podpisu! Instalovali jste tuto aplikaci z jiného zdroje? Pokud jste si jistí, že toto není útok, zneplatněte registraci této aplikace v Glazastov Keychain a poté ji znovu zaregistrujte.</string>
   <string name="api_select_sign_key_text">Prosím vyberte jeden z existujících klíčů nebo vytvořte novy.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Sdílet pomocí QR kódu</string>
@@ -483,7 +483,7 @@
   <string name="retry_up_dialog_btn_reupload">Zkusit znovu</string>
   <string name="retry_up_dialog_btn_cancel">Zrušit operaci</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Pokud nechcete nadáe používat tento klíč, měl by být zevokován a nahrán. Vyberte \'POUZE SMAZAT\' pokud si přejete smazat klíč z OpenKeychain ale chcete ho i nadále používat někde jinde.</string>
+  <string name="del_rev_dialog_message">Pokud nechcete nadáe používat tento klíč, měl by být zevokován a nahrán. Vyberte \'POUZE SMAZAT\' pokud si přejete smazat klíč z Glazastov Keychain ale chcete ho i nadále používat někde jinde.</string>
   <string name="del_rev_dialog_title">Zneplatnit/Smazat klíč \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">Zneplatnit a nahrát</string>
   <string name="del_rev_dialog_btn_delete">Pouze smazat</string>
@@ -1182,7 +1182,7 @@
   <string name="security_token_error_iso_dep_not_supported">Bezpečnostní token nepodporuje nutný komunikační standard (SO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">Komunikační chyba. Pravděpodobně byl bezpečnostní token odebrán předčasně.</string>
   <string name="security_token_error_try_again">Zkuste znovu</string>
-  <string name="security_token_not_supported">Tento bezpečnostní token ještě není v OpenKeychain podporován</string>
+  <string name="security_token_not_supported">Tento bezpečnostní token ještě není v Glazastov Keychain podporován</string>
   <string name="btn_delete_original">Smazat původní soubor</string>
   <string name="snack_encrypt_filenames_on">Soubory <b>jsou</b> zašifrovány.</string>
   <string name="snack_encrypt_filenames_off">Soubory <b>nejsou</b> zašifrovány.</string>
@@ -1201,7 +1201,7 @@
   <string name="filename_keys">Záloha klíčů (klepnutím importovat)</string>
   <string name="intent_show">Ukázat podepsaný/zašifrovaný obsah</string>
   <string name="intent_share">Sdílet podepsaný/zašifrovaný obsah</string>
-  <string name="view_internal">Prohlédnout v OpenKeychain</string>
+  <string name="view_internal">Prohlédnout v Glazastov Keychain</string>
   <string name="error_preparing_data">Chyba při přípravě dat!</string>
   <string name="label_clip_title">Zašifrovaná data</string>
   <string name="progress_processing">Pracuji...</string>
@@ -1225,11 +1225,11 @@
   <string name="snack_backup_error_saving">Chyba při ukládání zálohy!</string>
   <string name="snack_backup_saved">Záloha uložena</string>
   <string name="snack_backup_exists">Záloha již existuje!</string>
-  <string name="snack_backup_saved_dir">Uloženo do adresáře OpenKeychain</string>
+  <string name="snack_backup_saved_dir">Uloženo do adresáře Glazastov Keychain</string>
   <string name="snack_text_too_long">Pro plné zobrazení je text příliš dlouhý!</string>
   <string name="snack_shared_text_too_long">Sdílený text byl zkrácen, protože byl příliš dlouhý!</string>
   <string name="share_log_dialog_title">Sdílet záznam?</string>
-  <string name="share_log_dialog_message">Ačkoli mohou být záznamy pro vývojáře velmi užitečné pro nalezení chyb v OpenKeychain, mohou potenciálně obsahovat citlivé informace, např. data o aktualizovaných klíčích. Prosím, ujistěte se o úmyslu sdílet tyto informace.</string>
+  <string name="share_log_dialog_message">Ačkoli mohou být záznamy pro vývojáře velmi užitečné pro nalezení chyb v Glazastov Keychain, mohou potenciálně obsahovat citlivé informace, např. data o aktualizovaných klíčích. Prosím, ujistěte se o úmyslu sdílet tyto informace.</string>
   <string name="share_log_dialog_share_button">Sdílet</string>
   <string name="share_log_dialog_cancel_button">Zrušit</string>
   <string name="toast_wrong_mimetype">Nesprávný typ dat, byl očekáván text!</string>
@@ -1251,12 +1251,12 @@
   <string name="prompt_fidesmo_app_install_message">K instalaci PGP potřebujete Fidesmo Android aplikaci.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Instalovat</string>
   <string name="prompt_fidesmo_app_install_button_negative">Zrušit</string>
-  <string name="redirect_import_key_title">Snímat pomocí OpenKeychain!</string>
-  <string name="redirect_import_key_message">Snímali jste OpenPGP QR kód jinou aplikací. Prosím, snímejte přímo a bezpečně pomocí OpenKeychain.</string>
+  <string name="redirect_import_key_title">Snímat pomocí Glazastov Keychain!</string>
+  <string name="redirect_import_key_message">Snímali jste OpenPGP QR kód jinou aplikací. Prosím, snímejte přímo a bezpečně pomocí Glazastov Keychain.</string>
   <string name="redirect_import_key_yes">Snímejte znovu</string>
   <string name="redirect_import_key_no">Zavřít</string>
   <string name="request_permission_title">Povolit přístup k Vašemu klíči?</string>
-  <string name="request_permission_msg">%1$sžádá přístup k jednomu z Vašich klíčů, což mu dovolí dešifrovat zprávy odeslané tomuto klíči. Později můžete přístup zrušit v OpenKeychain.</string>
+  <string name="request_permission_msg">%1$sžádá přístup k jednomu z Vašich klíčů, což mu dovolí dešifrovat zprávy odeslané tomuto klíči. Později můžete přístup zrušit v Glazastov Keychain.</string>
   <string name="requested_key_unavailable_warning">Tento klíč není dostupný. Abyste jej použili, musíte jej importovat jako svůj vlastní!</string>
   <string name="button_allow">Povolit</string>
   <string name="button_cancel">Zrušit</string>
@@ -1322,7 +1322,7 @@
   <string name="insecure_sign_bitstrength_suggestion">Tento klíč není bezpečný, upgrade není možný. Pro bezpečnou komunikaci musí odesílatel založit nový klíč!</string>
   <string name="insecure_encrypt_unidentified">Nalezen neznámý bezpečnostní problém s klíčem, jímž byla tato zpráva přijata (dešifrována)!</string>
   <string name="insecure_sign_unidentified">Nalezen neznámý bezpečnostní problém s klíčem, jímž byla tato zpráva odeslána (podepsána)!</string>
-  <string name="insecure_report_suggestion">Může se jednat o chybu v OpenKeychain, prosím, oznamte ji v našem issue tracker!</string>
+  <string name="insecure_report_suggestion">Může se jednat o chybu v Glazastov Keychain, prosím, oznamte ji v našem issue tracker!</string>
   <string name="insecure_mdc">Tato zpráva nebyla podepsána a neobsahovala Modification Detection Code (MDC). Mohla být změněna útočníkem!</string>
   <string name="insecure_mdc_suggestion">Chybějící MDC je chyba v odesílajícím programu nebo útok. Pro bezpečnou komunikaci typu end-to-end, zprávy by měly být též podepsány odesílatelem!</string>
   <string name="insecure_symmetric_algo">Tato zpráva byla zašifrována algoritmem %s. Ten je považován za nechráněný nebo alespoň exotický!</string>
@@ -1352,7 +1352,7 @@
   <string name="token_result_key_found">Klíč nalezen!</string>
   <string name="token_result_token_ok">Připraven k použití!</string>
   <string name="token_result_empty">Token je prázdný</string>
-  <string name="token_put_key_unsupported">Nastavte, prosím, tento bezpečnostní token s GnuPG. OpenKeychain nyní podporuje podepsání/dešifrování pouze s tímto bezpečnostním tokenem.</string>
+  <string name="token_put_key_unsupported">Nastavte, prosím, tento bezpečnostní token s GnuPG. Glazastov Keychain nyní podporuje podepsání/dešifrování pouze s tímto bezpečnostním tokenem.</string>
   <string name="token_action_retry">Opakovat hledání</string>
   <string name="token_action_load_from_file">Načíst ze souboru</string>
   <string name="token_action_reset">Uvést security token do výchozího nastavení</string>
@@ -1430,7 +1430,7 @@
   <string name="error_save_key_internal">Interní chyba při ukládání klíče!</string>
   <string name="menu_list_unrelated_keys">Ukaž nesouvisející klíče</string>
   <string name="no_keys_gen_title">Toto je nová adresa</string>
-  <string name="no_keys_gen_subtitle">Založ nový end-to-end klíč v OpenKeychain</string>
+  <string name="no_keys_gen_subtitle">Založ nový end-to-end klíč v Glazastov Keychain</string>
   <string name="no_keys_import_title">Klíč už mám</string>
   <string name="no_keys_import_subtitle">Importuj end-to-end klíč z jiného zařízení</string>
   <string name="key_list_import">Použij jiný klíč</string>
@@ -1439,9 +1439,9 @@
   <string name="key_gen_finish">Dokončit</string>
   <string name="key_gen_done">End-to-end klíč založen!</string>
   <string name="key_gen_finishing">Nastavení se blíží konci...</string>
-  <string name="key_import_text">Abyste mohli použít end-to-end klíč, musíte jej importovat do OpenKeychain.</string>
+  <string name="key_import_text">Abyste mohli použít end-to-end klíč, musíte jej importovat do Glazastov Keychain.</string>
   <string name="key_import_text_autocrypt_setup_msg">Pro import svého existujícího nastavení z jiného zařízení můžete též otevřít zprávu z nastavení Autocrypt v %s.  </string>
-  <string name="button_goto_openkeychain">Na OpenKeychain</string>
+  <string name="button_goto_openkeychain">Na Glazastov Keychain</string>
   <string name="backup_code_checkbox">Kód zálohy jsem si zapsal. Bez něj nebudu moci zálohu obnovit.</string>
   <string name="msg_get_query_not_implemented">Server nepodporuje tento dotaz! Některé servery akceptují pouze emailové adresy. Prosím, dotaz opravit nebo zkusit jiný server.</string>
   <string name="snack_keylist_clipboard_title">Data klíčů nalezena ve schránce!</string>

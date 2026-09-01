@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Зашифрувати</string>
   <string name="title_encrypt_files">Зашифрувати</string>
@@ -457,10 +457,10 @@
     <item quantity="other">Сертифікація %d ключів невдала!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Розшифрувати файл з OpenKeychain</string>
-  <string name="intent_import_key">Імпортувати ключ з OpenKeychain</string>
-  <string name="intent_send_encrypt">Зашифрувати з OpenKeychain</string>
-  <string name="intent_send_decrypt">Розшифрувати з OpenKeychain</string>
+  <string name="intent_decrypt_file">Розшифрувати файл з Glazastov Keychain</string>
+  <string name="intent_import_key">Імпортувати ключ з Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Зашифрувати з Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Розшифрувати з Glazastov Keychain</string>
   <string name="intent_autocrypt_setup">Імпортувати повідомлення налаштування Autocrypt</string>
   <!--Remote API-->
     <string name="api_settings_create_key">Створити новий ключ</string>
@@ -470,13 +470,13 @@
   <string name="api_settings_package_certificate">SHA-256 сертифікату пакету</string>
   <string name="api_settings_advanced">Додатково</string>
   <string name="api_settings_allowed_keys">Дозволені ключі</string>
-    <string name="api_register_title">Дозволити доступ до OpenKeychain?</string>
-  <string name="api_register_text">%s запитів для використання OpenKeychain як криптопостачальника. У вас проситимуть дозвіл перед тим, як програма зможе використовувати будь-які ваші ключі для шифрування.\n\nВи можете відкликати дозвіл пізніше у вікні \'Програми\' OpenKeychain.</string>
+    <string name="api_register_title">Дозволити доступ до Glazastov Keychain?</string>
+  <string name="api_register_text">%s запитів для використання Glazastov Keychain як криптопостачальника. У вас проситимуть дозвіл перед тим, як програма зможе використовувати будь-які ваші ключі для шифрування.\n\nВи можете відкликати дозвіл пізніше у вікні \'Програми\' Glazastov Keychain.</string>
     <string name="api_select_pub_keys_missing_text">Не було знайдено ключів для цієї адреси електронної пошти:</string>
   <string name="api_select_pub_keys_dublicates_text">Декілька ключів існує для цих адрес електронної пошти:</string>
   <string name="api_select_pub_keys_text">Будь ласка, перевірте список одержувачів!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Будь ласка, виберіть одержувачів!</string>
-  <string name="api_error_wrong_signature">Перевірка підпису пакету не вдалася! Може ви встановили програму з іншого джерела? Якщо ви впевнені, що це не атака, то відкличте реєстрацію програми у OpenKeychain та знову зареєструйте її.</string>
+  <string name="api_error_wrong_signature">Перевірка підпису пакету не вдалася! Може ви встановили програму з іншого джерела? Якщо ви впевнені, що це не атака, то відкличте реєстрацію програми у Glazastov Keychain та знову зареєструйте її.</string>
   <string name="api_select_sign_key_text">Будь ласка, оберіть один з наявних ключів чи створіть новий ключ:</string>
     <!--Share-->
   <string name="share_qr_code_dialog_title">Відправити як штрих-код</string>
@@ -486,7 +486,7 @@
   <string name="retry_up_dialog_btn_reupload">Повторити операцію</string>
   <string name="retry_up_dialog_btn_cancel">Скасувати операцію</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Якщо Ви не плануєте більше використовувати цей ключ, його слід відкликати та вивантажити. Оберіть \'ТІЛЬКИ ВИДАЛИТИ\', якщо бажаєте його прибрати тільки з OpenKeychain та використовувати ще десь далі.</string>
+  <string name="del_rev_dialog_message">Якщо Ви не плануєте більше використовувати цей ключ, його слід відкликати та вивантажити. Оберіть \'ТІЛЬКИ ВИДАЛИТИ\', якщо бажаєте його прибрати тільки з Glazastov Keychain та використовувати ще десь далі.</string>
   <string name="del_rev_dialog_title">Відкликати/Видалити ключ \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">Відкликати та вивантажити</string>
   <string name="del_rev_dialog_btn_delete">Тільки видалити</string>
@@ -1221,7 +1221,7 @@
   <string name="security_token_error_iso_dep_not_supported">Маркер безпеки не підтримує потрібний комунікаційний стандарт (ISO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">Помилка зв\'язку. Вірогідно, маркер безпеки вимкнений надто рано.</string>
   <string name="security_token_error_try_again">Спробуйте знову</string>
-  <string name="security_token_not_supported">Цей маркер безпеки ще не підтримується OpenKeychain.</string>
+  <string name="security_token_not_supported">Цей маркер безпеки ще не підтримується Glazastov Keychain.</string>
   <string name="btn_delete_original">Видалити оригінальний файл</string>
   <string name="snack_encrypt_filenames_on">Назви файлів <b>є</b> зашифрованими.</string>
   <string name="snack_encrypt_filenames_off">Назви файлів <b>не є</b> зашифрованими.</string>
@@ -1240,7 +1240,7 @@
   <string name="filename_keys">Резервна копія ключа (торкніться щоб імпортувати)</string>
   <string name="intent_show">Показати підписаний / зашифрований матеріал</string>
   <string name="intent_share">Поширити підписаний / зашифрований матеріал</string>
-  <string name="view_internal">Дивитися в OpenKeychain</string>
+  <string name="view_internal">Дивитися в Glazastov Keychain</string>
   <string name="error_preparing_data">Помилка підготовки даних!</string>
   <string name="label_clip_title">Зашифровані дані</string>
   <string name="progress_processing">Обробка...</string>
@@ -1264,11 +1264,11 @@
   <string name="snack_backup_error_saving">Помилка створення резервної копії!</string>
   <string name="snack_backup_saved">Резервна копія збережена</string>
   <string name="snack_backup_exists">Резервна копія вже існує!</string>
-  <string name="snack_backup_saved_dir">Збережено до теки OpenKeychain </string>
+  <string name="snack_backup_saved_dir">Збережено до теки Glazastov Keychain </string>
     <string name="snack_text_too_long">Текст занадто довгий, щоб показати його повністю!</string>
   <string name="snack_shared_text_too_long">Поширений текст було обрізано, тому що він був занадто довгим!</string>
   <string name="share_log_dialog_title">Поділитись журналом?</string>
-  <string name="share_log_dialog_message">Журнали є корисними розробникам для пошуку вад у OpenKeychain, але вони можуть містити потенційно уразливу інформацію, наприклад про оновлені ключі. Будь ласка переконайтеся, що Ви згодні з поширенням цієї інформації.</string>
+  <string name="share_log_dialog_message">Журнали є корисними розробникам для пошуку вад у Glazastov Keychain, але вони можуть містити потенційно уразливу інформацію, наприклад про оновлені ключі. Будь ласка переконайтеся, що Ви згодні з поширенням цієї інформації.</string>
   <string name="share_log_dialog_share_button">Поділитись</string>
   <string name="share_log_dialog_cancel_button">Скасувати</string>
   <string name="toast_wrong_mimetype">Некоректний тип даних, очікувався текст!</string>
@@ -1290,12 +1290,12 @@
   <string name="prompt_fidesmo_app_install_message">Для інсталяції PGP Вам потрібна програма Fidesmo для Android.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Встановити</string>
   <string name="prompt_fidesmo_app_install_button_negative">Скасувати</string>
-    <string name="redirect_import_key_title">Сканувати з OpenKeychain!</string>
+    <string name="redirect_import_key_title">Сканувати з Glazastov Keychain!</string>
   <string name="redirect_import_key_message">Ви сканували OpenPGP QR код іншим застосунком. Будь ласка, заради безпеки скануйте код безпосередньо через Openkeychain.</string>
   <string name="redirect_import_key_yes">Сканувати знову</string>
   <string name="redirect_import_key_no">Закрити</string>
   <string name="request_permission_title">Дозволити доступ до Вашого ключа?</string>
-  <string name="request_permission_msg">%1$s запитує доступ до одного з Ваших ключів, який дозволяє розшифрувати повідомлення, що відправлені на цей ключ. Ви можете відкликати доступ пізніше у OpenKeychain.</string>
+  <string name="request_permission_msg">%1$s запитує доступ до одного з Ваших ключів, який дозволяє розшифрувати повідомлення, що відправлені на цей ключ. Ви можете відкликати доступ пізніше у Glazastov Keychain.</string>
   <string name="requested_key_unavailable_warning">Цей ключ недоступний. Щоб його використовувати, Вам потрібно його імпортувати як Ваш власний!</string>
   <string name="button_allow">Дозволити</string>
   <string name="button_cancel">Скасувати</string>
@@ -1364,7 +1364,7 @@
   <string name="insecure_sign_not_secure_curve">Ключ, з якого було надіслано (підписано) це повідомлення, використовує еліптичну криву з OID  %1$s, якої немає у списку безпечних кривих!</string>
   <string name="insecure_encrypt_unidentified">Виникла невизначена проблема безпеки з ключем, який було використано для отримання (розшифрування) цього повідомлення!</string>
   <string name="insecure_sign_unidentified">Виникла невизначена проблема безпеки з ключем, який було використано для відправки (підписування) цього повідомлення!</string>
-  <string name="insecure_report_suggestion">Це може бути проблема в OpenKeychain. Будь ласка, звітуйте через відстежувач проблем!</string>
+  <string name="insecure_report_suggestion">Це може бути проблема в Glazastov Keychain. Будь ласка, звітуйте через відстежувач проблем!</string>
   <string name="insecure_mdc">Це повідомлення не було підписане або не містить коду виявлення змін (MDC). Можливо повідомлення було змінено зловмисником!</string>
   <string name="insecure_mdc_suggestion">Відсутність MDC є проблемою програми, що була використана для відправки чи атаки. Для безпеки комунікації повідомлення повинні бути підписані відправником.</string>
   <string name="insecure_symmetric_algo">Це повідомлення було зашифроване алгоритмом %s. Він вважається небезпечним, або як мінімум незвичним!</string>
@@ -1394,7 +1394,7 @@
   <string name="token_result_key_found">Ключ знайдено!</string>
   <string name="token_result_token_ok">Готове до використання!</string>
   <string name="token_result_empty">Маркер - порожній</string>
-  <string name="token_put_key_unsupported">Налаштуйте цей маркер безпеки за допомогою GnuPG. OpenKeychain наразі підтримує лише шифрування/розшифрування з цим маркером безпеки.</string>
+  <string name="token_put_key_unsupported">Налаштуйте цей маркер безпеки за допомогою GnuPG. Glazastov Keychain наразі підтримує лише шифрування/розшифрування з цим маркером безпеки.</string>
   <string name="token_action_retry">Повторити пошук</string>
   <string name="token_action_load_from_file">Завантажити з файлу</string>
   <string name="token_action_reset">Очистити маркер безпеки</string>
@@ -1472,7 +1472,7 @@
     <string name="error_save_key_internal">Внутрішня помилка збереження ключа!</string>
   <string name="menu_list_unrelated_keys">Список непов\'язаних ключів</string>
   <string name="no_keys_gen_title">Це нова адреса</string>
-  <string name="no_keys_gen_subtitle">Створити наскрізний ключ у OpenKeychain</string>
+  <string name="no_keys_gen_subtitle">Створити наскрізний ключ у Glazastov Keychain</string>
   <string name="no_keys_import_title">У мене є ключ</string>
   <string name="no_keys_import_subtitle">Імпортувати наскрізний ключ із іншого пристрою</string>
   <string name="key_list_import">Використовувати інший ключ</string>
@@ -1481,9 +1481,9 @@
   <string name="key_gen_finish">Закінчити</string>
   <string name="key_gen_done">Згенеровано наскрізний ключ!</string>
   <string name="key_gen_finishing">Завершення налаштування...</string>
-  <string name="key_import_text">Щоб використовувати наскрізний ключ, його потрібно імпортувати в OpenKeychain.</string>
+  <string name="key_import_text">Щоб використовувати наскрізний ключ, його потрібно імпортувати в Glazastov Keychain.</string>
   <string name="key_import_text_autocrypt_setup_msg">Щоб імпортувати ваші наявні налаштування з іншого пристрою, вам потрібно також відкрити повідомлення налаштування Autocrypt у %s.</string>
-  <string name="button_goto_openkeychain">Перейти на OpenKeychain</string>
+  <string name="button_goto_openkeychain">Перейти на Glazastov Keychain</string>
   <string name="backup_code_checkbox">Я записав цей резервний код. Без цього я не зможу відновити резервну копію.</string>
   <string name="msg_get_query_not_implemented">Сервер не підтримує поточний запит! Деякі сервери приймають лише електронні адреси. Перевизначте або спробуйте інший сервер.</string>
   <string name="snack_keylist_clipboard_title">Знайдено дані ключів у буфері обміну!</string>

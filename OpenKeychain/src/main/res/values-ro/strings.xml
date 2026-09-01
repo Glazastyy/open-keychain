@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Criptează</string>
   <string name="title_encrypt_files">Criptează</string>
@@ -441,10 +441,10 @@
     <item quantity="other">Certificare eșuată pentru %d chei!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Decriptează fișierul cu OpenKeychain</string>
-  <string name="intent_import_key">Importă cheia cu OpenKeychain</string>
-  <string name="intent_send_encrypt">Criptează cu OpenKeychain</string>
-  <string name="intent_send_decrypt">Decriptează cu OpenKeychain</string>
+  <string name="intent_decrypt_file">Decriptează fișierul cu Glazastov Keychain</string>
+  <string name="intent_import_key">Importă cheia cu Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Criptează cu Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Decriptează cu Glazastov Keychain</string>
   <string name="intent_autocrypt_setup">Importă mesaj de configurare Autocrypt</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Creează o cheie nouă</string>
@@ -454,13 +454,13 @@
   <string name="api_settings_package_certificate">SHA-256 pentru certificatul pachetului</string>
   <string name="api_settings_advanced">Avansat</string>
   <string name="api_settings_allowed_keys">Chei permise</string>
-  <string name="api_register_title">Permite accesul la OpenKeychain?</string>
-  <string name="api_register_text">%s cere să utilizeze OpenKeychain ca furnizor de criptografie. Vi se va cere permisiunea și înainte ca aplicația să poată folisi oricare din cheile dumneavoastră pentru decriptare.\n\nPuteți revoca accesul mai târziu pe ecranul  \'Aplicații\' din OpenKeychain.</string>
+  <string name="api_register_title">Permite accesul la Glazastov Keychain?</string>
+  <string name="api_register_text">%s cere să utilizeze Glazastov Keychain ca furnizor de criptografie. Vi se va cere permisiunea și înainte ca aplicația să poată folisi oricare din cheile dumneavoastră pentru decriptare.\n\nPuteți revoca accesul mai târziu pe ecranul  \'Aplicații\' din Glazastov Keychain.</string>
   <string name="api_select_pub_keys_missing_text">Nu au fost găsite chei pentru aceste adrese de email:</string>
   <string name="api_select_pub_keys_dublicates_text">Există mai multe chei pentru aceste adrese de email:</string>
   <string name="api_select_pub_keys_text">Vă rog să verificați lista de destinatari!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Vă rog să selectați destinatarii!</string>
-  <string name="api_error_wrong_signature">Verificarea semnăturii a esuat! Ați instalat aplicația din altă sursă? Dacă sunteți sigur că acesta nu este un atac, revocați inregistrarea acestei aplicații in OpenKeychain apoi inregistrați aplicația din nou.</string>
+  <string name="api_error_wrong_signature">Verificarea semnăturii a esuat! Ați instalat aplicația din altă sursă? Dacă sunteți sigur că acesta nu este un atac, revocați inregistrarea acestei aplicații in Glazastov Keychain apoi inregistrați aplicația din nou.</string>
   <string name="api_select_sign_key_text">Vă rog selectați una din cheile dumneavoastră existente sau creați o cheie nouă.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Partajează prin cod QR</string>
@@ -470,7 +470,7 @@
   <string name="retry_up_dialog_btn_reupload">Încearcă din nou</string>
   <string name="retry_up_dialog_btn_cancel">Anulează</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Dacă nu mai doriți să folosiți această cheie, ar trebui revocată si încărcată. Selectați \'ȘTERGE NUMAI\' dacă doriți să ștergeți cheia din OpenKeychain dar să continuați să o folosiți în altă parte.</string>
+  <string name="del_rev_dialog_message">Dacă nu mai doriți să folosiți această cheie, ar trebui revocată si încărcată. Selectați \'ȘTERGE NUMAI\' dacă doriți să ștergeți cheia din Glazastov Keychain dar să continuați să o folosiți în altă parte.</string>
   <string name="del_rev_dialog_title">Revocă/Sterge cheia \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">Revocă și încarcă</string>
   <string name="del_rev_dialog_btn_delete">Șterge numai</string>
@@ -1190,7 +1190,7 @@
   <string name="security_token_error_iso_dep_not_supported">Acest jeton de securitate nu este compatibil cu standardul de comunicare necesar (ISO-DEP, ISO 14443-4).</string>
   <string name="security_token_error_generic">Eroare de comunicare. Cel mai probabil, acest jeton de securitate a fost scos prea devreme.</string>
   <string name="security_token_error_try_again">Încearcă din nou</string>
-  <string name="security_token_not_supported">Acest jeton de securitate nu este încă acceptat de OpenKeychain</string>
+  <string name="security_token_not_supported">Acest jeton de securitate nu este încă acceptat de Glazastov Keychain</string>
   <string name="btn_delete_original">Ștergeți fișierul original</string>
   <string name="snack_encrypt_filenames_on">Numele fișierelor <b>sunt</b> criptate.</string>
   <string name="snack_encrypt_filenames_off">Numele fișierelor <b>nu sunt</b> criptate.</string>
@@ -1209,7 +1209,7 @@
   <string name="filename_keys">Copie de rezervă a tastelor (atingeți pentru a importa)</string>
   <string name="intent_show">Afișați conținutul semnat/criptat</string>
   <string name="intent_share">Partajați conținutul semnat/criptat</string>
-  <string name="view_internal">Vizualizați în OpenKeychain</string>
+  <string name="view_internal">Vizualizați în Glazastov Keychain</string>
   <string name="error_preparing_data">Eroare la pregătirea datelor!</string>
   <string name="label_clip_title">Date criptate</string>
   <string name="progress_processing">Procesare...</string>
@@ -1233,11 +1233,11 @@
   <string name="snack_backup_error_saving">Eroare la salvarea copiei de rezervă!</string>
   <string name="snack_backup_saved">Copie de rezervă salvată</string>
   <string name="snack_backup_exists">Copia de rezervă există deja!</string>
-  <string name="snack_backup_saved_dir">Salvat în directorul OpenKeychain</string>
+  <string name="snack_backup_saved_dir">Salvat în directorul Glazastov Keychain</string>
   <string name="snack_text_too_long">Textul este prea lung pentru a fi afișat în întregime!</string>
   <string name="snack_shared_text_too_long">Textul partajat a fost tăiat pentru că era prea lung!</string>
   <string name="share_log_dialog_title">Distribuie jurnalul?</string>
-  <string name="share_log_dialog_message">În timp ce jurnalele pot fi foarte utile pentru dezvoltatori pentru a găsi bug-uri în OpenKeychain, acestea pot conține informații potențial sensibile, cum ar fi date despre cheile actualizate. Vă rugăm să vă asigurați că sunteți de acord cu partajarea acestor informații.</string>
+  <string name="share_log_dialog_message">În timp ce jurnalele pot fi foarte utile pentru dezvoltatori pentru a găsi bug-uri în Glazastov Keychain, acestea pot conține informații potențial sensibile, cum ar fi date despre cheile actualizate. Vă rugăm să vă asigurați că sunteți de acord cu partajarea acestor informații.</string>
   <string name="share_log_dialog_share_button">Partajează</string>
   <string name="share_log_dialog_cancel_button">Anulare</string>
   <string name="toast_wrong_mimetype">Tip de date greșit, se aștepta un text!</string>
@@ -1259,12 +1259,12 @@
   <string name="prompt_fidesmo_app_install_message">Pentru a instala PGP aveți nevoie de app-ul Fidesmo pentru Android.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Instalează</string>
   <string name="prompt_fidesmo_app_install_button_negative">Anulare</string>
-  <string name="redirect_import_key_title">Scanați cu OpenKeychain!</string>
+  <string name="redirect_import_key_title">Scanați cu Glazastov Keychain!</string>
   <string name="redirect_import_key_message">Ați scanat un cod QR OpenPGP cu alt app. Vă rugăm să scanați direct cu Openkeychain pentru a fi în siguranță.</string>
   <string name="redirect_import_key_yes">Scanați din nou</string>
   <string name="redirect_import_key_no">Închide</string>
   <string name="request_permission_title">Permiteți acces la cheia dumneavoastră?</string>
-  <string name="request_permission_msg">%1$s solicită acces la una dintre cheile dumneavoastră, ceea ce îi va permite să decripteze mesajele trimise către această cheie. Puteți revoca acest acces ulterior în OpenKeychain.</string>
+  <string name="request_permission_msg">%1$s solicită acces la una dintre cheile dumneavoastră, ceea ce îi va permite să decripteze mesajele trimise către această cheie. Puteți revoca acest acces ulterior în Glazastov Keychain.</string>
   <string name="requested_key_unavailable_warning">Această cheie nu este disponibilă. Pentru a o utiliza, trebuie să o importați ca fiind una proprie!</string>
   <string name="button_allow">Permite</string>
   <string name="button_cancel">Anulare</string>
@@ -1333,7 +1333,7 @@
   <string name="insecure_sign_not_secure_curve">The key this message was sent (signed) from is using the elliptic curve with OID %1$s, which is not in the list of secure curves!</string>
   <string name="insecure_encrypt_unidentified">Există o problemă de securitate neidentificată cu cheia utilizată pentru a primi (decripta) acest mesaj!</string>
   <string name="insecure_sign_unidentified">Există o problemă de securitate neidentificată cu cheia folosită pentru a trimite (semna) acest mesaj!</string>
-  <string name="insecure_report_suggestion">Aceasta ar putea fi o problemă în OpenKeychain, vă rugăm să trimiteți un raport pe trackerul nostru de probleme!</string>
+  <string name="insecure_report_suggestion">Aceasta ar putea fi o problemă în Glazastov Keychain, vă rugăm să trimiteți un raport pe trackerul nostru de probleme!</string>
   <string name="insecure_mdc">Acest mesaj nu a fost semnat și nici nu conținea un cod de detectare a modificărilor (MDC). Este posibil ca acesta să fi fost modificat de un atacator!</string>
   <string name="insecure_mdc_suggestion">Un MDC lipsă reprezintă o problemă în software-ul de trimitere sau un atac. Pentru o comunicare securizată de la un capăt la altul, mesajele ar trebui să fie semnate și de către expeditor!</string>
   <string name="insecure_symmetric_algo">Acest mesaj a fost criptat cu ajutorul %s algoritmului. Acest lucru este considerat nesigur, sau cel puțin exotic!</string>
@@ -1363,7 +1363,7 @@
   <string name="token_result_key_found">Cheie găsită!</string>
   <string name="token_result_token_ok">Gata de utilizare!</string>
   <string name="token_result_empty">Acest jeton este gol</string>
-  <string name="token_put_key_unsupported">Vă rugăm să configurați acest jeton de securitate folosind GnuPG. OpenKeychain suportă în prezent doar semnarea/decriptarea cu acest jeton de securitate.</string>
+  <string name="token_put_key_unsupported">Vă rugăm să configurați acest jeton de securitate folosind GnuPG. Glazastov Keychain suportă în prezent doar semnarea/decriptarea cu acest jeton de securitate.</string>
   <string name="token_action_retry">Reîncercați căutarea</string>
   <string name="token_action_load_from_file">Încărcare din fișier</string>
   <string name="token_action_reset">Resetare jeton de securitate</string>
@@ -1439,7 +1439,7 @@
   <string name="error_save_key_internal">Eroare internă de salvare a cheii!</string>
   <string name="menu_list_unrelated_keys">Lista cheilor fără legătură</string>
   <string name="no_keys_gen_title">Aceasta este o adresă nouă</string>
-  <string name="no_keys_gen_subtitle">Creați o nouă cheie end-to-end în OpenKeychain</string>
+  <string name="no_keys_gen_subtitle">Creați o nouă cheie end-to-end în Glazastov Keychain</string>
   <string name="no_keys_import_title">Am deja o cheie</string>
   <string name="no_keys_import_subtitle">Importați cheia end-to-end de la un alt dispozitiv</string>
   <string name="key_list_import">Utilizați o altă cheie</string>
@@ -1448,9 +1448,9 @@
   <string name="key_gen_finish">Termină</string>
   <string name="key_gen_done">Cheie generată end-to-end!</string>
   <string name="key_gen_finishing">Finalizarea setării...</string>
-  <string name="key_import_text">Pentru a utiliza o cheie end-to-end, aceasta trebuie să fie importată în OpenKeychain.</string>
+  <string name="key_import_text">Pentru a utiliza o cheie end-to-end, aceasta trebuie să fie importată în Glazastov Keychain.</string>
   <string name="key_import_text_autocrypt_setup_msg">Pentru a importa configurația existentă de pe un alt dispozitiv, puteți, de asemenea, să deschideți un mesaj de configurare autocrypt în %s.</string>
-  <string name="button_goto_openkeychain">Accesați OpenKeychain</string>
+  <string name="button_goto_openkeychain">Accesați Glazastov Keychain</string>
   <string name="backup_code_checkbox">Am notat acest cod de rezervă. Fără el, nu voi putea să restaurez copia de rezervă.</string>
   <string name="msg_get_query_not_implemented">Serverul nu acceptă interogarea curentă! Unele servere acceptă doar adrese de e-mail. Vă rugăm să redefiniți sau să încercați un alt server.</string>
   <string name="snack_keylist_clipboard_title">Am găsit date cheie în clipboard!</string>

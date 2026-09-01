@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Krypter</string>
   <string name="title_encrypt_files">Krypter</string>
@@ -352,7 +352,7 @@
   <string name="revoke_fail">Feil under tilbakekalling av nøkkelen!</string>
   <!--Certify result toast-->
   <!--Intent labels-->
-  <string name="intent_send_encrypt">Krypter med OpenKeychain</string>
+  <string name="intent_send_encrypt">Krypter med Glazastov Keychain</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Opprett ny nøkkel</string>
   <string name="api_settings_save">Lagre</string>
@@ -361,7 +361,7 @@
   <string name="api_settings_package_certificate">SHA-256 av pakkesertifikat</string>
   <string name="api_settings_advanced">Avansert</string>
   <string name="api_settings_allowed_keys">Tillatte nøkler</string>
-  <string name="api_register_text">%s ber om å bruke OpenKeychain som en kryptoleverandør. Du vil fortsatt bli spurt om godkjenning før appen kan bruke noen av nøklene dine for dekryptering.\n\nDu kan trekke fra tillatelsen senere i \'Apper\'-skjermen i OpenKeychain.</string>
+  <string name="api_register_text">%s ber om å bruke Glazastov Keychain som en kryptoleverandør. Du vil fortsatt bli spurt om godkjenning før appen kan bruke noen av nøklene dine for dekryptering.\n\nDu kan trekke fra tillatelsen senere i \'Apper\'-skjermen i Glazastov Keychain.</string>
   <string name="api_select_pub_keys_missing_text">Ingen nøkler ble funnet for disse e-postadressene</string>
   <string name="api_select_pub_keys_dublicates_text">Mer enn én nøkkel finnes for disse e-postadressene:</string>
   <string name="api_select_pub_keys_text_no_user_ids">Vennligst velg mottakerne!</string>

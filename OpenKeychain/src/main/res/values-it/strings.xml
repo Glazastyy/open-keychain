@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Codifica</string>
   <string name="title_encrypt_files">Codifica</string>
@@ -408,10 +408,10 @@
     <item quantity="other">Certificazione di %d chiavi fallita!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Decodifica File con OpenKeychain</string>
-  <string name="intent_import_key">Importa Chiave con OpenKeychain</string>
-  <string name="intent_send_encrypt">Codifica con OpenKeychain</string>
-  <string name="intent_send_decrypt">Decodifica con OpenKeychain</string>
+  <string name="intent_decrypt_file">Decodifica File con Glazastov Keychain</string>
+  <string name="intent_import_key">Importa Chiave con Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Codifica con Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Decodifica con Glazastov Keychain</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Crea chiave nuova</string>
   <string name="api_settings_save">Salva</string>
@@ -420,12 +420,12 @@
   <string name="api_settings_package_certificate">SHA-256 del Certificato del Pacchetto</string>
   <string name="api_settings_advanced">Avanzato</string>
   <string name="api_settings_allowed_keys">Chiavi consentite</string>
-  <string name="api_register_title">Permettere l\'accesso a OpenKeychain?</string>
+  <string name="api_register_title">Permettere l\'accesso a Glazastov Keychain?</string>
   <string name="api_select_pub_keys_missing_text">Nessuna chiave trovata per questi indirizzi email:</string>
   <string name="api_select_pub_keys_dublicates_text">Esiste più di una chiave per questi indirizzi email:</string>
   <string name="api_select_pub_keys_text">Per favore ricontrolla la lista destinatari!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Per favore seleziona i destinatari!</string>
-  <string name="api_error_wrong_signature">Controllo della firma fallito! Hai installato questa app da una fonte diversa? Se sei sicuro che non sia un attacco, revoca la registrazione di questa app in OpenKeychain e dopo registra di nuovo l\'app.</string>
+  <string name="api_error_wrong_signature">Controllo della firma fallito! Hai installato questa app da una fonte diversa? Se sei sicuro che non sia un attacco, revoca la registrazione di questa app in Glazastov Keychain e dopo registra di nuovo l\'app.</string>
   <string name="api_select_sign_key_text">Seleziona una delle tue chiavi esistenti o creane una nuova.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Condividi tramite Codice QR</string>
@@ -435,7 +435,7 @@
   <string name="retry_up_dialog_btn_reupload">Riprova operazione</string>
   <string name="retry_up_dialog_btn_cancel">Annulla operazione</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Se non vuoi più usare questa chiave, dovrebbe essere revocata e inviata. Seleziona \'Cancella e basta\' se desideri rimuovere la chiave da OpenKeychain ma continuare ad usarla da qualche altra parte.</string>
+  <string name="del_rev_dialog_message">Se non vuoi più usare questa chiave, dovrebbe essere revocata e inviata. Seleziona \'Cancella e basta\' se desideri rimuovere la chiave da Glazastov Keychain ma continuare ad usarla da qualche altra parte.</string>
   <string name="del_rev_dialog_title">Revoca/Elimina chiave \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">Revoca e invia</string>
   <string name="del_rev_dialog_btn_delete">Cancella e basta</string>
@@ -850,7 +850,7 @@
   <string name="snack_backup_error_saving">Errore durante il salvataggio del backup!</string>
   <string name="snack_backup_saved">Backup salvato</string>
   <string name="snack_backup_exists">Il backup esiste già!</string>
-  <string name="snack_backup_saved_dir">Salvato nella cartella di OpenKeychain</string>
+  <string name="snack_backup_saved_dir">Salvato nella cartella di Glazastov Keychain</string>
   <string name="snack_text_too_long">Il testo è troppo lungo per essere mostrato per intero!</string>
   <string name="share_log_dialog_title">Vuoi condividere i log?</string>
   <string name="share_log_dialog_share_button">Condividi</string>

@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">暗号化</string>
   <string name="title_encrypt_files">暗号化</string>
@@ -412,10 +412,10 @@
     <item quantity="other">%d 件の鍵の検証が失敗しました！</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">OpenKeychain でファイルを復号</string>
-  <string name="intent_import_key">OpenKeychain に鍵をインポート</string>
-  <string name="intent_send_encrypt">OpenKeychain で暗号化</string>
-  <string name="intent_send_decrypt">OpenKeychain で復号</string>
+  <string name="intent_decrypt_file">Glazastov Keychain でファイルを復号</string>
+  <string name="intent_import_key">Glazastov Keychain に鍵をインポート</string>
+  <string name="intent_send_encrypt">Glazastov Keychain で暗号化</string>
+  <string name="intent_send_decrypt">Glazastov Keychain で復号</string>
   <string name="intent_autocrypt_setup">Autocrypt セットアップメッセージをインポート</string>
   <!--Remote API-->
   <string name="api_settings_create_key">新しい鍵を生成する</string>
@@ -425,13 +425,13 @@
   <string name="api_settings_package_certificate">パッケージの署名の SHA-256</string>
   <string name="api_settings_advanced">詳細</string>
   <string name="api_settings_allowed_keys">許可された鍵</string>
-  <string name="api_register_title">OpenKeychain へのアクセスを許可しますか？</string>
-  <string name="api_register_text">%s が暗号化プロバイダーとして OpenKeyChain の使用を要求しています。鍵を復号に使用する前にもアクセス許可を求められます。\n\n後で OpenKeychain の「アプリ」画面からアクセス権限を取り消せます。</string>
+  <string name="api_register_title">Glazastov Keychain へのアクセスを許可しますか？</string>
+  <string name="api_register_text">%s が暗号化プロバイダーとして OpenKeyChain の使用を要求しています。鍵を復号に使用する前にもアクセス許可を求められます。\n\n後で Glazastov Keychain の「アプリ」画面からアクセス権限を取り消せます。</string>
   <string name="api_select_pub_keys_missing_text">メールアドレスの鍵が見つかりませんでした:</string>
   <string name="api_select_pub_keys_dublicates_text">メールアドレスの鍵が複数存在します:</string>
   <string name="api_select_pub_keys_text">宛先リストを確認してください！</string>
   <string name="api_select_pub_keys_text_no_user_ids">宛先を選択してください！</string>
-  <string name="api_error_wrong_signature">署名確認に失敗しました！ 間違ったところからこのアプリをインストールしていませんか？ もし間違いなく攻撃されていないなら、OpenKeychain からこのアプリの登録を取り消し、もう一度アプリを登録してください。</string>
+  <string name="api_error_wrong_signature">署名確認に失敗しました！ 間違ったところからこのアプリをインストールしていませんか？ もし間違いなく攻撃されていないなら、Glazastov Keychain からこのアプリの登録を取り消し、もう一度アプリを登録してください。</string>
   <string name="api_select_sign_key_text">すでにある鍵から選択するか、新規に作成してください。</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">QR コードで共有</string>
@@ -441,7 +441,7 @@
   <string name="retry_up_dialog_btn_reupload">再実行</string>
   <string name="retry_up_dialog_btn_cancel">やめる</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">もうこの鍵を使用しない場合は、失効させて、アップロードすべきです。 OpenKeychain から鍵を削除して、どこか別の場所から使い続けたい場合は「削除のみ」を選択してください。</string>
+  <string name="del_rev_dialog_message">もうこの鍵を使用しない場合は、失効させて、アップロードすべきです。 Glazastov Keychain から鍵を削除して、どこか別の場所から使い続けたい場合は「削除のみ」を選択してください。</string>
   <string name="del_rev_dialog_title">鍵「%s」を失効/削除</string>
   <string name="del_rev_dialog_btn_revoke">失効とアップロード</string>
   <string name="del_rev_dialog_btn_delete">削除のみ</string>
@@ -1131,7 +1131,7 @@
   <string name="security_token_error_iso_dep_not_supported">セキュリティトークンが、必要な通信標準をサポートしていません (ISO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">コミュニケーションエラー。 セキュリティトークンを取り出すが早すぎた可能性があります。</string>
   <string name="security_token_error_try_again">再試行</string>
-  <string name="security_token_not_supported">このセキュリティトークンは、OpenKeychain ではまだサポートされていません</string>
+  <string name="security_token_not_supported">このセキュリティトークンは、Glazastov Keychain ではまだサポートされていません</string>
   <string name="btn_delete_original">オリジナルのファイルを削除します</string>
   <string name="snack_encrypt_filenames_on">ファイル名を暗号化<b>しました</b>。</string>
   <string name="snack_encrypt_filenames_off">ファイル名を暗号化<b>していません</b>。</string>
@@ -1150,7 +1150,7 @@
   <string name="filename_keys">鍵のバックアップ (クリックしてインポート)</string>
   <string name="intent_show">署名/暗号化した内容を表示</string>
   <string name="intent_share">署名/暗号化した内容を共有</string>
-  <string name="view_internal">OpenKeychainで開く</string>
+  <string name="view_internal">Glazastov Keychainで開く</string>
   <string name="error_preparing_data">データの処理でエラーが発生しました！</string>
   <string name="label_clip_title">暗号化されたデータ</string>
   <string name="progress_processing">処理中...</string>
@@ -1174,11 +1174,11 @@
   <string name="snack_backup_error_saving">バックアップの保存中にエラーが発生しました！</string>
   <string name="snack_backup_saved">バックアップを保存しました</string>
   <string name="snack_backup_exists">バックアップはすでに存在します！</string>
-  <string name="snack_backup_saved_dir">OpenKeychain ディレクトリに保存しました</string>
+  <string name="snack_backup_saved_dir">Glazastov Keychain ディレクトリに保存しました</string>
   <string name="snack_text_too_long">テキストが長すぎてすべて表示できません！</string>
   <string name="snack_shared_text_too_long">長すぎたため、共有テキストをカットしました！</string>
   <string name="share_log_dialog_title">ログを共有しますか？</string>
-  <string name="share_log_dialog_message">開発者が OpenKeychain のバグを見つけるのにログは非常に参考になりますが、更新された鍵に関するデータなど、潜在的な機密情報が含まれることがあります。この情報を共有しても大丈夫であることを確認してください。</string>
+  <string name="share_log_dialog_message">開発者が Glazastov Keychain のバグを見つけるのにログは非常に参考になりますが、更新された鍵に関するデータなど、潜在的な機密情報が含まれることがあります。この情報を共有しても大丈夫であることを確認してください。</string>
   <string name="share_log_dialog_share_button">共有</string>
   <string name="share_log_dialog_cancel_button">キャンセル</string>
   <string name="toast_wrong_mimetype">データ形式が正しくありません。テキストが想定されていました！</string>
@@ -1200,12 +1200,12 @@
   <string name="prompt_fidesmo_app_install_message">PGP をインストールするには Fidesmo Android アプリが必要です。</string>
   <string name="prompt_fidesmo_app_install_button_positive">インストール</string>
   <string name="prompt_fidesmo_app_install_button_negative">キャンセル</string>
-  <string name="redirect_import_key_title">OpenKeychain でスキャン！</string>
+  <string name="redirect_import_key_title">Glazastov Keychain でスキャン！</string>
   <string name="redirect_import_key_message">別のアプリで OpenPGP QR コードをスキャンしました。安全のために Openkeychain で直接スキャンしてください。</string>
   <string name="redirect_import_key_yes">もう一度スキャン</string>
   <string name="redirect_import_key_no">閉じる</string>
   <string name="request_permission_title">あなたの鍵へのアクセスを許可しますか？</string>
-  <string name="request_permission_msg">%1$s はあなたの鍵の 1 つへのアクセスを要求しています。これにより、この鍵へ送信されたメッセージを復号できるようになります。後で OpenKeychain からアクセス権限を取り消せます。</string>
+  <string name="request_permission_msg">%1$s はあなたの鍵の 1 つへのアクセスを要求しています。これにより、この鍵へ送信されたメッセージを復号できるようになります。後で Glazastov Keychain からアクセス権限を取り消せます。</string>
   <string name="requested_key_unavailable_warning">この鍵は使用できません。使用するには、あなた自身のものとしてインポートする必要があります！</string>
   <string name="button_allow">許可</string>
   <string name="button_cancel">キャンセル</string>
@@ -1274,7 +1274,7 @@
   <string name="insecure_sign_not_secure_curve">このメッセージの送信 (署名) に使用した鍵は、安全な曲線リストにない OID %1$s の楕円曲線を使用しています！</string>
   <string name="insecure_encrypt_unidentified">このメッセージを受信 (復号) するのに使用した鍵は、未確認のセキュリティ問題があります！</string>
   <string name="insecure_sign_unidentified">このメッセージの送信 (署名) に使用した鍵は、未確認のセキュリティ問題があります！</string>
-  <string name="insecure_report_suggestion">これは OpenKeychain の問題である可能性があります。 問題トラッカーでご報告ください！</string>
+  <string name="insecure_report_suggestion">これは Glazastov Keychain の問題である可能性があります。 問題トラッカーでご報告ください！</string>
   <string name="insecure_mdc">このメッセージは署名されておらず、変更検出コード (MDC) も含まれていませんでした。攻撃者が書き換えた可能性があります！</string>
   <string name="insecure_mdc_suggestion">MDC の欠落は、送信ソフトウェアの問題か攻撃です。 安全なエンドツーエンド通信のためには、差出人がメッセージに署名する必要があります！</string>
   <string name="insecure_symmetric_algo">このメッセージは、%s アルゴリズムを使用して暗号化されました。 これは安全でないか、異質なものと考えられます！</string>
@@ -1304,7 +1304,7 @@
   <string name="token_result_key_found">鍵が見つかりました！</string>
   <string name="token_result_token_ok">使用する準備ができました！</string>
   <string name="token_result_empty">トークンが空です</string>
-  <string name="token_put_key_unsupported">GnuPG を使用してこのセキュリティトークンを設定してください。OpenKeychain は現在、このセキュリティトークンによる署名/復号のみに対応しています。</string>
+  <string name="token_put_key_unsupported">GnuPG を使用してこのセキュリティトークンを設定してください。Glazastov Keychain は現在、このセキュリティトークンによる署名/復号のみに対応しています。</string>
   <string name="token_action_retry">検索を再試行</string>
   <string name="token_action_load_from_file">ファイルから読み込む</string>
   <string name="token_action_reset">セキュリティトークンをリセット</string>
@@ -1376,7 +1376,7 @@
   <string name="error_save_key_internal">鍵の保存で内部エラーが発生しました！</string>
   <string name="menu_list_unrelated_keys">関連のない鍵を一覧表示</string>
   <string name="no_keys_gen_title">これは新しいアドレスです</string>
-  <string name="no_keys_gen_subtitle">OpenKeychain で新しいエンドツーエンド暗号化鍵を作成します</string>
+  <string name="no_keys_gen_subtitle">Glazastov Keychain で新しいエンドツーエンド暗号化鍵を作成します</string>
   <string name="no_keys_import_title">すでに鍵があります</string>
   <string name="no_keys_import_subtitle">他のデバイスからエンドツーエンド暗号化鍵をインポートします</string>
   <string name="key_list_import">別の鍵を使用する</string>
@@ -1385,9 +1385,9 @@
   <string name="key_gen_finish">終了</string>
   <string name="key_gen_done">エンドツーエンド暗号化鍵を生成しました！</string>
   <string name="key_gen_finishing">セットアップを終了中…</string>
-  <string name="key_import_text">エンドツーエンドの暗号化鍵を使用するには、OpenKeychain にインポートする必要があります。</string>
+  <string name="key_import_text">エンドツーエンドの暗号化鍵を使用するには、Glazastov Keychain にインポートする必要があります。</string>
   <string name="key_import_text_autocrypt_setup_msg">%s で Autocrypt セットアップメッセージを開いて、別の端末から既存のセットアップをインポートすることもできます。</string>
-  <string name="button_goto_openkeychain">OpenKeychain に移動</string>
+  <string name="button_goto_openkeychain">Glazastov Keychain に移動</string>
   <string name="backup_code_checkbox">私はこのバックアップコードを書き留めました。コードなしでは、バックアップを復元できません。</string>
   <string name="msg_get_query_not_implemented">サーバーは現在のクエリをサポートしていません！ 一部のサーバーはメールアドレスのみを受け入れます。再定義するか、別のサーバーを試してください。</string>
   <string name="snack_keylist_clipboard_title">クリップボードにデータが見つかりました！</string>

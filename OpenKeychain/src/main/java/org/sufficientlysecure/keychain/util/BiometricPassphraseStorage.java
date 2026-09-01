@@ -1,18 +1,11 @@
 /*
- * Copyright (C) 2026 OpenKeychain contributors
+ * Copyright (c) 2026 André Glazastov <andre@glazastov.com>
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * SPDX-License-Identifier: MIT
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * This file is new in this fork and is offered by its author under the MIT
+ * License; see LICENSE.MIT. It is distributed as part of an application
+ * licensed under the GPLv3 as a whole; see LICENSE and NOTICE.md.
  */
 
 package org.sufficientlysecure.keychain.util;
@@ -72,7 +65,7 @@ public class BiometricPassphraseStorage {
 
     private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
     private static final String PREFS_NAME = "biometric_passphrases";
-    private static final String KEY_ALIAS_PREFIX = "org.sufficientlysecure.keychain.passphrase.";
+    private static final String KEY_ALIAS_PREFIX = "com.glazastov.keychain.passphrase.";
     private static final String TRANSFORMATION = KeyProperties.KEY_ALGORITHM_AES + "/"
             + KeyProperties.BLOCK_MODE_GCM + "/" + KeyProperties.ENCRYPTION_PADDING_NONE;
     private static final int GCM_TAG_LENGTH_BITS = 128;

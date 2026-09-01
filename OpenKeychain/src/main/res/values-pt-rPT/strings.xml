@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Encriptar</string>
   <string name="title_encrypt_files">Encriptar</string>
@@ -439,10 +439,10 @@
     <item quantity="other">A certificação de %d chaves falhou!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Desencriptar ficheiro com o OpenKeychain</string>
-  <string name="intent_import_key">Importar chave com o OpenKeychain</string>
-  <string name="intent_send_encrypt">Encriptar com o OpenKeychain</string>
-  <string name="intent_send_decrypt">Desencriptar com o OpenKeychain</string>
+  <string name="intent_decrypt_file">Desencriptar ficheiro com o Glazastov Keychain</string>
+  <string name="intent_import_key">Importar chave com o Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Encriptar com o Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Desencriptar com o Glazastov Keychain</string>
   <string name="intent_autocrypt_setup">Importar mensagem de configuração Autocrypt</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Criar nova chave</string>
@@ -452,13 +452,13 @@
   <string name="api_settings_package_certificate">SHA-256 do certificado do pacote</string>
   <string name="api_settings_advanced">Avançado</string>
   <string name="api_settings_allowed_keys">Chaves permitidas</string>
-  <string name="api_register_title">Permitir acesso ao OpenKeychain?</string>
-  <string name="api_register_text">%s pedidos para usar o OpenKeychain como um fornecedor de criptografia. Ainda receberá pedidos de permissões antes da aplicação possa usar uma das suas chaves para desencriptação.\n\nPode revogar o acesso mais tarde no ecrã \'Aplicações\' do OpenKeychain.</string>
+  <string name="api_register_title">Permitir acesso ao Glazastov Keychain?</string>
+  <string name="api_register_text">%s pedidos para usar o Glazastov Keychain como um fornecedor de criptografia. Ainda receberá pedidos de permissões antes da aplicação possa usar uma das suas chaves para desencriptação.\n\nPode revogar o acesso mais tarde no ecrã \'Aplicações\' do Glazastov Keychain.</string>
   <string name="api_select_pub_keys_missing_text">Não foi encontrada nenhuma chave para estes endereços de email:</string>
   <string name="api_select_pub_keys_dublicates_text">Existe mais do que uma chave para estes endereços de email:</string>
   <string name="api_select_pub_keys_text">Por favor confirme a lista dos destinatários!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Por favor selecione os destinatários!</string>
-  <string name="api_error_wrong_signature">A verificação da assinatura falhou! Instalou esta aplicação de uma fonte diferente? Se tem certeza que isto não é um ataque, revogue o registo desta aplicação no OpenKeychain e registe a aplicação novamente.</string>
+  <string name="api_error_wrong_signature">A verificação da assinatura falhou! Instalou esta aplicação de uma fonte diferente? Se tem certeza que isto não é um ataque, revogue o registo desta aplicação no Glazastov Keychain e registe a aplicação novamente.</string>
   <string name="api_select_sign_key_text">Por favor, selecione uma das suas chaves existentes ou crie uma nova.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Compartilhar com QR Code</string>
@@ -468,7 +468,7 @@
   <string name="retry_up_dialog_btn_reupload">Voltar a tentar</string>
   <string name="retry_up_dialog_btn_cancel">Cancelar a operação</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">Se não quer usar mais esta chave, ela deve ser revogada e enviada para o servidor. Selecione \'APENAS ELIMINAR\' se quer remover a chave do OpenKeychain, mas quer continuar a utilizá-la noutros locais.</string>
+  <string name="del_rev_dialog_message">Se não quer usar mais esta chave, ela deve ser revogada e enviada para o servidor. Selecione \'APENAS ELIMINAR\' se quer remover a chave do Glazastov Keychain, mas quer continuar a utilizá-la noutros locais.</string>
   <string name="del_rev_dialog_title">Revogar/eliminar chave \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">Revogar e enviar</string>
   <string name="del_rev_dialog_btn_delete">Apenas eliminar</string>
@@ -1152,7 +1152,7 @@
   <string name="security_token_error_iso_dep_not_supported">O Token de segurança não suporta o padrão de comunicação necessário (ISO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">Erro de comunicação. Provavelmente o Token de segurança foi removido muito depressa.</string>
   <string name="security_token_error_try_again">Tente novamente</string>
-  <string name="security_token_not_supported">Este Token de segurança ainda não é suportado pelo OpenKeychain</string>
+  <string name="security_token_not_supported">Este Token de segurança ainda não é suportado pelo Glazastov Keychain</string>
   <string name="btn_delete_original">Eliminar o ficheiro original</string>
   <string name="snack_encrypt_filenames_on">Os nomes dos ficheiros <b>são</b> encriptados.</string>
   <string name="snack_encrypt_filenames_off">Os nomes dos ficheiros <b>não são</b> encriptados.</string>
@@ -1171,7 +1171,7 @@
   <string name="filename_keys">Cópia de segurança da chave (toque para importar)</string>
   <string name="intent_show">Mostrar conteúdo assinado/encriptado</string>
   <string name="intent_share">Partilhar conteúdo assinado/encriptado</string>
-  <string name="view_internal">Ver no OpenKeychain</string>
+  <string name="view_internal">Ver no Glazastov Keychain</string>
   <string name="error_preparing_data">Erro ao preparar os dados!</string>
   <string name="label_clip_title">Dados encriptados</string>
   <string name="progress_processing">A processar…</string>
@@ -1195,11 +1195,11 @@
   <string name="snack_backup_error_saving">Erro ao gravar a cópia de segurança!</string>
   <string name="snack_backup_saved">Cópia de segurança gravada</string>
   <string name="snack_backup_exists">A cópia de segurança já existe!</string>
-  <string name="snack_backup_saved_dir">Gravado no diretório do OpenKeychain</string>
+  <string name="snack_backup_saved_dir">Gravado no diretório do Glazastov Keychain</string>
   <string name="snack_text_too_long">O texto é longo demais para ser mostrado completamente!</string>
   <string name="snack_shared_text_too_long">O texto partilhado foi cortado porque era muito longo!</string>
   <string name="share_log_dialog_title">Partilhar registo?</string>
-  <string name="share_log_dialog_message">Enquanto os registos podem ser muito úteis para os programadores encontrarem falhas no OpenKeychain, eles podem conter possivelmente informações confidenciais, tais como dados de atualização de chaves. Por favor tenha a certeza que concorda em partilhar essas informações.</string>
+  <string name="share_log_dialog_message">Enquanto os registos podem ser muito úteis para os programadores encontrarem falhas no Glazastov Keychain, eles podem conter possivelmente informações confidenciais, tais como dados de atualização de chaves. Por favor tenha a certeza que concorda em partilhar essas informações.</string>
   <string name="share_log_dialog_share_button">Partilhar</string>
   <string name="share_log_dialog_cancel_button">Cancelar</string>
   <string name="toast_wrong_mimetype">Tipo de dados incorreto. Era esperado que fosse texto!</string>
@@ -1221,12 +1221,12 @@
   <string name="prompt_fidesmo_app_install_message">Para instalar o PGP necessita da aplicação Fidesmo para Android.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Instalar</string>
   <string name="prompt_fidesmo_app_install_button_negative">Cancelar</string>
-  <string name="redirect_import_key_title">Digitalizar com o OpenKeychain!</string>
-  <string name="redirect_import_key_message">Digitalizou um QR Code OpenPGP com outra aplicação. Por favor, digitalize-o com o OpenKeychain diretamente, por questões de segurança.</string>
+  <string name="redirect_import_key_title">Digitalizar com o Glazastov Keychain!</string>
+  <string name="redirect_import_key_message">Digitalizou um QR Code OpenPGP com outra aplicação. Por favor, digitalize-o com o Glazastov Keychain diretamente, por questões de segurança.</string>
   <string name="redirect_import_key_yes">Digitalizar novamente</string>
   <string name="redirect_import_key_no">Fechar</string>
   <string name="request_permission_title">Permitir acesso à sua chave?</string>
-  <string name="request_permission_msg">%1$s pede acesso a uma das suas chaves, o que o permitirá desencriptar mensagens enviadas para esta chave. Pode revogar o acesso mais tarde no OpenKeychain.</string>
+  <string name="request_permission_msg">%1$s pede acesso a uma das suas chaves, o que o permitirá desencriptar mensagens enviadas para esta chave. Pode revogar o acesso mais tarde no Glazastov Keychain.</string>
   <string name="requested_key_unavailable_warning">Esta chave não está disponível. Para usá-la, tem de importá-la como se fosse uma sua!</string>
   <string name="button_allow">Permitir</string>
   <string name="button_cancel">Cancelar</string>
@@ -1292,7 +1292,7 @@
   <string name="insecure_sign_bitstrength_suggestion">A chave em utilização é insegura e não pode ser atualizada. Para comunicar de forma segura, o remetente tem de criar uma nova chave!</string>
   <string name="insecure_encrypt_unidentified">Há um problema não identificado de segurança com a chave usada para receber (desencriptar) esta mensagem!</string>
   <string name="insecure_sign_unidentified">Há um problema não identificado de segurança com a chave usada para enviar (assinar) esta mensagem!</string>
-  <string name="insecure_report_suggestion">Isto pode ser um problema no OpenKeychain, por favor reporte no nosso sistema de rastreamento de erros!</string>
+  <string name="insecure_report_suggestion">Isto pode ser um problema no Glazastov Keychain, por favor reporte no nosso sistema de rastreamento de erros!</string>
   <string name="insecure_mdc">Esta mensagem não foi assinada e não contém um Código de Deteção de Alterações (MDC). Ela pode ter sido alterada por um atacante!</string>
   <string name="insecure_mdc_suggestion">Um MDC que falta é um problema no software remetente ou um ataque. Para comunicações seguras de ponto-a-ponto, as mensagens também devem ser assinadas pelo remetente!</string>
   <string name="insecure_symmetric_algo">A mensagem foi encriptada usando o algoritmo %s. Isso é considerado inseguro ou no mínimo exótico!</string>
@@ -1322,7 +1322,7 @@
   <string name="token_result_key_found">Chave encontrada!</string>
   <string name="token_result_token_ok">Pronto para utilizar!</string>
   <string name="token_result_empty">O token está vazio</string>
-  <string name="token_put_key_unsupported">Por favor, configure este Token de Segurança usando o GnuPG. O OpenKeychain atualmente suporta apenas assinatura/desencriptação com este Token de Segurança.</string>
+  <string name="token_put_key_unsupported">Por favor, configure este Token de Segurança usando o GnuPG. O Glazastov Keychain atualmente suporta apenas assinatura/desencriptação com este Token de Segurança.</string>
   <string name="token_action_retry">Procurar novamente</string>
   <string name="token_action_load_from_file">Carregar de um ficheiro</string>
   <string name="token_action_reset">Repor o Token de Segurança</string>
@@ -1398,7 +1398,7 @@
   <string name="error_save_key_internal">Erro interno ao gravar a chave!</string>
   <string name="menu_list_unrelated_keys">Listar chaves não relacionadas</string>
   <string name="no_keys_gen_title">Este é um endereço novo</string>
-  <string name="no_keys_gen_subtitle">Criar nova chave de encriptação ponto-a-ponto no OpenKeychain</string>
+  <string name="no_keys_gen_subtitle">Criar nova chave de encriptação ponto-a-ponto no Glazastov Keychain</string>
   <string name="no_keys_import_title">Eu já tenho uma chave</string>
   <string name="no_keys_import_subtitle">Importar chave de encriptação ponto-a-ponto de outro dispositivo</string>
   <string name="key_list_import">Usar uma chave diferente</string>
@@ -1407,9 +1407,9 @@
   <string name="key_gen_finish">Concluir</string>
   <string name="key_gen_done">Chave de encriptação ponto-a-ponto gerada!</string>
   <string name="key_gen_finishing">A finalizar configuração…</string>
-  <string name="key_import_text">Para usar uma chave de encriptação ponto-a-ponto, ela deve ser importada no OpenKeychain.</string>
+  <string name="key_import_text">Para usar uma chave de encriptação ponto-a-ponto, ela deve ser importada no Glazastov Keychain.</string>
   <string name="key_import_text_autocrypt_setup_msg">Para importar a sua configuração existente de outro dispositivo, também pode abrir uma Mensagem de Configuração Autocrypt em %s.</string>
-  <string name="button_goto_openkeychain">Ir para o OpenKeychain</string>
+  <string name="button_goto_openkeychain">Ir para o Glazastov Keychain</string>
   <string name="backup_code_checkbox">Eu anotei este código de cópia de segurança. Sem ele, eu serei incapaz de restaurar a cópia de segurança.</string>
   <string name="msg_get_query_not_implemented">Este servidor não suporta a consulta atual! Alguns servidores apenas aceitam emails. Por favor, redefina-o ou tente um servidor diferente.</string>
   <string name="snack_keylist_clipboard_title">Foram encontrados dados de chave na área de transferência!</string>

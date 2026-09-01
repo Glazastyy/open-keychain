@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Šifriraj</string>
   <string name="title_encrypt_files">Šifriraj</string>
@@ -282,10 +282,10 @@
     <item quantity="other">Potrditev %d ključev neuspešna!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Dešifriraj datoteko z OpenKeychain</string>
-  <string name="intent_import_key">Uvozi ključ z OpenKeychain</string>
-  <string name="intent_send_encrypt">Šifriraj z OpenKeychain</string>
-  <string name="intent_send_decrypt">Dešifriraj z OpenKeychain</string>
+  <string name="intent_decrypt_file">Dešifriraj datoteko z Glazastov Keychain</string>
+  <string name="intent_import_key">Uvozi ključ z Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Šifriraj z Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Dešifriraj z Glazastov Keychain</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Ustvari nov ključ</string>
   <string name="api_settings_save">Shrani</string>
@@ -295,7 +295,7 @@
   <string name="api_settings_allowed_keys">Dovoljeni ključi</string>
   <string name="api_select_pub_keys_text">Preverite seznam prejemnikov!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Prosim, izberite prejemnike!</string>
-  <string name="api_error_wrong_signature">Preverjanje podpisa ni uspelo! Ste namestili to aplikacijo iz drugega vira? Če ste prepričani, da to ni napad, prekličite registracijo te aplikacije v OpenKeychain in jo izvedite znova.</string>
+  <string name="api_error_wrong_signature">Preverjanje podpisa ni uspelo! Ste namestili to aplikacijo iz drugega vira? Če ste prepričani, da to ni napad, prekličite registracijo te aplikacije v Glazastov Keychain in jo izvedite znova.</string>
   <string name="api_select_sign_key_text">Prosimo izberite enega od svojih obstoječih ključev, oziroma ustvarite novega.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Deli s kodo QR</string>

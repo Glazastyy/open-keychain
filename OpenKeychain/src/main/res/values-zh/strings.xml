@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">加密</string>
   <string name="title_encrypt_files">加密</string>
@@ -412,10 +412,10 @@
     <item quantity="other">%d 个密钥认证失败！</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">OpenKeychain: 解密文件</string>
-  <string name="intent_import_key">OpenKeychain: 导入密钥</string>
-  <string name="intent_send_encrypt">OpenKeychain: 加密</string>
-  <string name="intent_send_decrypt">OpenKeychain: 解密</string>
+  <string name="intent_decrypt_file">Glazastov Keychain: 解密文件</string>
+  <string name="intent_import_key">Glazastov Keychain: 导入密钥</string>
+  <string name="intent_send_encrypt">Glazastov Keychain: 加密</string>
+  <string name="intent_send_decrypt">Glazastov Keychain: 解密</string>
   <string name="intent_autocrypt_setup">导入自加密安装信息</string>
   <!--Remote API-->
     <string name="api_settings_create_key">创建密钥</string>
@@ -426,12 +426,12 @@
   <string name="api_settings_advanced">更多密钥详情</string>
   <string name="api_settings_allowed_keys">允许的密钥</string>
     <string name="api_register_title">允许到OpenKeyChain的访问吗？</string>
-  <string name="api_register_text">%s请要求使用 OpenKeychain 作为加密源。在这个应用程序使用你的密钥进行解密之前，我们将询问你是否授权。\n\n你也可以稍后在 OpenKeychain 的“Apps”界面内吊销授权</string>
+  <string name="api_register_text">%s请要求使用 Glazastov Keychain 作为加密源。在这个应用程序使用你的密钥进行解密之前，我们将询问你是否授权。\n\n你也可以稍后在 Glazastov Keychain 的“Apps”界面内吊销授权</string>
     <string name="api_select_pub_keys_missing_text">没有与这些邮件地址对应的密钥：</string>
   <string name="api_select_pub_keys_dublicates_text">多个密钥与这些邮箱对应:</string>
   <string name="api_select_pub_keys_text">请确认收件人列表！</string>
   <string name="api_select_pub_keys_text_no_user_ids">请选择接收人！</string>
-  <string name="api_error_wrong_signature">签名检查失败！您是否由其他途径安装了该应用？如果您确定该应用没安全问题，请在 OpenKeychain 里面吊销此应用的访问权限然后重新认证。</string>
+  <string name="api_error_wrong_signature">签名检查失败！您是否由其他途径安装了该应用？如果您确定该应用没安全问题，请在 Glazastov Keychain 里面吊销此应用的访问权限然后重新认证。</string>
   <string name="api_select_sign_key_text">请选择一个已有的密钥或者新建一个。</string>
     <!--Share-->
   <string name="share_qr_code_dialog_title">通过二维码分享</string>
@@ -441,7 +441,7 @@
   <string name="retry_up_dialog_btn_reupload">重试</string>
   <string name="retry_up_dialog_btn_cancel">取消</string>
   <!--Delete or revoke private key dialog-->
-  <string name="del_rev_dialog_message">如果不再使用该密钥，您应该将它吊销并上传。如果希望从 OpenKeychain 删除该密钥，并在其他地方继续使用，您必须选择“仅删除”。</string>
+  <string name="del_rev_dialog_message">如果不再使用该密钥，您应该将它吊销并上传。如果希望从 Glazastov Keychain 删除该密钥，并在其他地方继续使用，您必须选择“仅删除”。</string>
   <string name="del_rev_dialog_title">吊销/删除密钥 \'%s\'</string>
   <string name="del_rev_dialog_btn_revoke">吊销并上传</string>
   <string name="del_rev_dialog_btn_delete">仅删除</string>
@@ -1131,7 +1131,7 @@
   <string name="security_token_error_iso_dep_not_supported">安全令牌不支持所需的通信标准（ISO-DEP, ISO 14443-4）</string>
   <string name="security_token_error_generic">通信错误。最大的可能是安全令牌被过早的移开了。</string>
   <string name="security_token_error_try_again">重试</string>
-  <string name="security_token_not_supported">这枚安全令牌尚未被OpenKeychain支持</string>
+  <string name="security_token_not_supported">这枚安全令牌尚未被Glazastov Keychain支持</string>
   <string name="btn_delete_original">删除源文件？</string>
   <string name="snack_encrypt_filenames_on">文件名<b>将会</b> 被加密。</string>
   <string name="snack_encrypt_filenames_off">文件名<b>不会</b> 被加密。</string>
@@ -1150,7 +1150,7 @@
   <string name="filename_keys">密钥备份(触摸导出)</string>
   <string name="intent_show">显示 签名/加密 内容</string>
   <string name="intent_share">分享 签名/加密 内容</string>
-  <string name="view_internal">在 OpenKeychain 中查看</string>
+  <string name="view_internal">在 Glazastov Keychain 中查看</string>
   <string name="error_preparing_data">准备数据时出现错误！</string>
   <string name="label_clip_title">数据已加密</string>
   <string name="progress_processing">处理中...</string>
@@ -1174,11 +1174,11 @@
   <string name="snack_backup_error_saving">备份时出现错误！</string>
   <string name="snack_backup_saved">备份已保存</string>
   <string name="snack_backup_exists">备份已存在!</string>
-  <string name="snack_backup_saved_dir">已保存到 OpenKeychain 目录</string>
+  <string name="snack_backup_saved_dir">已保存到 Glazastov Keychain 目录</string>
     <string name="snack_text_too_long">文本过长，无法完整显示！</string>
   <string name="snack_shared_text_too_long">分享文本因过长而被截断！</string>
   <string name="share_log_dialog_title">分享日志?</string>
-  <string name="share_log_dialog_message">日志对开发者查找 OpenKeychain 的错误非常有用，但其可能包含诸如更新密钥这样的敏感信息。请确认您愿意分享此类信息。</string>
+  <string name="share_log_dialog_message">日志对开发者查找 Glazastov Keychain 的错误非常有用，但其可能包含诸如更新密钥这样的敏感信息。请确认您愿意分享此类信息。</string>
   <string name="share_log_dialog_share_button">分享</string>
   <string name="share_log_dialog_cancel_button">取消</string>
   <string name="toast_wrong_mimetype">错误的数据类型，文本是预设值</string>
@@ -1200,12 +1200,12 @@
   <string name="prompt_fidesmo_app_install_message">您需要 Fidesmo Android 应用才能安装 PGP.</string>
   <string name="prompt_fidesmo_app_install_button_positive">安装</string>
   <string name="prompt_fidesmo_app_install_button_negative">取消</string>
-    <string name="redirect_import_key_title">使用 OpenKeychain  扫描！</string>
+    <string name="redirect_import_key_title">使用 Glazastov Keychain  扫描！</string>
   <string name="redirect_import_key_message">您使用第三方应用扫描了一个 OpenPGP 二维码。请直接使用 Openkeychain 扫描以确保安全。</string>
   <string name="redirect_import_key_yes">重新扫描</string>
   <string name="redirect_import_key_no">关闭</string>
   <string name="request_permission_title">允许到你的密钥的访问吗？</string>
-  <string name="request_permission_msg">%1$s请求访问你的某一个密钥，这将允许其解密发送到此密钥的信息。你可以稍后在OpenKeychain中吊销访问权限。</string>
+  <string name="request_permission_msg">%1$s请求访问你的某一个密钥，这将允许其解密发送到此密钥的信息。你可以稍后在Glazastov Keychain中吊销访问权限。</string>
   <string name="requested_key_unavailable_warning">此密钥不可用。如需使用，请将其导入为自己的密钥！</string>
   <string name="button_allow">允许</string>
   <string name="button_cancel">取消</string>
@@ -1274,7 +1274,7 @@
   <string name="insecure_sign_not_secure_curve">发送(签署)此消息的密钥使用带 OID %1$s 的椭圆曲线，其不在安全曲线列表中！</string>
   <string name="insecure_encrypt_unidentified">用于接收（解密）此信息的密钥包含一个尚未定义的安全问题！</string>
   <string name="insecure_sign_unidentified">用于发送（签名）此信息的密钥包含一个尚未定义的安全问题！</string>
-  <string name="insecure_report_suggestion">OpenKeychain也许出现了一个问题，请上传一份报告到我们的问题追踪服务器！</string>
+  <string name="insecure_report_suggestion">Glazastov Keychain也许出现了一个问题，请上传一份报告到我们的问题追踪服务器！</string>
   <string name="insecure_mdc">此信息未签名，也不包含修改检测码（MDC）。它也许已经被攻击者修改！</string>
   <string name="insecure_mdc_suggestion">MDC 缺失也许是发信方软件的故障，也许是由于遭受了攻击。为了安全的端到端通信，信息也应该被发信方签名！</string>
   <string name="insecure_symmetric_algo">这条信息使用%s算法加密。这被认为是不安全的，或者至少是不主流的</string>
@@ -1304,7 +1304,7 @@
   <string name="token_result_key_found">发现密钥！</string>
   <string name="token_result_token_ok">准备就绪！</string>
   <string name="token_result_empty">令牌为空</string>
-  <string name="token_put_key_unsupported">请使用 GnuPG 配置你的安全令牌，OpenKeychain目前只支持使用此类安全令牌进行签名/解密。</string>
+  <string name="token_put_key_unsupported">请使用 GnuPG 配置你的安全令牌，Glazastov Keychain目前只支持使用此类安全令牌进行签名/解密。</string>
   <string name="token_action_retry">重试搜索</string>
   <string name="token_action_load_from_file">从文件加载</string>
   <string name="token_action_reset">重置安全令牌</string>
@@ -1376,7 +1376,7 @@
     <string name="error_save_key_internal">保存密钥时发生内部错误！</string>
   <string name="menu_list_unrelated_keys">列出无关密钥</string>
   <string name="no_keys_gen_title">这是一个新地址</string>
-  <string name="no_keys_gen_subtitle">在OpenKeychain中生成一个新的端到端密钥</string>
+  <string name="no_keys_gen_subtitle">在Glazastov Keychain中生成一个新的端到端密钥</string>
   <string name="no_keys_import_title">我已经有一个密钥了</string>
   <string name="no_keys_import_subtitle">从另一台设备导入端到端密钥</string>
   <string name="key_list_import">使用另一个密钥</string>
@@ -1385,9 +1385,9 @@
   <string name="key_gen_finish">完成</string>
   <string name="key_gen_done">已生成端到端密钥！</string>
   <string name="key_gen_finishing">完成安装…</string>
-  <string name="key_import_text">要使用端到端密钥，请先将其导入到 OpenKeychain。</string>
+  <string name="key_import_text">要使用端到端密钥，请先将其导入到 Glazastov Keychain。</string>
   <string name="key_import_text_autocrypt_setup_msg">要从其他设备导入你现有的配置，你也可以在这里：%s打开自加密安装信息。</string>
-  <string name="button_goto_openkeychain">前往OpenKeychain</string>
+  <string name="button_goto_openkeychain">前往Glazastov Keychain</string>
   <string name="backup_code_checkbox">我已经抄写了备份密码。如果没有密码，我就不能从备份中恢复数据</string>
   <string name="msg_get_query_not_implemented">此服务器不支持当前的查询！有些服务器只接受电子邮件地址查询。请重新定义关键词或者尝试使用另一个服务器。</string>
   <string name="snack_keylist_clipboard_title">在剪贴板中发现密钥数据！</string>
