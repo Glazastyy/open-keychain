@@ -19,6 +19,7 @@ package org.sufficientlysecure.keychain.util;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -160,6 +161,24 @@ public class BiometricPassphraseStorageTest {
 
         Assert.assertArrayEquals("wiping the encoded copy must not touch the input",
                 "passphrase".toCharArray(), original);
+    }
+
+    @Test
+    public void findStoredMasterKeyId_picksTheKeyWeCanAnswerFor() {
+        // Decrypting a message asks for any one of the keys it was encrypted to, and a message
+        // encrypted to its sender as well as its recipient names two. The stored passphrase has
+        // to be found even when it belongs to the second one.
+        long otherKeyId = 0x99L;
+        prefs.edit().putString(Long.toString(MASTER_KEY_ID), "AAAA").commit();
+
+        Assert.assertEquals(Long.valueOf(MASTER_KEY_ID),
+                storage.findStoredMasterKeyId(Arrays.asList(otherKeyId, MASTER_KEY_ID)));
+    }
+
+    @Test
+    public void findStoredMasterKeyId_withNothingStored_isNull() {
+        Assert.assertNull(storage.findStoredMasterKeyId(Arrays.asList(1L, 2L)));
+        Assert.assertNull(storage.findStoredMasterKeyId(Collections.<Long>emptyList()));
     }
 
     @Test

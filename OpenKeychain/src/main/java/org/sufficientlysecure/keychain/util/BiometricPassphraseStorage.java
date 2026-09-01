@@ -168,6 +168,23 @@ public class BiometricPassphraseStorage {
         return getPrefs().contains(prefsKey(masterKeyId));
     }
 
+    /**
+     * The first of these keys that has a passphrase stored, or null if none does.
+     *
+     * <p>A request for a passphrase can name several keys at once - decrypting a message asks for
+     * any one of the keys it was encrypted to - so the caller needs whichever of them we can
+     * actually answer for.
+     */
+    @Nullable
+    public Long findStoredMasterKeyId(@NonNull Iterable<Long> masterKeyIds) {
+        for (Long masterKeyId : masterKeyIds) {
+            if (masterKeyId != null && hasPassphrase(masterKeyId)) {
+                return masterKeyId;
+            }
+        }
+        return null;
+    }
+
     public Set<String> getStoredKeyIds() {
         return getPrefs().getAll().keySet();
     }

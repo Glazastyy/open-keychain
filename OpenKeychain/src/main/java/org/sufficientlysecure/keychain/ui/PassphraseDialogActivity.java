@@ -18,6 +18,7 @@
 package org.sufficientlysecure.keychain.ui;
 
 
+import java.util.LinkedHashSet;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -302,7 +303,6 @@ public class PassphraseDialogActivity extends FragmentActivity {
                             case PASSPHRASE:
                                 message = getString(R.string.passphrase_for, userId);
                                 hint = getString(R.string.label_passphrase);
-                                setUpBiometricStorage(masterKeyId);
                                 break;
                             case DIVERT_TO_CARD:
                                 message = getString(R.string.security_token_pin_for, userId);
@@ -323,6 +323,8 @@ public class PassphraseDialogActivity extends FragmentActivity {
                     return alert.create();
                 }
             }
+
+            setUpBiometricStorage();
 
             mPassphraseText.setText(message);
             mPassphraseEditText.setHint(hint);
@@ -526,8 +528,17 @@ public class PassphraseDialogActivity extends FragmentActivity {
          * puts the dialog in the right state for it: offer to remember it, or offer to unlock with
          * what is already remembered.
          */
-        private void setUpBiometricStorage(Long masterKeyId) {
-            if (masterKeyId == null) {
+        /**
+         * Works out whether a stored passphrase could answer this request, and puts the dialog in
+         * the right state for it.
+         *
+         * <p>A request can name several keys: decrypting a message asks for any one of the keys it
+         * was encrypted to, and a message encrypted to its sender as well as its recipient names
+         * two. So look at all of them and take the first that has a passphrase stored, rather than
+         * only handling the single-key case.
+         */
+        private void setUpBiometricStorage() {
+            if (mRequiredInput.mType == RequiredInputType.PASSPHRASE_SYMMETRIC) {
                 return;
             }
 
@@ -538,13 +549,42 @@ public class PassphraseDialogActivity extends FragmentActivity {
                 return;
             }
 
-            mBiometricMasterKeyId = masterKeyId;
-            mHasStoredPassphrase = storage.hasPassphrase(masterKeyId);
+            long[] subKeyIds = mRequiredInput.getSubKeyIds();
+            if (subKeyIds == null) {
+                return;
+            }
 
-            // Unlocking with what is already stored is always worth offering. Offering to store
-            // something new is not, when this passphrase is not going to be kept anyway.
-            if (!mHasStoredPassphrase && !mRequiredInput.mSkipCaching
+            KeyRepository keyRepository = KeyRepository.create(getContext());
+            LinkedHashSet<Long> masterKeyIds = new LinkedHashSet<>();
+            for (long subKeyId : subKeyIds) {
+                try {
+                    if (keyRepository.getSecretKeyType(subKeyId)
+                            != CanonicalizedSecretKey.SecretKeyType.PASSPHRASE) {
+                        // a security token PIN or an empty passphrase is not ours to store
+                        continue;
+                    }
+                    Long masterKeyId = keyRepository.getMasterKeyIdBySubkeyId(subKeyId);
+                    if (masterKeyId != null) {
+                        masterKeyIds.add(masterKeyId);
+                    }
+                } catch (NotFoundException e) {
+                    // key went away, just skip it
+                }
+            }
+
+            Long storedMasterKeyId = storage.findStoredMasterKeyId(masterKeyIds);
+            if (storedMasterKeyId != null) {
+                mBiometricMasterKeyId = storedMasterKeyId;
+                mHasStoredPassphrase = true;
+                return;
+            }
+
+            // Nothing stored yet. Offering to remember one only makes sense when the request is
+            // about a single key, so we know which one to store it under, and when the passphrase
+            // is going to be kept at all.
+            if (masterKeyIds.size() == 1 && !mRequiredInput.mSkipCaching
                     && mRememberBiometricCheckBox != null) {
+                mBiometricMasterKeyId = masterKeyIds.iterator().next();
                 mRememberBiometricCheckBox.setVisibility(View.VISIBLE);
             }
         }
