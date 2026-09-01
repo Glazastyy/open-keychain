@@ -8,6 +8,10 @@ project, is not endorsed by it, and should not be reported to it.
 
 Changes made in this fork, most recent first:
 
+- Started migrating from Java to Kotlin (`AsyncTaskLiveData` and its
+  `AsyncTask` usage first, more to follow). These are ports/rewrites of
+  existing GPL-licensed files, not new files — see Licensing below for why
+  that distinction matters.
 - Renamed to Glazastov Keychain; application ID changed to `com.glazastov.keychain`,
   with the account type and content provider authority moved to match.
 - A key's passphrase can optionally be kept encrypted under an Android Keystore
@@ -34,6 +38,13 @@ those individual files may also be reused on their own under MIT terms.
 Files taken from OpenKeychain keep their original copyright headers, as the
 GPL requires and as accuracy requires. Where such a file was modified here, the
 modification is recorded in the git history rather than by rewriting the header.
+
+This also covers files **ported or rewritten in another language** (e.g. the
+ongoing Java-to-Kotlin migration): translating a file does not change its
+status as a derivative work, so a straight port of GPL-licensed logic stays
+under the GPLv3 and does not get the MIT header or an
+`SPDX-License-Identifier: MIT` — only code that is genuinely new (not derived
+from OpenKeychain's implementation) qualifies for that.
 
 ### Third-party components
 

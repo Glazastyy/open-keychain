@@ -1,3 +1,12 @@
+/*
+ * This file is a Kotlin port of AsyncTaskLiveData.java from OpenKeychain
+ * (GNU GPL v3 or later; Copyright Schürmann & Breitmoser GbR and
+ * contributors), further modified in this fork. Porting to another
+ * language does not change its status as a derivative work: it remains
+ * licensed under the GPLv3 as part of the application as a whole — see
+ * LICENSE and NOTICE.md. It is NOT offered under the MIT License that
+ * applies to files new to this fork.
+ */
 package org.sufficientlysecure.keychain.ui.keyview.loader
 
 import android.content.Context
