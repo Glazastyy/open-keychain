@@ -102,7 +102,8 @@ public class CertifyOperationTest {
             builder.addUserId("ditz");
             byte[] uatdata = new byte[random.nextInt(150)+10];
             random.nextBytes(uatdata);
-            builder.addUserAttribute(WrappedUserAttribute.fromSubpacket(random.nextInt(100)+1, uatdata));
+            // any type except image attribute, to avoid interpretation of these
+            builder.addUserAttribute(WrappedUserAttribute.fromSubpacket(random.nextInt(100)+2, uatdata));
 
             builder.setNewUnlock(ChangeUnlockParcel.createUnLockParcelForNewKey(mKeyPhrase2));
 
