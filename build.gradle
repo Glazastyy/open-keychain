@@ -24,6 +24,20 @@ allprojects {
     }
 }
 
+// The eu.davidea flexible-adapter artifacts on Maven Central are republications built
+// with JDK 21, so their class files are version 65. javac can only read class files up
+// to its own version, which means JDK 17 cannot compile against them at all - it fails
+// to read the library, aborts before annotation processing, and then reports every
+// AutoValue-generated class as missing. Say so plainly instead of leaving that to be
+// worked out from a hundred cascading errors.
+def requiredJdk = JavaVersion.VERSION_21
+if (JavaVersion.current() < requiredJdk) {
+    throw new GradleException(
+            "This build requires JDK ${requiredJdk} or newer, but is running on ${JavaVersion.current()}.\n" +
+            "The eu.davidea flexible-adapter dependencies ship Java 21 class files, which an " +
+            "older javac cannot read. Java language level of the app itself is still 17.")
+}
+
 // SDK versions and shared dependency versions used by all subprojects
 // See http://tools.android.com/tech-docs/new-build-system/tips#TOC-Controlling-Android-properties-of-all-your-modules-from-the-main-project.
 ext {
@@ -36,6 +50,17 @@ ext {
     // OpenPGP / crypto stack
     bouncyCastleProvVersion = '1.85.2'
     bouncyCastleUtilVersion = '1.85'
+}
+
+// Source files across this project and the vendored Bouncy Castle carry non-ASCII
+// characters, so the encoding javac reads them with has to be stated explicitly.
+// Left unset, javac uses the platform default, which is UTF-8 only from JDK 18 on
+// (JEP 400); on JDK 17 with a POSIX locale it is US-ASCII and the build fails on
+// every one of those files.
+allprojects {
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
 }
 
 // Compile every Android module against the same Java language level.

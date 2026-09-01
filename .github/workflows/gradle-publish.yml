@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   publish:
     if: false # job disabled. currently it is not possible to create public Maven repos: https://github.community/t/how-to-allow-unauthorised-read-access-to-github-packages-maven-repository/115517/8

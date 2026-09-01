@@ -67,6 +67,11 @@ Select SDK Platform for API levels 27.
 
 We are using the newest [Android Studio](http://developer.android.com/sdk/installing/studio.html) for development. Development with Eclipse is currently not possible because we are using the new [project structure](http://developer.android.com/sdk/installing/studio-tips.html).
 
+**The build requires JDK 21 or newer.** The app's own Java language level is still 17;
+the JDK floor comes from the `eu.davidea` flexible-adapter dependencies, whose Maven
+Central builds ship Java 21 class files that an older javac cannot read. Running the
+build on an older JDK fails immediately with a message saying so.
+
 1. Clone the project from Github
 2. Get all external submodules with ``git submodule update --init --recursive``
 3. From Android Studio: File -> Import Project ->  Select the cloned top folder
