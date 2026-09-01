@@ -79,6 +79,7 @@ import org.sufficientlysecure.keychain.securitytoken.SecurityTokenConnection;
 import org.sufficientlysecure.keychain.service.ChangeUnlockParcel;
 import org.sufficientlysecure.keychain.service.ImportKeyringParcel;
 import org.sufficientlysecure.keychain.service.PassphraseCacheService;
+import org.sufficientlysecure.keychain.service.input.CryptoInputParcel;
 import org.sufficientlysecure.keychain.service.input.RequiredInputParcel;
 import org.sufficientlysecure.keychain.ui.BackupActivity;
 import org.sufficientlysecure.keychain.ui.CertifyFingerprintActivity;
@@ -94,6 +95,7 @@ import org.sufficientlysecure.keychain.ui.ViewKeyAdvActivity;
 import org.sufficientlysecure.keychain.ui.base.BaseSecurityTokenActivity;
 import org.sufficientlysecure.keychain.ui.base.CryptoOperationHelper;
 import org.sufficientlysecure.keychain.ui.dialog.SetPassphraseDialogFragment;
+import org.sufficientlysecure.keychain.ui.util.BiometricPassphraseUnlock;
 import org.sufficientlysecure.keychain.ui.util.ContentDescriptionHint;
 import org.sufficientlysecure.keychain.ui.util.FormattingUtils;
 import org.sufficientlysecure.keychain.ui.util.KeyFormattingUtils;
@@ -101,13 +103,15 @@ import org.sufficientlysecure.keychain.ui.util.KeyFormattingUtils.State;
 import org.sufficientlysecure.keychain.ui.util.Notify;
 import org.sufficientlysecure.keychain.ui.util.Notify.Style;
 import org.sufficientlysecure.keychain.ui.util.QrCodeUtils;
+import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
 import org.sufficientlysecure.keychain.util.Preferences;
 import org.sufficientlysecure.keychain.util.ShareKeyHelper;
 
 
 public class ViewKeyActivity extends BaseSecurityTokenActivity {
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({REQUEST_QR_FINGERPRINT, REQUEST_BACKUP, REQUEST_CERTIFY, REQUEST_DELETE})
+    @IntDef({REQUEST_QR_FINGERPRINT, REQUEST_BACKUP, REQUEST_CERTIFY, REQUEST_DELETE,
+            REQUEST_REMEMBER_BIOMETRIC})
     private @interface RequestType {
     }
 
@@ -115,6 +119,7 @@ public class ViewKeyActivity extends BaseSecurityTokenActivity {
     static final int REQUEST_BACKUP = 2;
     static final int REQUEST_CERTIFY = 3;
     static final int REQUEST_DELETE = 4;
+    static final int REQUEST_REMEMBER_BIOMETRIC = 5;
 
     public static final String EXTRA_MASTER_KEY_ID = "master_key_id";
     public static final String EXTRA_DISPLAY_RESULT = "display_result";
@@ -310,6 +315,10 @@ public class ViewKeyActivity extends BaseSecurityTokenActivity {
                 deleteKey();
                 return true;
             }
+            case R.id.menu_key_view_biometric: {
+                toggleBiometricPassphrase();
+                return true;
+            }
             case R.id.menu_key_view_advanced: {
                 Intent advancedIntent = new Intent(this, ViewKeyAdvActivity.class);
                 advancedIntent.putExtra(ViewKeyAdvActivity.EXTRA_MASTER_KEY_ID, unifiedKeyInfo.master_key_id());
@@ -337,6 +346,19 @@ public class ViewKeyActivity extends BaseSecurityTokenActivity {
         backupKey.setVisible(unifiedKeyInfo.has_any_secret());
         MenuItem changePassword = menu.findItem(R.id.menu_key_change_password);
         changePassword.setVisible(unifiedKeyInfo.has_any_secret());
+
+        // Storing the passphrase behind the screen lock only makes sense for a key we hold and
+        // that actually has a passphrase to store.
+        MenuItem biometricItem = menu.findItem(R.id.menu_key_view_biometric);
+        boolean canStorePassphrase = unifiedKeyInfo.has_any_secret() && keyHasPassphrase();
+        biometricItem.setVisible(canStorePassphrase);
+        if (canStorePassphrase) {
+            boolean stored = BiometricPassphraseStorage.create(this)
+                    .hasPassphrase(unifiedKeyInfo.master_key_id());
+            biometricItem.setTitle(stored
+                    ? R.string.menu_key_forget_biometric
+                    : R.string.menu_key_remember_biometric);
+        }
 
         MenuItem certifyFingerprint = menu.findItem(R.id.menu_key_view_certify_fingerprint);
         certifyFingerprint.setVisible(
@@ -412,6 +434,30 @@ public class ViewKeyActivity extends BaseSecurityTokenActivity {
 
         qrCodeIntent.putExtra(QrCodeViewActivity.EXTRA_MASTER_KEY_ID, unifiedKeyInfo.master_key_id());
         ActivityCompat.startActivity(this, qrCodeIntent, opts);
+    }
+
+    /**
+     * Turns "remember this key's passphrase behind the screen lock" on or off. Turning it on needs
+     * the passphrase, so it goes through the ordinary passphrase dialog first and stores what
+     * comes back; see {@link #onActivityResult}.
+     */
+    private void toggleBiometricPassphrase() {
+        long masterKeyId = unifiedKeyInfo.master_key_id();
+        BiometricPassphraseStorage storage = BiometricPassphraseStorage.create(this);
+
+        if (storage.hasPassphrase(masterKeyId)) {
+            storage.removePassphrase(masterKeyId);
+            Notify.create(this, R.string.biometric_passphrase_forgotten, Style.OK).show();
+            supportInvalidateOptionsMenu();
+            return;
+        }
+
+        if (!storage.isAvailable()) {
+            Notify.create(this, R.string.biometric_unavailable, Style.WARN).show();
+            return;
+        }
+
+        startPassphraseActivity(REQUEST_REMEMBER_BIOMETRIC);
     }
 
     private void startPassphraseActivity(int requestCode) {
@@ -509,6 +555,32 @@ public class ViewKeyActivity extends BaseSecurityTokenActivity {
 
             case REQUEST_BACKUP: {
                 startBackupActivity();
+                return;
+            }
+
+            case REQUEST_REMEMBER_BIOMETRIC: {
+                CryptoInputParcel cryptoInput =
+                        data.getParcelableExtra(PassphraseDialogActivity.RESULT_CRYPTO_INPUT);
+                if (cryptoInput == null || cryptoInput.getPassphrase() == null) {
+                    return;
+                }
+                BiometricPassphraseUnlock.save(this, unifiedKeyInfo.master_key_id(),
+                        cryptoInput.getPassphrase(), new BiometricPassphraseUnlock.SaveCallback() {
+                            @Override
+                            public void onPassphraseSaved() {
+                                Notify.create(ViewKeyActivity.this,
+                                        R.string.biometric_passphrase_saved, Style.OK).show();
+                                supportInvalidateOptionsMenu();
+                            }
+
+                            @Override
+                            public void onSaveFailed(String message) {
+                                if (message != null) {
+                                    Notify.create(ViewKeyActivity.this, message,
+                                            Notify.LENGTH_LONG, Style.ERROR).show();
+                                }
+                            }
+                        });
                 return;
             }
 

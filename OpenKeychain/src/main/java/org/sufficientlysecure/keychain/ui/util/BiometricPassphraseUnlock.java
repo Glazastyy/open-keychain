@@ -26,6 +26,7 @@ import androidx.biometric.BiometricPrompt;
 import androidx.biometric.BiometricPrompt.AuthenticationResult;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import org.sufficientlysecure.keychain.R;
 import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
@@ -125,6 +126,67 @@ public class BiometricPassphraseUnlock {
         }
     }
 
+    /**
+     * Asks the user to authenticate, then stores the passphrase for this key. Activity flavour,
+     * for callers that are not inside a fragment.
+     */
+    public static void save(@NonNull final FragmentActivity activity, long masterKeyId,
+            @NonNull final Passphrase passphrase, @NonNull SaveCallback callback) {
+        final BiometricPassphraseStorage storage =
+                BiometricPassphraseStorage.create(activity);
+
+        Cipher cipher;
+        try {
+            cipher = storage.createEncryptCipher(masterKeyId);
+        } catch (InvalidatedException e) {
+            Timber.w(e, "Could not prepare to store the passphrase");
+            callback.onSaveFailed(activity.getString(R.string.biometric_passphrase_save_failed));
+            return;
+        }
+
+        final Cipher preparedCipher = cipher;
+        BiometricPrompt prompt = new BiometricPrompt(activity,
+                ContextCompat.getMainExecutor(activity),
+                new BiometricPrompt.AuthenticationCallback() {
+                    @Override
+                    public void onAuthenticationSucceeded(@NonNull AuthenticationResult result) {
+                        Cipher authorisedCipher = preparedCipher;
+                        if (result.getCryptoObject() != null
+                                && result.getCryptoObject().getCipher() != null) {
+                            authorisedCipher = result.getCryptoObject().getCipher();
+                        }
+                        try {
+                            storage.savePassphrase(masterKeyId, authorisedCipher, passphrase);
+                            callback.onPassphraseSaved();
+                        } catch (InvalidatedException e) {
+                            Timber.w(e, "Could not store the passphrase");
+                            callback.onSaveFailed(activity.getString(
+                                    R.string.biometric_passphrase_save_failed));
+                        }
+                    }
+
+                    @Override
+                    public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                        storage.removePassphrase(masterKeyId);
+                        if (isUserCancellation(errorCode)) {
+                            callback.onSaveFailed(null);
+                        } else {
+                            callback.onSaveFailed(errString.toString());
+                        }
+                    }
+                });
+
+        BiometricPrompt.PromptInfo promptInfo = buildPromptInfo(storage.getPromptMode(), activity,
+                activity.getString(R.string.biometric_save_title),
+                activity.getString(R.string.biometric_save_description));
+
+        if (BiometricPassphraseStorage.usesCryptoObject()) {
+            prompt.authenticate(promptInfo, new BiometricPrompt.CryptoObject(preparedCipher));
+        } else {
+            prompt.authenticate(promptInfo);
+        }
+    }
+
     /** Asks the user to authenticate, then stores the passphrase for this key. */
     public static void save(@NonNull Fragment fragment, long masterKeyId,
             @NonNull final Passphrase passphrase, @NonNull SaveCallback callback) {
@@ -185,13 +247,41 @@ public class BiometricPassphraseUnlock {
 
     private static BiometricPrompt.PromptInfo buildPromptInfo(Fragment fragment, String title,
             String description) {
-        return new BiometricPrompt.PromptInfo.Builder()
+        return buildPromptInfo(
+                BiometricPassphraseStorage.create(fragment.requireContext()).getPromptMode(),
+                fragment.requireContext(), title, description);
+    }
+
+    /**
+     * Builds the prompt for the way this device wants to be asked. See
+     * {@link BiometricPassphraseStorage#getPromptMode()} for why there is more than one way.
+     */
+    private static BiometricPrompt.PromptInfo buildPromptInfo(int promptMode,
+            android.content.Context context, String title, String description) {
+        BiometricPrompt.PromptInfo.Builder builder = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle(title)
                 .setDescription(description)
+                .setConfirmationRequired(false);
+
+        switch (promptMode) {
+            case BiometricPassphraseStorage.PROMPT_BIOMETRIC_ONLY:
+                builder.setAllowedAuthenticators(
+                        androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG);
+                builder.setNegativeButtonText(context.getString(android.R.string.cancel));
+                break;
+            case BiometricPassphraseStorage.PROMPT_CREDENTIAL_LEGACY:
+                //noinspection deprecation - the only route to the device credential before API 30
+                builder.setDeviceCredentialAllowed(true);
+                break;
+            case BiometricPassphraseStorage.PROMPT_BIOMETRIC_OR_CREDENTIAL:
+            default:
                 // no negative button may be set alongside a device credential fallback
-                .setAllowedAuthenticators(BiometricPassphraseStorage.getAllowedAuthenticators())
-                .setConfirmationRequired(false)
-                .build();
+                builder.setAllowedAuthenticators(
+                        BiometricPassphraseStorage.getAllowedAuthenticators());
+                break;
+        }
+
+        return builder.build();
     }
 
     private static boolean isUserCancellation(int errorCode) {

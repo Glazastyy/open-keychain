@@ -527,12 +527,11 @@ public class PassphraseDialogActivity extends FragmentActivity {
          * what is already remembered.
          */
         private void setUpBiometricStorage(Long masterKeyId) {
-            if (masterKeyId == null || mRequiredInput.mSkipCaching) {
+            if (masterKeyId == null) {
                 return;
             }
 
             BiometricPassphraseStorage storage = BiometricPassphraseStorage.create(getContext());
-            mHasStoredPassphrase = storage.hasPassphrase(masterKeyId);
             if (!storage.isAvailable()) {
                 // no screen lock, or no usable sensor. If something was stored while there was
                 // one, it is unreadable now, so do not offer to unlock with it.
@@ -540,7 +539,12 @@ public class PassphraseDialogActivity extends FragmentActivity {
             }
 
             mBiometricMasterKeyId = masterKeyId;
-            if (!mHasStoredPassphrase && mRememberBiometricCheckBox != null) {
+            mHasStoredPassphrase = storage.hasPassphrase(masterKeyId);
+
+            // Unlocking with what is already stored is always worth offering. Offering to store
+            // something new is not, when this passphrase is not going to be kept anyway.
+            if (!mHasStoredPassphrase && !mRequiredInput.mSkipCaching
+                    && mRememberBiometricCheckBox != null) {
                 mRememberBiometricCheckBox.setVisibility(View.VISIBLE);
             }
         }

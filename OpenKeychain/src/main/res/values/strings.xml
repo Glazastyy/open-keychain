@@ -1335,6 +1335,14 @@
     <string name="cache_ttl_one_day">"for one day"</string>
     <string name="cache_ttl_forever">"until cleared"</string>
     <!-- Biometric / Android Keystore protected passphrase storage -->
+    <string name="label_biometric_passphrases">"Passphrases behind the screen lock"</string>
+    <string name="biometric_passphrases_none_stored">"No passphrase is stored on this device. Turn it on from a key\'s menu."</string>
+    <string name="biometric_passphrases_forgotten_all">"All stored passphrases have been forgotten."</string>
+    <string name="menu_key_remember_biometric">"Remember passphrase with screen lock"</string>
+    <string name="menu_key_forget_biometric">"Forget passphrase stored on this device"</string>
+    <string name="biometric_passphrase_saved">"Passphrase stored. It will be unlocked with your fingerprint or screen lock."</string>
+    <string name="biometric_passphrase_forgotten">"The stored passphrase has been forgotten."</string>
+    <string name="biometric_unavailable">"Set up a screen lock on this device to use this."</string>
     <string name="biometric_remember_passphrase">"Remember with fingerprint or screen lock"</string>
     <string name="biometric_unlock_title">"Unlock your key"</string>
     <string name="biometric_unlock_description">"Authenticate to use the passphrase stored on this device."</string>
@@ -1594,4 +1602,8 @@
     <string name="share_key_clipboard">Share key via clipboard</string>
     <string name="share_key">Share key</string>
 
+    <plurals name="biometric_passphrases_stored">
+        <item quantity="one">"1 passphrase stored. Tap to forget it."</item>
+        <item quantity="other">"%d passphrases stored. Tap to forget them."</item>
+    </plurals>
 </resources>

@@ -163,6 +163,14 @@ public class BiometricPassphraseStorageTest {
     }
 
     @Test
+    public void getPromptMode_withoutAScreenLock_reportsUnavailable() {
+        // the test device has no screen lock and no sensor, so there is nothing to authenticate
+        // with; the feature has to report that rather than offering itself and failing later
+        Assert.assertEquals(BiometricPassphraseStorage.PROMPT_UNAVAILABLE, storage.getPromptMode());
+        Assert.assertFalse(storage.isAvailable());
+    }
+
+    @Test
     public void parseMasterKeyId_rejectsNonsense() {
         Assert.assertEquals(Long.valueOf(42L), BiometricPassphraseStorage.parseMasterKeyId("42"));
         Assert.assertNull(BiometricPassphraseStorage.parseMasterKeyId("not-a-key-id"));

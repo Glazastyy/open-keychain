@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
+import android.widget.Toast;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
@@ -47,6 +48,7 @@ import org.sufficientlysecure.keychain.keysync.KeyserverSyncManager;
 import org.sufficientlysecure.keychain.network.orbot.OrbotHelper;
 import org.sufficientlysecure.keychain.ui.util.Notify;
 import org.sufficientlysecure.keychain.ui.util.ThemeChanger;
+import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
 import org.sufficientlysecure.keychain.util.Preferences;
 import timber.log.Timber;
 
@@ -184,12 +186,56 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     public static class PassphrasePrefsFragment extends PresetPreferenceFragment {
 
+        private Preference biometricPassphrasesPreference;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.passphrase_preferences);
+
+            biometricPassphrasesPreference = findPreference("biometricPassphrases");
+            biometricPassphrasesPreference.setOnPreferenceClickListener(preference -> {
+                BiometricPassphraseStorage storage =
+                        BiometricPassphraseStorage.create(getActivity());
+                if (storage.getStoredKeyIds().isEmpty()) {
+                    return true;
+                }
+                storage.removeAllPassphrases();
+                Toast.makeText(getActivity(), R.string.biometric_passphrases_forgotten_all,
+                        Toast.LENGTH_SHORT).show();
+                updateBiometricPassphrasesSummary();
+                return true;
+            });
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            updateBiometricPassphrasesSummary();
+        }
+
+        /**
+         * Says what state this is in, so someone who cannot find the option elsewhere can see
+         * from here whether the device supports it at all.
+         */
+        private void updateBiometricPassphrasesSummary() {
+            BiometricPassphraseStorage storage = BiometricPassphraseStorage.create(getActivity());
+            int storedCount = storage.getStoredKeyIds().size();
+
+            if (storedCount > 0) {
+                biometricPassphrasesPreference.setSummary(getResources().getQuantityString(
+                        R.plurals.biometric_passphrases_stored, storedCount, storedCount));
+                biometricPassphrasesPreference.setEnabled(true);
+            } else if (storage.isAvailable()) {
+                biometricPassphrasesPreference.setSummary(
+                        R.string.biometric_passphrases_none_stored);
+                biometricPassphrasesPreference.setEnabled(false);
+            } else {
+                biometricPassphrasesPreference.setSummary(R.string.biometric_unavailable);
+                biometricPassphrasesPreference.setEnabled(false);
+            }
         }
     }
 

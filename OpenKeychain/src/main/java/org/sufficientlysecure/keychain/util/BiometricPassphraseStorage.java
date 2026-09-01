@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import android.content.Context;
+import android.app.KeyguardManager;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
@@ -98,16 +99,58 @@ public class BiometricPassphraseStorage {
         return new BiometricPassphraseStorage(context);
     }
 
+    /** The prompt cannot be shown: no screen lock, or no usable authenticator. */
+    public static final int PROMPT_UNAVAILABLE = 0;
+    /** Ask for a biometric or the device credential, in one prompt. API 30 and up. */
+    public static final int PROMPT_BIOMETRIC_OR_CREDENTIAL = 1;
+    /** Ask for a biometric only; the combined set is rejected on API 28-29. */
+    public static final int PROMPT_BIOMETRIC_ONLY = 2;
+    /** Ask for the device credential through the pre-API-30 route. */
+    public static final int PROMPT_CREDENTIAL_LEGACY = 3;
+
     /**
      * Whether this device can protect a passphrase right now: it has a screen lock set up, and
      * either a usable biometric sensor or a device credential we can fall back to.
      */
     public boolean isAvailable() {
-        int status = BiometricManager.from(mContext).canAuthenticate(ALLOWED_AUTHENTICATORS);
-        return status == BiometricManager.BIOMETRIC_SUCCESS;
+        return getPromptMode() != PROMPT_UNAVAILABLE;
     }
 
-    /** The authenticators to ask {@code BiometricPrompt} for. */
+    /**
+     * How to ask this device for authentication.
+     *
+     * <p>Android 11 takes a biometric and the device credential as one set. Android 9 and 10
+     * reject that combination outright, so there the two have to be asked for separately: the
+     * sensor when something is enrolled on it, and otherwise the PIN, pattern or password
+     * through the route that predates the combined set.
+     */
+    public int getPromptMode() {
+        BiometricManager biometricManager = BiometricManager.from(mContext);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return biometricManager.canAuthenticate(ALLOWED_AUTHENTICATORS)
+                    == BiometricManager.BIOMETRIC_SUCCESS
+                    ? PROMPT_BIOMETRIC_OR_CREDENTIAL
+                    : PROMPT_UNAVAILABLE;
+        }
+
+        if (biometricManager.canAuthenticate(Authenticators.BIOMETRIC_STRONG)
+                == BiometricManager.BIOMETRIC_SUCCESS) {
+            return PROMPT_BIOMETRIC_ONLY;
+        }
+
+        // DEVICE_CREDENTIAL on its own is not a set canAuthenticate() understands before API 30,
+        // so ask the keyguard directly, as the platform documentation says to.
+        KeyguardManager keyguardManager =
+                (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+        if (keyguardManager != null && keyguardManager.isDeviceSecure()) {
+            return PROMPT_CREDENTIAL_LEGACY;
+        }
+
+        return PROMPT_UNAVAILABLE;
+    }
+
+    /** The authenticators to ask {@code BiometricPrompt} for in {@link #PROMPT_BIOMETRIC_OR_CREDENTIAL}. */
     public static int getAllowedAuthenticators() {
         return ALLOWED_AUTHENTICATORS;
     }
