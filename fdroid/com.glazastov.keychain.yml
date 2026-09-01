@@ -1,0 +1,51 @@
+# F-Droid build metadata for Glazastov Keychain.
+#
+# This file is NOT consumed by this repo's own CI — it is the recipe that
+# belongs in F-Droid's fdroiddata repo (https://gitlab.com/fdroid/fdroiddata),
+# at metadata/com.glazastov.keychain.yml, submitted there via merge request.
+# It is kept here in-tree only as a maintained draft/reference.
+#
+# F-Droid builds the app from source on their own infrastructure and signs
+# it with their own key — this recipe does not use the GitHub Release APK
+# or the signing keystore/secrets set up for this repo's CI.
+
+Categories:
+  - Security
+License: GPL-3.0-only
+SourceCode: https://github.com/glazastov/keychain-app
+IssueTracker: https://github.com/glazastov/keychain-app/issues
+
+AutoName: Glazastov Keychain
+Summary: OpenPGP implementation for Android
+Description: |-
+    Glazastov Keychain is a fork of OpenKeychain, an OpenPGP implementation
+    for Android. It lets you encrypt/decrypt/sign messages and files using
+    the OpenPGP standard, manage keys, and integrates with other apps (mail
+    clients, messengers) via the OpenPGP API.
+
+RepoType: git
+Repo: https://github.com/glazastov/keychain-app.git
+
+Builds:
+  - versionName: 6.0.4
+    versionCode: 60400
+    # TODO before submitting: pin this to the actual tagged release commit
+    # once a real (non-test) tag/release exists, e.g. the commit for "v6.0.4".
+    commit: REPLACE_WITH_RELEASE_TAG_COMMIT
+    subdir: OpenKeychain
+    submodules: true
+    sudo:
+      - sdkmanager "build-tools;36.0.0"
+    # NOTE: this project's `eu.davidea:flexible-adapter:5.1.0` dependency
+    # ships class files compiled for Java 21 (bytecode major version 65).
+    # F-Droid's build environment must have a JDK >= 21 available and
+    # selected, or this build will fail the same way it did locally before
+    # we installed Temurin 21. Flag this explicitly in the merge request
+    # description so reviewers don't waste time chasing a "broken" build.
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 6.0.4
+CurrentVersionCode: 60400
