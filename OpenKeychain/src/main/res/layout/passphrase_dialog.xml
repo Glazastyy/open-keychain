@@ -74,6 +74,14 @@
 
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/passphrase_remember_biometric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/biometric_remember_passphrase"
+            android:visibility="gone" />
+
     </LinearLayout>
 
     <LinearLayout

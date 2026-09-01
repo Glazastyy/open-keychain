@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Titkosítás</string>
   <string name="title_encrypt_files">Titkosítás</string>
@@ -360,9 +360,9 @@
   <string name="revoke_fail">Hiba a kulcs visszavonásával!</string>
   <!--Certify result toast-->
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Fájl dekódolás OpenKeychain-nel</string>
-  <string name="intent_send_encrypt">Titkosítás OpenKeychain-nel</string>
-  <string name="intent_send_decrypt">Visszafejtés OpenKeychain-nel</string>
+  <string name="intent_decrypt_file">Fájl dekódolás Glazastov Keychain-nel</string>
+  <string name="intent_send_encrypt">Titkosítás Glazastov Keychain-nel</string>
+  <string name="intent_send_decrypt">Visszafejtés Glazastov Keychain-nel</string>
   <!--Remote API-->
   <string name="api_settings_save">Mentés</string>
   <string name="api_settings_advanced">Speciális</string>
@@ -484,7 +484,7 @@
   <string name="prompt_fidesmo_app_install_button_positive">Telepít</string>
   <string name="prompt_fidesmo_app_install_button_negative">Mégse</string>
   <string name="redirect_import_key_no">Bezár</string>
-  <string name="request_permission_msg">%1$s hozzáfárást kér az egyik kulcsodhoz, ami lehetővé teszi az ennek a kulcsnak kuldött üzenetek visszafejtését. A hozzáférést megvonhatod később az OpenKeychain-ben.</string>
+  <string name="request_permission_msg">%1$s hozzáfárást kér az egyik kulcsodhoz, ami lehetővé teszi az ennek a kulcsnak kuldött üzenetek visszafejtését. A hozzáférést megvonhatod később az Glazastov Keychain-ben.</string>
   <string name="button_allow">Engedélyez</string>
   <string name="button_cancel">Mégse</string>
   <string name="button_back">Vissza</string>

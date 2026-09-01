@@ -1,0 +1,13 @@
+// The OpenPGP layer of Bouncy Castle (bcpg), built from source so OpenKeychain's
+// patches can be applied to it. See README.md for the patch list.
+apply plugin: 'java-library'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    api "org.bouncycastle:bcprov-jdk18on:$bouncyCastleProvVersion"
+    api "org.bouncycastle:bcutil-jdk18on:$bouncyCastleUtilVersion"
+}

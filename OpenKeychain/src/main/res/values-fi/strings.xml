@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Salaa</string>
   <string name="title_encrypt_files">Salaa</string>
@@ -394,7 +394,7 @@
   <string name="security_token_error_iso_dep_not_supported">Turvatunniste ei tue vaadittua yhteysstandardia (ISO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">Yhteysvirhe. Turvatunniste on luultavasti otettu pois liian aikaisin.</string>
   <string name="security_token_error_try_again">Yritä uudelleen</string>
-  <string name="security_token_not_supported">OpenKeychain ei vielä tue tätä turvatunnistetta</string>
+  <string name="security_token_not_supported">Glazastov Keychain ei vielä tue tätä turvatunnistetta</string>
   <string name="snack_encrypt_filenames_on">Tiedostonimet <b>on</b> salattu.</string>
   <string name="snack_encrypt_filenames_off">Tiedostonimet <b>eivät ole</b> salattu.</string>
   <string name="snack_self_encrypt_on">Salaa allekirjoittajalle<b>käytössä</b>.</string>
@@ -426,7 +426,7 @@
   <string name="prompt_fidesmo_app_install_button_positive">Asenna</string>
   <string name="prompt_fidesmo_app_install_button_negative">Peruuta</string>
   <string name="redirect_import_key_title">Skannaa OpenKeyChainilla!</string>
-  <string name="redirect_import_key_message">Skannasit OpenPGP QR-koodin muulla sovelluksella. Turvallisuuden takia skannaa suoraan OpenKeychainilla.</string>
+  <string name="redirect_import_key_message">Skannasit OpenPGP QR-koodin muulla sovelluksella. Turvallisuuden takia skannaa suoraan Glazastov Keychainilla.</string>
   <string name="redirect_import_key_yes">Skannaa uudelleen</string>
   <string name="redirect_import_key_no">Sulje</string>
   <string name="request_permission_title">Salli pääsy avaimeesi?</string>
@@ -487,7 +487,7 @@
   <string name="token_status_title">Kerätään tietoa turvatunnisteesta...</string>
   <string name="token_result_token_ok">Valmis käytettäväksi!</string>
   <string name="token_result_empty">Tunniste on tyhjä</string>
-  <string name="token_put_key_unsupported">Ole hyvä ja aseta tämä turvatunniste GnuPG:tä käyttäen. OpenKeychain tukee tällä hetkellä vain allekirjoitusta/salauksen purkua tällä tunnisteella.</string>
+  <string name="token_put_key_unsupported">Ole hyvä ja aseta tämä turvatunniste GnuPG:tä käyttäen. Glazastov Keychain tukee tällä hetkellä vain allekirjoitusta/salauksen purkua tällä tunnisteella.</string>
   <string name="token_action_reset">Tyhjennä turvatunniste</string>
   <string name="token_action_import">Tuo</string>
   <string name="token_action_view_key">Näytä avain</string>

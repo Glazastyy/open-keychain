@@ -75,10 +75,10 @@ We are using the newest [Android Studio](http://developer.android.com/sdk/instal
 
 ### Bouncy Castle
 
-OpenKeychain uses a forked version with some small changes. These changes will been sent to Bouncy Castle.
-
-see
-* Fork: https://github.com/open-keychain/bouncycastle
+The provider (`bcprov`) is used as a published artifact. The OpenPGP layer (`bcpg`)
+is built from source in `extern/bouncycastle-pg`, because OpenKeychain needs a
+handful of changes upstream does not carry — see that directory's `README.md` for
+the list and for how to move it to a newer Bouncy Castle release.
 
 #### Bouncy Castle resources
 
@@ -177,8 +177,15 @@ The full coding style can be found at http://source.android.com/source/code-styl
 
 ## Licenses
 
-Copyright 2017 Schürmann & Breitmoser GbR
+Glazastov Keychain is a fork of [OpenKeychain](https://github.com/open-keychain/open-keychain),
+modified by André Glazastov <andre@glazastov.com>. It is not endorsed by the
+OpenKeychain project.
 
-Licensed under the [GPLv3](https://github.com/open-keychain/open-keychain/blob/HEAD/LICENSE).
+The application as a whole is licensed under the [GPLv3](LICENSE), inherited
+from OpenKeychain — Copyright 2017 Schürmann & Breitmoser GbR and contributors.
+Files new to this fork are additionally offered under the [MIT License](LICENSE.MIT).
+
+See [NOTICE.md](NOTICE.md) for what changed and how the licensing fits together,
+and [docs/BRANDING.md](docs/BRANDING.md) for the app identity and artwork.
 
 Google Play and the Google Play logo are trademarks of Google Inc.

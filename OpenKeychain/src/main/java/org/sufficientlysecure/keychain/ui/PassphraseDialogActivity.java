@@ -18,6 +18,7 @@
 package org.sufficientlysecure.keychain.ui;
 
 
+import java.util.LinkedHashSet;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -27,6 +28,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.appcompat.app.AlertDialog;
@@ -43,6 +45,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -68,6 +71,8 @@ import org.sufficientlysecure.keychain.ui.dialog.CustomAlertDialogBuilder;
 import org.sufficientlysecure.keychain.ui.util.ThemeChanger;
 import org.sufficientlysecure.keychain.ui.widget.CacheTTLSpinner;
 import org.sufficientlysecure.keychain.ui.widget.PrefixedEditText;
+import org.sufficientlysecure.keychain.ui.util.BiometricPassphraseUnlock;
+import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
 import org.sufficientlysecure.keychain.util.Passphrase;
 import org.sufficientlysecure.keychain.util.Preferences;
 import timber.log.Timber;
@@ -146,6 +151,16 @@ public class PassphraseDialogActivity extends FragmentActivity {
 
         private ViewAnimator mLayout;
         private CacheTTLSpinner mTimeToLiveSpinner;
+        private CheckBox mRememberBiometricCheckBox;
+
+        /**
+         * The key whose passphrase may be stored behind the device's screen lock, or null when
+         * that does not apply here: a symmetric passphrase, a security token PIN, a request
+         * spanning several keys, or a device that cannot do it.
+         */
+        private Long mBiometricMasterKeyId;
+        private boolean mHasStoredPassphrase;
+        private boolean mBiometricPromptShown;
 
         @NonNull
         @Override
@@ -239,6 +254,8 @@ public class PassphraseDialogActivity extends FragmentActivity {
             int ttlSeconds = Preferences.getPreferences(getContext()).getCacheTtlSeconds();
             mTimeToLiveSpinner.setSelectedTimeToLive(ttlSeconds);
 
+            mRememberBiometricCheckBox = mLayout.findViewById(R.id.passphrase_remember_biometric);
+
             alert.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
 
                 @Override
@@ -306,6 +323,8 @@ public class PassphraseDialogActivity extends FragmentActivity {
                     return alert.create();
                 }
             }
+
+            setUpBiometricStorage();
 
             mPassphraseText.setText(message);
             mPassphraseEditText.setHint(hint);
@@ -432,6 +451,13 @@ public class PassphraseDialogActivity extends FragmentActivity {
 
             // Override the default behavior so the dialog is NOT dismissed on click
             final Button positive = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE);
+
+            // If this key's passphrase is already behind the screen lock, ask for it straight
+            // away rather than making the user tap through to the same prompt.
+            if (mBiometricMasterKeyId != null && mHasStoredPassphrase && !mBiometricPromptShown) {
+                mBiometricPromptShown = true;
+                unlockWithBiometrics(positive);
+            }
             positive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -495,6 +521,139 @@ public class PassphraseDialogActivity extends FragmentActivity {
                 }
 
             });
+        }
+
+        /**
+         * Decides whether this key's passphrase can be kept behind the device's screen lock, and
+         * puts the dialog in the right state for it: offer to remember it, or offer to unlock with
+         * what is already remembered.
+         */
+        /**
+         * Works out whether a stored passphrase could answer this request, and puts the dialog in
+         * the right state for it.
+         *
+         * <p>A request can name several keys: decrypting a message asks for any one of the keys it
+         * was encrypted to, and a message encrypted to its sender as well as its recipient names
+         * two. So look at all of them and take the first that has a passphrase stored, rather than
+         * only handling the single-key case.
+         */
+        private void setUpBiometricStorage() {
+            if (mRequiredInput.mType == RequiredInputType.PASSPHRASE_SYMMETRIC) {
+                return;
+            }
+
+            BiometricPassphraseStorage storage = BiometricPassphraseStorage.create(getContext());
+            if (!storage.isAvailable()) {
+                // no screen lock, or no usable sensor. If something was stored while there was
+                // one, it is unreadable now, so do not offer to unlock with it.
+                return;
+            }
+
+            long[] subKeyIds = mRequiredInput.getSubKeyIds();
+            if (subKeyIds == null) {
+                return;
+            }
+
+            KeyRepository keyRepository = KeyRepository.create(getContext());
+            LinkedHashSet<Long> masterKeyIds = new LinkedHashSet<>();
+            for (long subKeyId : subKeyIds) {
+                try {
+                    if (keyRepository.getSecretKeyType(subKeyId)
+                            != CanonicalizedSecretKey.SecretKeyType.PASSPHRASE) {
+                        // a security token PIN or an empty passphrase is not ours to store
+                        continue;
+                    }
+                    Long masterKeyId = keyRepository.getMasterKeyIdBySubkeyId(subKeyId);
+                    if (masterKeyId != null) {
+                        masterKeyIds.add(masterKeyId);
+                    }
+                } catch (NotFoundException e) {
+                    // key went away, just skip it
+                }
+            }
+
+            Long storedMasterKeyId = storage.findStoredMasterKeyId(masterKeyIds);
+            if (storedMasterKeyId != null) {
+                mBiometricMasterKeyId = storedMasterKeyId;
+                mHasStoredPassphrase = true;
+                return;
+            }
+
+            // Nothing stored yet. Offering to remember one only makes sense when the request is
+            // about a single key, so we know which one to store it under, and when the passphrase
+            // is going to be kept at all.
+            if (masterKeyIds.size() == 1 && !mRequiredInput.mSkipCaching
+                    && mRememberBiometricCheckBox != null) {
+                mBiometricMasterKeyId = masterKeyIds.iterator().next();
+                mRememberBiometricCheckBox.setVisibility(View.VISIBLE);
+            }
+        }
+
+        /** Asks for the stored passphrase, then runs it through the ordinary unlock path. */
+        private void unlockWithBiometrics(final Button positive) {
+            if (mBiometricMasterKeyId == null) {
+                return;
+            }
+            final long masterKeyId = mBiometricMasterKeyId;
+
+            BiometricPassphraseUnlock.unlock(this, masterKeyId,
+                    new BiometricPassphraseUnlock.UnlockCallback() {
+                        @Override
+                        public void onPassphraseUnlocked(@NonNull Passphrase passphrase) {
+                            if (mIsCancelled || getActivity() == null) {
+                                return;
+                            }
+                            // verify it against the key rather than trusting what we stored, and
+                            // let the ordinary path do the caching
+                            checkPassphraseAndFinishCaching(positive, passphrase,
+                                    mTimeToLiveSpinner.getSelectedTimeToLive());
+                        }
+
+                        @Override
+                        public void onUnlockFailed(@Nullable String message) {
+                            if (mIsCancelled || getActivity() == null) {
+                                return;
+                            }
+                            mHasStoredPassphrase = false;
+                            mBiometricPromptShown = true;
+                            if (message != null) {
+                                Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                            // fall back to typing it, and offer to remember it again
+                            if (mRememberBiometricCheckBox != null) {
+                                mRememberBiometricCheckBox.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+        }
+
+        /**
+         * Stores the passphrase behind the screen lock if the user asked for it, then finishes.
+         * A failure to store is not a failure of the operation the user actually asked for, so
+         * either way we carry on.
+         */
+        private void saveBiometricPassphraseAndFinish(final Passphrase passphrase, final Long subKeyId) {
+            if (mBiometricMasterKeyId == null || mRememberBiometricCheckBox == null
+                    || !mRememberBiometricCheckBox.isChecked()) {
+                finishCaching(passphrase, subKeyId);
+                return;
+            }
+
+            BiometricPassphraseUnlock.save(this, mBiometricMasterKeyId, passphrase,
+                    new BiometricPassphraseUnlock.SaveCallback() {
+                        @Override
+                        public void onPassphraseSaved() {
+                            finishCaching(passphrase, subKeyId);
+                        }
+
+                        @Override
+                        public void onSaveFailed(@Nullable String message) {
+                            if (message != null && getActivity() != null) {
+                                Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+                            }
+                            finishCaching(passphrase, subKeyId);
+                        }
+                    });
         }
 
         private void checkPassphraseAndFinishCaching(final Button positive, final Passphrase passphrase,
@@ -580,7 +739,7 @@ public class PassphraseDialogActivity extends FragmentActivity {
                                 unlockedKey.getRing().getPrimaryUserIdWithFallback(), timeToLiveSeconds);
                     }
 
-                    finishCaching(passphrase, unlockedKey.getKeyId());
+                    saveBiometricPassphraseAndFinish(passphrase, unlockedKey.getKeyId());
                 }
             }.execute();
         }

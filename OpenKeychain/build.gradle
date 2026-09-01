@@ -1,32 +1,33 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.squareup.sqldelight'
+    id 'app.cash.sqldelight'
 }
 
 dependencies {
     // from local Android SDK
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.annotation:annotation:1.7.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.sqlite:sqlite-framework:2.4.0'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation 'androidx.sqlite:sqlite-framework:2.7.0'
+    implementation 'com.google.android.material:material:1.14.0'
 
-    // JCenter etc.
-    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
-    implementation 'com.google.zxing:core:3.4.0'
+    // Third-party libraries
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation 'com.google.zxing:core:3.5.4'
     implementation 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.14.9'
-    implementation 'org.apache.james:apache-mime4j-core:0.8.1'
-    implementation 'org.apache.james:apache-mime4j-dom:0.8.1'
-    implementation "com.squareup.sqldelight:android-driver:1.5.4"
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.12.0'
+    implementation 'org.apache.james:apache-mime4j-core:0.8.14'
+    implementation 'org.apache.james:apache-mime4j-dom:0.8.14'
+    implementation "app.cash.sqldelight:android-driver:$sqldelight_version"
+    implementation "app.cash.sqldelight:primitive-adapters:$sqldelight_version"
 
     // UI
-    implementation 'org.sufficientlysecure:html-textview:3.1'
+    implementation project(':extern:html-textview')
     implementation 'com.jpardogo.materialtabstrip:library:1.1.1'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'com.nispok:snackbar:2.11.0'
@@ -34,8 +35,8 @@ dependencies {
 
     // RecyclerView
     implementation 'eu.davidea:flexible-adapter:5.1.0'
-    implementation 'eu.davidea:flexible-adapter-ui:1.0.0-b5'
-    implementation 'eu.davidea:flexible-adapter-livedata:1.0.0-b2'
+    implementation 'eu.davidea:flexible-adapter-ui:1.0.0'
+    implementation 'eu.davidea:flexible-adapter-livedata:1.0.0'
 
     // Material Drawer
     implementation 'com.mikepenz:materialdrawer:6.1.2@aar'
@@ -48,7 +49,7 @@ dependencies {
     implementation 'com.mikepenz:community-material-typeface:1.5.54.2@aar'
 
     // Nordpol
-    implementation 'com.fidesmo:nordpol-android:0.1.22'
+    implementation project(':extern:nordpol')
 
     // libs as submodules
     implementation project(':openpgp-api-lib')
@@ -56,30 +57,31 @@ dependencies {
     implementation project(':sshauthentication-api')
     implementation project(':extern:MaterialChipsInput')
 
-    // implementation project(':openkeychain:extern:bouncycastle:core')
-    implementation 'org.bouncycastle:bcprov-jdk18on:1.77'
-    implementation project(':extern:bouncycastle:pg')
-    // implementation project(':openkeychain:extern:bouncycastle:prov')
+    implementation "org.bouncycastle:bcprov-jdk18on:$bouncyCastleProvVersion"
+    // Since 1.78 the cryptlib and GNU object identifiers live in bcutil.
+    implementation "org.bouncycastle:bcutil-jdk18on:$bouncyCastleUtilVersion"
+    implementation project(':extern:bouncycastle-pg')
 
-    implementation 'androidx.work:work-runtime:2.9.0'
+    implementation 'androidx.biometric:biometric:1.1.0'
+    implementation 'androidx.work:work-runtime:2.11.2'
 
     // Unit tests in the local JVM with Robolectric
     // https://developer.android.com/training/testing/unit-testing/local-unit-tests.html
     // http://robolectric.org/getting-started/
     // http://www.vogella.com/tutorials/Robolectric/article.html
-    testImplementation 'junit:junit:4.13'
-    testImplementation ('org.robolectric:robolectric:4.11.1') {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation ('org.robolectric:robolectric:4.16.1') {
         exclude group: 'org.bouncycastle', module: 'bcprov-jdk18on'
     }
-    testImplementation 'org.mockito:mockito-core:2.18.0'
+    testImplementation 'org.mockito:mockito-core:5.23.0'
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 
     implementation 'org.glassfish:javax.annotation:10.0-b28'
-    api 'com.google.auto.value:auto-value-annotations:1.10.4'
-    annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
-    implementation 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.6'
-    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:0.2.6"
+    api 'com.google.auto.value:auto-value-annotations:1.11.1'
+    annotationProcessor 'com.google.auto.value:auto-value:1.11.1'
+    implementation 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.9'
+    annotationProcessor "com.ryanharter.auto.value:auto-value-parcel:0.2.9"
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0'
@@ -88,16 +90,24 @@ dependencies {
     // debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
 }
 
+sqldelight {
+    databases {
+        Database {
+            packageName = 'org.sufficientlysecure.keychain'
+        }
+    }
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     namespace 'org.sufficientlysecure.keychain'
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 34
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 60400
         versionName "6.0.4"
-        applicationId "org.sufficientlysecure.keychain"
+        applicationId "com.glazastov.keychain"
         // the androidjunitrunner is broken regarding coverage, see here:
         // https://code.google.com/p/android/issues/detail?id=170607
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -130,12 +140,12 @@ android {
                           'proguard-rules-support.pro'
 
             // Reference them in the java files with e.g. BuildConfig.ACCOUNT_TYPE.
-            buildConfigField "String", "ACCOUNT_TYPE", "\"org.sufficientlysecure.keychain.account\""
-            buildConfigField "String", "PROVIDER_CONTENT_AUTHORITY", "\"org.sufficientlysecure.keychain.provider\""
+            buildConfigField "String", "ACCOUNT_TYPE", "\"com.glazastov.keychain.account\""
+            buildConfigField "String", "PROVIDER_CONTENT_AUTHORITY", "\"com.glazastov.keychain.provider\""
 
             // Reference them in .xml files.
-            resValue "string", "account_type", "org.sufficientlysecure.keychain.account"
-            resValue "string", "provider_content_authority", "org.sufficientlysecure.keychain.provider"
+            resValue "string", "account_type", "com.glazastov.keychain.account"
+            resValue "string", "provider_content_authority", "com.glazastov.keychain.provider"
 
             // Github API
             buildConfigField "String", "GITHUB_CLIENT_ID", "\"c942cd81844d94e7e41b\""
@@ -154,12 +164,12 @@ android {
             applicationIdSuffix ".debug"
 
             // Reference them in the java files with e.g. BuildConfig.ACCOUNT_TYPE.
-            buildConfigField "String", "ACCOUNT_TYPE", "\"org.sufficientlysecure.keychain.debug.account\""
-            buildConfigField "String", "PROVIDER_CONTENT_AUTHORITY", "\"org.sufficientlysecure.keychain.debug.provider\""
+            buildConfigField "String", "ACCOUNT_TYPE", "\"com.glazastov.keychain.debug.account\""
+            buildConfigField "String", "PROVIDER_CONTENT_AUTHORITY", "\"com.glazastov.keychain.debug.provider\""
 
             // Reference them in .xml files.
-            resValue "string", "account_type", "org.sufficientlysecure.keychain.debug.account"
-            resValue "string", "provider_content_authority", "org.sufficientlysecure.keychain.debug.provider"
+            resValue "string", "account_type", "com.glazastov.keychain.debug.account"
+            resValue "string", "provider_content_authority", "com.glazastov.keychain.debug.provider"
 
             // Github API
             buildConfigField "String", "GITHUB_CLIENT_ID", "\"c942cd81844d94e7e41b\""
@@ -205,7 +215,7 @@ android {
 
     // NOTE: Lint is disabled because it slows down builds,
     // to enable it comment out the code at the bottom of this build.gradle
-    lintOptions {
+    lint {
         // Do not abort build if lint finds errors
         abortOnError false
 
@@ -218,14 +228,20 @@ android {
         dataBinding true
     }
 
-    packagingOptions {
-        exclude 'LICENSE.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-        exclude '.readme'
+    packaging {
+        resources {
+            excludes += [
+                    'LICENSE.txt',
+                    'META-INF/LICENSE.txt',
+                    'META-INF/LICENSE.md',
+                    'META-INF/NOTICE.txt',
+                    'META-INF/NOTICE.md',
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/LICENSE',
+                    'META-INF/NOTICE',
+                    '.readme',
+            ]
+        }
     }
 }
 

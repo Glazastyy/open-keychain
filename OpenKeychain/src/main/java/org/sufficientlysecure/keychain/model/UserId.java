@@ -10,9 +10,10 @@ import org.sufficientlysecure.keychain.pgp.CanonicalizedKeyRing.VerificationStat
 @AutoValue
 public abstract class UserId {
     public static UserId create(long master_key_id, int rank, String user_id,
-            String name, String email, String comment, boolean is_primary, boolean is_revoked, Long verified_int) {
+            String name, String email, String comment, boolean is_primary, boolean is_revoked,
+            VerificationStatus verified) {
         return new AutoValue_UserId(master_key_id, rank, user_id, name, email, comment,
-                is_primary, is_revoked, verified_int
+                is_primary, is_revoked, verified
         );
     }
 
@@ -36,7 +37,8 @@ public abstract class UserId {
 
     public abstract boolean is_revoked();
 
-    public abstract Long verified_int();
+    @Nullable
+    public abstract VerificationStatus verified_status();
 
     public boolean isVerified() {
         return verified() == VerificationStatus.VERIFIED_SECRET;
@@ -44,6 +46,7 @@ public abstract class UserId {
 
     @NonNull
     public VerificationStatus verified() {
-        return CustomColumnAdapters.VERIFICATON_STATUS_ADAPTER.decode(verified_int());
+        VerificationStatus verified = verified_status();
+        return verified == null ? VerificationStatus.UNVERIFIED : verified;
     }
 }

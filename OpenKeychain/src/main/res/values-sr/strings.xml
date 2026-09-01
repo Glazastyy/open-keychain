@@ -1056,7 +1056,7 @@
   <string name="snack_backup_error_saving">Грешка успремања резерве!</string>
   <string name="snack_backup_saved">Резерва сачувана</string>
   <string name="snack_backup_exists">Резерва већ постоји!</string>
-  <string name="snack_backup_saved_dir">Сачувано у директоријум „OpenKeychain“</string>
+  <string name="snack_backup_saved_dir">Сачувано у директоријум „Glazastov Keychain“</string>
   <string name="snack_text_too_long">Текст је предугачак да би био приказан у целости!</string>
   <string name="snack_shared_text_too_long">Дељени текст је одсечен јер је био предугачак!</string>
   <string name="share_log_dialog_title">Поделити запис?</string>

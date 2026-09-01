@@ -25,6 +25,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_key_view_biometric"
+        android:title="@string/menu_key_remember_biometric"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_key_view_advanced"
         android:title="@string/menu_advanced"
         app:showAsAction="never" />

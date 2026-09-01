@@ -39,7 +39,6 @@ import android.webkit.MimeTypeMap;
 import androidx.annotation.NonNull;
 import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.openpgp.PGPCompressedData;
-import org.bouncycastle.openpgp.PGPDataValidationException;
 import org.bouncycastle.openpgp.PGPEncryptedData;
 import org.bouncycastle.openpgp.PGPEncryptedDataList;
 import org.bouncycastle.openpgp.PGPException;
@@ -563,6 +562,11 @@ public class PgpDecryptVerifyOperation extends BaseOperation<PgpDecryptVerifyInp
                     log.add(LogType.MSG_DC_ERROR_INTEGRITY_CHECK, indent);
                     return new DecryptVerifyResult(DecryptVerifyResult.RESULT_ERROR, log);
                 }
+            } else if (esResult.encryptedData.isAEAD()) {
+                // A v5 style AEAD packet carries no MDC because it does not need one: the
+                // authentication tag is the integrity check, and it is checked while the
+                // stream is read, which has already happened by the time we get here.
+                log.add(LogType.MSG_DC_INTEGRITY_CHECK_OK, indent);
             } else if ( ! signatureChecker.isInitialized() ) {
                 // If no signature is present, we *require* an MDC!
                 // Handle missing integrity protection like failed integrity protection!
@@ -795,7 +799,10 @@ public class PgpDecryptVerifyOperation extends BaseOperation<PgpDecryptVerifyInp
 
             try {
                 result.cleartextStream = encryptedDataSymmetric.getDataStream(decryptorFactory);
-            } catch (PGPDataValidationException e) {
+            } catch (PGPException e) {
+                // The passphrase is the only input here, so any failure to open the stream means
+                // it was the wrong one: either the session key did not decrypt into something
+                // usable, or it did and the quick check on the plaintext prefix failed.
                 log.add(LogType.MSG_DC_ERROR_SYM_PASSPHRASE, indent + 1);
                 RequiredInputParcel requiredInputParcel = customRequiredInputParcel != null ?
                         customRequiredInputParcel : RequiredInputParcel.createRequiredSymmetricPassphrase();

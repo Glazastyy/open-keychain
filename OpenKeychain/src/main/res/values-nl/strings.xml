@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Versleutelen</string>
   <string name="title_encrypt_files">Versleutelen</string>
@@ -424,10 +424,10 @@
     <item quantity="other">Certificatie van %d sleutels mislukt!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Bestand ontsleutelen met OpenKeychain</string>
-  <string name="intent_import_key">Sleutel importeren met OpenKeychain</string>
-  <string name="intent_send_encrypt">Versleutelen met OpenKeychain</string>
-  <string name="intent_send_decrypt">Ontsleutelen met OpenKeychain</string>
+  <string name="intent_decrypt_file">Bestand ontsleutelen met Glazastov Keychain</string>
+  <string name="intent_import_key">Sleutel importeren met Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Versleutelen met Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Ontsleutelen met Glazastov Keychain</string>
   <string name="intent_autocrypt_setup">Autocrypt-instelbericht importeren</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Nieuwe sleutel aanmaken</string>
@@ -437,13 +437,13 @@
   <string name="api_settings_package_certificate">SHA-256 van pakketcertificaat</string>
   <string name="api_settings_advanced">Geavanceerd</string>
   <string name="api_settings_allowed_keys">Toegestane sleutels</string>
-  <string name="api_register_title">Toegang tot OpenKeychain toestaan?</string>
-  <string name="api_register_text">%s wil OpenKeychain als versleutelingsaanbieder gebruiken. Je zal nog steeds om toestemming worden gevraagd vooraleer de app een van je sleutels kan gebruiken voor ontsleuteling.\n\nJe kan je toestemming later weer intrekken in het scherm ‘Apps’ in OpenKeychain.</string>
+  <string name="api_register_title">Toegang tot Glazastov Keychain toestaan?</string>
+  <string name="api_register_text">%s wil Glazastov Keychain als versleutelingsaanbieder gebruiken. Je zal nog steeds om toestemming worden gevraagd vooraleer de app een van je sleutels kan gebruiken voor ontsleuteling.\n\nJe kan je toestemming later weer intrekken in het scherm ‘Apps’ in Glazastov Keychain.</string>
   <string name="api_select_pub_keys_missing_text">Geen sleutels gevonden voor deze e-mailadressen:</string>
   <string name="api_select_pub_keys_dublicates_text">Er bestaat meer dan één sleutel voor deze e-mailadressen:</string>
   <string name="api_select_pub_keys_text">Kijk de lijst van ontvangers na!</string>
   <string name="api_select_pub_keys_text_no_user_ids">Selecteer de ontvangers!</string>
-  <string name="api_error_wrong_signature">Controle van handtekening mislukt! Heb je deze app van een andere bron geïnstalleerd? Als je zeker weet dat dit geen aanval is, haal dan de registratie van deze app in OpenKeychain weg en registreer de app opnieuw.</string>
+  <string name="api_error_wrong_signature">Controle van handtekening mislukt! Heb je deze app van een andere bron geïnstalleerd? Als je zeker weet dat dit geen aanval is, haal dan de registratie van deze app in Glazastov Keychain weg en registreer de app opnieuw.</string>
   <string name="api_select_sign_key_text">Selecteer een van je bestaande sleutels of maak er een nieuwe aan.</string>
   <!--Share-->
   <string name="share_qr_code_dialog_title">Delen met QR-code</string>
@@ -1122,7 +1122,7 @@
   <string name="security_token_error_iso_dep_not_supported">Security Token biedt geen ondersteuning voor de vereiste communicatiestandaard (ISO-DEP, ISO 14443-4)</string>
   <string name="security_token_error_generic">Communicatiefout. Het Security Token is waarschijnlijk te snel weggenomen.</string>
   <string name="security_token_error_try_again">Opnieuw proberen</string>
-  <string name="security_token_not_supported">Dit Security Token wordt nog niet ondersteund door OpenKeychain</string>
+  <string name="security_token_not_supported">Dit Security Token wordt nog niet ondersteund door Glazastov Keychain</string>
   <string name="btn_delete_original">Oorspronkelijk bestand verwijderen</string>
   <string name="snack_encrypt_filenames_on">Bestandsnamen <b>zijn</b> versleuteld.</string>
   <string name="snack_encrypt_filenames_off">Bestandsnamen <b>zijn niet</b> versleuteld.</string>
@@ -1141,7 +1141,7 @@
   <string name="filename_keys">Sleutelback-up (tik om te importeren)</string>
   <string name="intent_show">Ondertekende/versleutelde inhoud tonen</string>
   <string name="intent_share">Ondertekende/versleutelde inhoud delen</string>
-  <string name="view_internal">Bekijken in OpenKeychain</string>
+  <string name="view_internal">Bekijken in Glazastov Keychain</string>
   <string name="error_preparing_data">Fout bij voorbereiden van gegevens!</string>
   <string name="label_clip_title">Versleutelde gegevens</string>
   <string name="progress_processing">Bezig met verwerken…</string>
@@ -1165,11 +1165,11 @@
   <string name="snack_backup_error_saving">Fout bij het opslaan van de back-up!</string>
   <string name="snack_backup_saved">Back-up opgeslagen</string>
   <string name="snack_backup_exists">Back-up bestaat al!</string>
-  <string name="snack_backup_saved_dir">Opgeslagen in de OpenKeychain-map</string>
+  <string name="snack_backup_saved_dir">Opgeslagen in de Glazastov Keychain-map</string>
   <string name="snack_text_too_long">Tekst is te lang om in zijn geheel te tonen!</string>
   <string name="snack_shared_text_too_long">Gedeelde tekst is geknipt omdat deze te lang was!</string>
   <string name="share_log_dialog_title">Logboek delen?</string>
-  <string name="share_log_dialog_message">Het logboek kan zeer handig zijn voor ontwikkelaars om bugs te vinden in OpenKeychain, maar kan ook potentieel gevoelige informatie bevatten zoals gegevens over bijgewerkte sleutels. Wees er zeker van dat je deze informatie wil delen.</string>
+  <string name="share_log_dialog_message">Het logboek kan zeer handig zijn voor ontwikkelaars om bugs te vinden in Glazastov Keychain, maar kan ook potentieel gevoelige informatie bevatten zoals gegevens over bijgewerkte sleutels. Wees er zeker van dat je deze informatie wil delen.</string>
   <string name="share_log_dialog_share_button">Delen</string>
   <string name="share_log_dialog_cancel_button">Annuleren</string>
   <string name="toast_wrong_mimetype">Verkeerd gegevenstype, er was tekst verwacht!</string>
@@ -1191,12 +1191,12 @@
   <string name="prompt_fidesmo_app_install_message">Om PGP te installeren heb je de Fidesmo Android-app nodig.</string>
   <string name="prompt_fidesmo_app_install_button_positive">Installeren</string>
   <string name="prompt_fidesmo_app_install_button_negative">Annuleren</string>
-  <string name="redirect_import_key_title">Scan met OpenKeychain!</string>
-  <string name="redirect_import_key_message">Je hebt een OpenPGP-QR-code gescand met een andere app. Scan deze rechtstreeks met OpenKeychain voor de veiligheid.</string>
+  <string name="redirect_import_key_title">Scan met Glazastov Keychain!</string>
+  <string name="redirect_import_key_message">Je hebt een OpenPGP-QR-code gescand met een andere app. Scan deze rechtstreeks met Glazastov Keychain voor de veiligheid.</string>
   <string name="redirect_import_key_yes">Opnieuw scannen</string>
   <string name="redirect_import_key_no">Sluiten</string>
   <string name="request_permission_title">Toegang tot je sleutel toestaan?</string>
-  <string name="request_permission_msg">%1$s vraagt toegang tot een van je sleutels, waardoor het berichten verzonden naar deze sleutel kan ontsleuteln. Je kan de toegang later weer ontzeggen in OpenKeychain.</string>
+  <string name="request_permission_msg">%1$s vraagt toegang tot een van je sleutels, waardoor het berichten verzonden naar deze sleutel kan ontsleuteln. Je kan de toegang later weer ontzeggen in Glazastov Keychain.</string>
   <string name="requested_key_unavailable_warning">Deze sleutel is niet beschikbaar. Om ze te gebruiken moet je ze importeren als een van je eigen sleutels!</string>
   <string name="button_allow">Toestaan</string>
   <string name="button_cancel">Annuleren</string>
@@ -1262,7 +1262,7 @@
   <string name="insecure_sign_bitstrength_suggestion">De sleutel in gebruik is onveilig en kan niet bijgewerkt worden. Om veilig te communiceren heeft de afzender een nieuwe sleutel nodig!</string>
   <string name="insecure_encrypt_unidentified">Er is een onbekend beveiligingsprobleem met de sleutel die gebruikt is om dit bericht te ontvangen (ontsleutelen)!</string>
   <string name="insecure_sign_unidentified">Er is een onbekend beveiligingsprobleem met de sleutel die gebruikt is om dit bericht te verzenden (ondertekenen)!</string>
-  <string name="insecure_report_suggestion">Dit is mogelijk een probleem in OpenKeychain, meld het op onze bugtracker!</string>
+  <string name="insecure_report_suggestion">Dit is mogelijk een probleem in Glazastov Keychain, meld het op onze bugtracker!</string>
   <string name="insecure_mdc">Dit bericht is niet ondertekend en bevat evenmin een Modification Detection Code (MDC). Het is mogelijk gewijzigd door een aanvaller!</string>
   <string name="insecure_mdc_suggestion">Een ontbrekende MDC is een probleem in de verzendende software, of een aanval. Voor veilige eind-tot-eind-communicatie moeten berichten door de zender ook ondertekend worden!</string>
   <string name="insecure_symmetric_algo">Dit bericht is versleuteld met het %s-algoritme. Dit wordt beschouwd als onveilig, of minstens exotisch!</string>
@@ -1292,7 +1292,7 @@
   <string name="token_result_key_found">Sleutel gevonden!</string>
   <string name="token_result_token_ok">Klaar voor gebruik!</string>
   <string name="token_result_empty">Token is leeg</string>
-  <string name="token_put_key_unsupported">Stel dit Security Token in met GnuPG. OpenKeychain ondersteunt momenteel enkel ondertekenen/ontsleutelen met dit Security Token.</string>
+  <string name="token_put_key_unsupported">Stel dit Security Token in met GnuPG. Glazastov Keychain ondersteunt momenteel enkel ondertekenen/ontsleutelen met dit Security Token.</string>
   <string name="token_action_retry">Opnieuw zoeken</string>
   <string name="token_action_load_from_file">Laden uit bestand</string>
   <string name="token_action_reset">Security Token opnieuw instellen</string>
@@ -1366,7 +1366,7 @@
   <string name="error_save_key_internal">Interne fout bij opslaan van bestand!</string>
   <string name="menu_list_unrelated_keys">Ongerelateerde sleutels tonen</string>
   <string name="no_keys_gen_title">Dit is een nieuw adres</string>
-  <string name="no_keys_gen_subtitle">Nieuwe eind-tot-eind-sleutel aanmaken in OpenKeychain</string>
+  <string name="no_keys_gen_subtitle">Nieuwe eind-tot-eind-sleutel aanmaken in Glazastov Keychain</string>
   <string name="no_keys_import_title">Ik heb al een sleutel</string>
   <string name="no_keys_import_subtitle">Eind-tot-eind-sleutel importeren van ander apparaat</string>
   <string name="key_list_import">Gebruik een andere sleutel</string>
@@ -1375,9 +1375,9 @@
   <string name="key_gen_finish">Gereed</string>
   <string name="key_gen_done">Eind-tot-eind-sleutel gegenereerd!</string>
   <string name="key_gen_finishing">Setup voltooien…</string>
-  <string name="key_import_text">Om een eind-tot-eind-sleutel te importeren, moet deze geïmporteerd worden in OpenKeychain.</string>
+  <string name="key_import_text">Om een eind-tot-eind-sleutel te importeren, moet deze geïmporteerd worden in Glazastov Keychain.</string>
   <string name="key_import_text_autocrypt_setup_msg">Om je bestaande instellingen van een ander apparaat te importeren, kan je ook een Autocrypt-setupbericht openen in %s.</string>
-  <string name="button_goto_openkeychain">Ga naar OpenKeychain</string>
+  <string name="button_goto_openkeychain">Ga naar Glazastov Keychain</string>
   <string name="backup_code_checkbox">Ik heb de code voor deze back-up opgeschreven. Zonder deze code zal ik de back-up niet kunnen herstellen.</string>
   <string name="msg_get_query_not_implemented">De server ondersteunt de huidige zoekopdracht niet! Sommige servers aanvaarden enkel e-mailadressen. Herdefinieer of geef een andere server in.</string>
   <string name="snack_keylist_clipboard_title">Sleutelgegevens gevonden op het klembord!</string>

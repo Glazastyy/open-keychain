@@ -26,8 +26,6 @@ import java.util.List;
 import android.content.Context;
 
 import androidx.annotation.WorkerThread;
-import com.squareup.sqldelight.Query;
-import com.squareup.sqldelight.db.SqlCursor;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.sufficientlysecure.keychain.KeyRingsPublicQueries;
 import org.sufficientlysecure.keychain.KeySignaturesQueries;
@@ -237,19 +235,18 @@ public class KeyRepository extends AbstractDao {
     }
 
     public final byte[] loadPublicKeyRingData(long masterKeyId) throws NotFoundException {
-        Query<Keyrings_public> keyringsPublicQuery =
-                keyRingsPublicQueries.selectByMasterKeyId(masterKeyId);
-        try (SqlCursor cursor = keyringsPublicQuery.execute()) {
-            if (cursor.next()) {
-                Keyrings_public keyRingPublic = keyringsPublicQuery.getMapper().invoke(cursor);
+        Keyrings_public keyRingPublic =
+                keyRingsPublicQueries.selectByMasterKeyId(masterKeyId).executeAsOneOrNull();
+        if (keyRingPublic != null) {
+            try {
                 byte[] keyRingData = keyRingPublic.getKey_ring_data();
                 if (keyRingData == null) {
                     keyRingData = mLocalPublicKeyStorage.readPublicKey(masterKeyId);
                 }
                 return keyRingData;
+            } catch (IOException e) {
+                Timber.e(e, "Error reading public key from storage!");
             }
-        } catch (IOException e) {
-            Timber.e(e, "Error reading public key from storage!");
         }
         throw new NotFoundException();
     }

@@ -113,6 +113,16 @@ public class SessionKeySecretKeyDecryptorBuilder
                     throw new PGPException("invalid key: " + e.getMessage(), e);
                 }
             }
+
+            @Override
+            public byte[] recoverKeyData(int encAlgorithm, int aeadAlgorithm, byte[] s2kKey, byte[] iv,
+                int packetTag, int keyVersion, byte[] keyData, byte[] pubkeyData)
+                throws PGPException
+            {
+                return JceAEADUtil.processAeadKeyData(new JceAEADUtil(helper), Cipher.DECRYPT_MODE,
+                    encAlgorithm, aeadAlgorithm, s2kKey, iv, packetTag, keyVersion,
+                    keyData, 0, keyData.length, pubkeyData);
+            }
         };
     }
 }

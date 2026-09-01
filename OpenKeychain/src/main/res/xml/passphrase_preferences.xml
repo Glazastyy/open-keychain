@@ -4,4 +4,8 @@
         android:defaultValue="false"
         android:key="passphraseCacheSubs"
         android:title="@string/label_passphrase_cache_subs" />
+
+    <Preference
+        android:key="biometricPassphrases"
+        android:title="@string/label_biometric_passphrases" />
 </PreferenceScreen>

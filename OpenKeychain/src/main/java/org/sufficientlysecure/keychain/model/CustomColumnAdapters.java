@@ -4,7 +4,7 @@ package org.sufficientlysecure.keychain.model;
 import java.util.Date;
 
 import androidx.annotation.NonNull;
-import com.squareup.sqldelight.ColumnAdapter;
+import app.cash.sqldelight.ColumnAdapter;
 import org.sufficientlysecure.keychain.pgp.CanonicalizedKeyRing.VerificationStatus;
 import org.sufficientlysecure.keychain.pgp.CanonicalizedSecretKey.SecretKeyType;
 

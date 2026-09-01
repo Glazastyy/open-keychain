@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Xifra</string>
   <string name="title_encrypt_files">Xifra</string>
@@ -398,10 +398,10 @@
     <item quantity="other">Certificació de %d claus fallida!</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">Desxifra Fitxer amb OpenKeychain</string>
-  <string name="intent_import_key">Importa clau amb OpenKeychain</string>
-  <string name="intent_send_encrypt">Xifra amb OpenKeychain</string>
-  <string name="intent_send_decrypt">Desxifra amb OpenKeychain</string>
+  <string name="intent_decrypt_file">Desxifra Fitxer amb Glazastov Keychain</string>
+  <string name="intent_import_key">Importa clau amb Glazastov Keychain</string>
+  <string name="intent_send_encrypt">Xifra amb Glazastov Keychain</string>
+  <string name="intent_send_decrypt">Desxifra amb Glazastov Keychain</string>
   <!--Remote API-->
   <string name="api_settings_create_key">Crea una nova clau</string>
   <string name="api_settings_save">Desa</string>
@@ -410,7 +410,7 @@
   <string name="api_settings_package_certificate">SHA-256 del certificat del paquet</string>
   <string name="api_settings_advanced">Avançat</string>
   <string name="api_settings_allowed_keys">Claus permeses</string>
-  <string name="api_register_title">Permetre accés a l\'OpenKeychain?</string>
+  <string name="api_register_title">Permetre accés a l\'Glazastov Keychain?</string>
   <string name="api_select_pub_keys_missing_text">No s\'han trobat claus amb aquestes adreces de correu electrònic:</string>
   <string name="api_select_pub_keys_dublicates_text">Existeix més d\'una clau per aquestes adreces de correu:</string>
   <string name="api_select_pub_keys_text">Si us plau, reviseu el llistat de destinataris!</string>

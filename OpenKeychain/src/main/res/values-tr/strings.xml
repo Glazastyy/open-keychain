@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">Şifreleme</string>
   <string name="title_encrypt_files">Şifreleme</string>
@@ -207,10 +207,10 @@
   <!--Revoke result toast (snackbar)-->
   <!--Certify result toast-->
   <!--Intent labels-->
-  <string name="intent_decrypt_file">OpenKeychain ile Dosya Çözümle</string>
-  <string name="intent_import_key">OpenKeychain ile Anahtar Al</string>
-  <string name="intent_send_encrypt">OpenKeychain ile Şifrele</string>
-  <string name="intent_send_decrypt">OpenKeychain ile Çözümle</string>
+  <string name="intent_decrypt_file">Glazastov Keychain ile Dosya Çözümle</string>
+  <string name="intent_import_key">Glazastov Keychain ile Anahtar Al</string>
+  <string name="intent_send_encrypt">Glazastov Keychain ile Şifrele</string>
+  <string name="intent_send_decrypt">Glazastov Keychain ile Çözümle</string>
   <!--Remote API-->
   <string name="api_settings_save">Kaydet</string>
   <string name="api_settings_revoke">Erişim iznini kaldır</string>

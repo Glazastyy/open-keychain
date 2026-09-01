@@ -9,7 +9,7 @@
         <intent
             android:action="org.sufficientlysecure.keychain.action.ENCRYPT_TEXT"
             android:targetClass="org.sufficientlysecure.keychain.ui.EncryptTextActivity"
-            android:targetPackage="org.sufficientlysecure.keychain" />
+            android:targetPackage="com.glazastov.keychain" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -20,6 +20,6 @@
         <intent
             android:action="org.sufficientlysecure.keychain.action.ENCRYPT_FILES"
             android:targetClass="org.sufficientlysecure.keychain.ui.EncryptFilesActivity"
-            android:targetPackage="org.sufficientlysecure.keychain" />
+            android:targetPackage="com.glazastov.keychain" />
     </shortcut>
 </shortcuts>

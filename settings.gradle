@@ -1,7 +1,9 @@
 include ':OpenKeychain'
 include ':nfcsweetspot'
-include ':extern:bouncycastle:pg'
+include ':extern:bouncycastle-pg'
 include ':extern:MaterialChipsInput:library'
+include ':extern:html-textview'
+include ':extern:nordpol'
 
 // Workaround for Android Gradle Plugin 2.0, as described in http://stackoverflow.com/a/36544850
 //include ':extern:openpgp-api-lib:openpgp-api'

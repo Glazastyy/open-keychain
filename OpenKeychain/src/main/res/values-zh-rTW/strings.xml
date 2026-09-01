@@ -2,7 +2,7 @@
 <resources>
   <!--GENERAL: Please put all strings inside quotes as described in example 1 on
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").-->
-  <string name="app_name">OpenKeychain</string>
+  <string name="app_name">Glazastov Keychain</string>
   <!--title-->
   <string name="title_encrypt_text">加密</string>
   <string name="title_encrypt_files">加密</string>
@@ -369,10 +369,10 @@
     <item quantity="other">認證 %d 金鑰失敗 !</item>
   </plurals>
   <!--Intent labels-->
-  <string name="intent_decrypt_file">使用OpenKeychain解密檔案</string>
-  <string name="intent_import_key">匯入金鑰至OpenKeychain</string>
-  <string name="intent_send_encrypt">使用OpenKeychain加密</string>
-  <string name="intent_send_decrypt">使用OpenKeychain解密</string>
+  <string name="intent_decrypt_file">使用Glazastov Keychain解密檔案</string>
+  <string name="intent_import_key">匯入金鑰至Glazastov Keychain</string>
+  <string name="intent_send_encrypt">使用Glazastov Keychain加密</string>
+  <string name="intent_send_decrypt">使用Glazastov Keychain解密</string>
   <!--Remote API-->
     <string name="api_settings_create_key">建立新金鑰</string>
   <string name="api_settings_save">儲存</string>
@@ -381,12 +381,12 @@
   <string name="api_settings_package_certificate">封裝證書的SHA-256</string>
   <string name="api_settings_advanced">進階</string>
   <string name="api_settings_allowed_keys">允許的金鑰</string>
-    <string name="api_register_text">%s 請求使用 OpenKeychain 作為加密提供程式。在應用可以使用您的任何金鑰進行解密之前, 仍會要求您提供許可權. \n\n您可以在 OpenKeychain 的 \"應用程式\" 選單中撤消存取權限。</string>
+    <string name="api_register_text">%s 請求使用 Glazastov Keychain 作為加密提供程式。在應用可以使用您的任何金鑰進行解密之前, 仍會要求您提供許可權. \n\n您可以在 Glazastov Keychain 的 \"應用程式\" 選單中撤消存取權限。</string>
     <string name="api_select_pub_keys_missing_text">沒有與這些郵箱位址對應的金鑰：</string>
   <string name="api_select_pub_keys_dublicates_text">多個金鑰與這些郵箱位址對應:</string>
   <string name="api_select_pub_keys_text">請檢查收件人清單!</string>
   <string name="api_select_pub_keys_text_no_user_ids">請選擇一份清單!</string>
-  <string name="api_error_wrong_signature">簽名檢查失敗！你是否從其他來源安裝此應用程式？如果你確定這不是個攻擊，撤銷並重新註冊應用程式到OpenKeychain。</string>
+  <string name="api_error_wrong_signature">簽名檢查失敗！你是否從其他來源安裝此應用程式？如果你確定這不是個攻擊，撤銷並重新註冊應用程式到Glazastov Keychain。</string>
   <string name="api_select_sign_key_text">請選擇一個您的金鑰或建立一個新的金鑰。</string>
     <!--Share-->
   <string name="share_qr_code_dialog_title">以二維條碼分享</string>
@@ -693,7 +693,7 @@
   <string name="select_identity_cancel">關閉</string>
   <string name="menu_list_unrelated_keys">列出無關的密鑰</string>
   <string name="no_keys_gen_title">這是新的地址</string>
-  <string name="no_keys_gen_subtitle">在 OpenKeychain 建立一個全新的端對端密鑰</string>
+  <string name="no_keys_gen_subtitle">在 Glazastov Keychain 建立一個全新的端對端密鑰</string>
   <string name="no_keys_import_title">我已有密鑰</string>
   <string name="no_keys_import_subtitle">從其它設備滙入密鑰</string>
   <string name="key_gen_progress">請稍候...</string>

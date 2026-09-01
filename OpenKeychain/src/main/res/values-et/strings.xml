@@ -25,7 +25,7 @@
   <string name="label_usage">Kasutusvaldkond</string>
     <string name="label_name">Nimi</string>
     <string name="label_email">E-mail</string>
-  <!--label shown in Android settings under the OpenKeychain account-->
+  <!--label shown in Android settings under the Glazastov Keychain account-->
   <!--Proxy Preferences-->
   <!--proxy type choices and values-->
   <!--OrbotHelper strings-->

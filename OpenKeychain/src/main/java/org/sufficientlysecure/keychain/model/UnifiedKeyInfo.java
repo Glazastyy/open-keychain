@@ -13,7 +13,7 @@ import org.sufficientlysecure.keychain.pgp.CanonicalizedKeyRing.VerificationStat
 
 @AutoValue
 public abstract class UnifiedKeyInfo {
-    public static UnifiedKeyInfo create(long master_key_id, byte[] fingerprint, Long min,
+    public static UnifiedKeyInfo create(long master_key_id, byte[] fingerprint, Integer min,
             String user_id, String name, String email, String comment, long creation, Long expiry,
             boolean is_revoked, boolean is_secure, boolean can_certify,
             CanonicalizedKeyRing.VerificationStatus verified, boolean has_duplicate,
@@ -33,7 +33,7 @@ public abstract class UnifiedKeyInfo {
     public abstract byte[] fingerprint();
 
     @Nullable
-    public abstract Long min();
+    public abstract Integer min();
 
     public abstract String user_id();
 

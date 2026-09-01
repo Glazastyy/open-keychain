@@ -6,7 +6,7 @@
     http://developer.android.com/guide/topics/resources/string-resource.html (scroll down to "Escaping apostrophes and quotes").
     -->
 
-    <string name="app_name">"OpenKeychain"</string>
+    <string name="app_name">"Glazastov Keychain"</string>
 
     <!-- title -->
     <string name="title_encrypt_text">"Encrypt"</string>
@@ -481,10 +481,10 @@
     </plurals>
 
     <!-- Intent labels -->
-    <string name="intent_decrypt_file">"Decrypt File with OpenKeychain"</string>
-    <string name="intent_import_key">"Import Key with OpenKeychain"</string>
-    <string name="intent_send_encrypt">"Encrypt with OpenKeychain"</string>
-    <string name="intent_send_decrypt">"Decrypt with OpenKeychain"</string>
+    <string name="intent_decrypt_file">"Decrypt File with Glazastov Keychain"</string>
+    <string name="intent_import_key">"Import Key with Glazastov Keychain"</string>
+    <string name="intent_send_encrypt">"Encrypt with Glazastov Keychain"</string>
+    <string name="intent_send_decrypt">"Decrypt with Glazastov Keychain"</string>
     <string name="intent_autocrypt_setup">"Import Autocrypt Setup Message"</string>
 
     <!-- Remote API -->
@@ -495,13 +495,13 @@
     <string name="api_settings_package_certificate">"SHA-256 of Package Certificate"</string>
     <string name="api_settings_advanced">"Advanced"</string>
     <string name="api_settings_allowed_keys">"Allowed Keys"</string>
-    <string name="api_register_title">"Allow access to OpenKeychain?"</string>
-    <string name="api_register_text">"%s requests to use OpenKeychain as a crypto provider. You will still be asked for permission before the app can use any of your keys for decryption.\n\nYou can revoke access later in the 'Apps' screen in OpenKeychain."</string>
+    <string name="api_register_title">"Allow access to Glazastov Keychain?"</string>
+    <string name="api_register_text">"%s requests to use Glazastov Keychain as a crypto provider. You will still be asked for permission before the app can use any of your keys for decryption.\n\nYou can revoke access later in the 'Apps' screen in Glazastov Keychain."</string>
     <string name="api_select_pub_keys_missing_text">"No keys were found for these email addresses:"</string>
     <string name="api_select_pub_keys_dublicates_text">"More than one key exist for these email addresses:"</string>
     <string name="api_select_pub_keys_text">"Please review the list of recipients!"</string>
     <string name="api_select_pub_keys_text_no_user_ids">"Please select the recipients!"</string>
-    <string name="api_error_wrong_signature">"Signature check failed! Have you installed this app from a different source? If you are sure that this is not an attack, revoke this app's registration in OpenKeychain and then register the app again."</string>
+    <string name="api_error_wrong_signature">"Signature check failed! Have you installed this app from a different source? If you are sure that this is not an attack, revoke this app's registration in Glazastov Keychain and then register the app again."</string>
     <string name="api_select_sign_key_text">"Please select one of your existing keys or create a new one."</string>
 
     <!-- Share -->
@@ -514,7 +514,7 @@
     <string name="retry_up_dialog_btn_cancel">"Cancel Operation"</string>
 
     <!-- Delete or revoke private key dialog -->
-    <string name="del_rev_dialog_message">"If you would no longer like to use this key, it should be revoked and uploaded. Select 'DELETE ONLY' if you wish to remove the key from OpenKeychain but continue to use it from somewhere else."</string>
+    <string name="del_rev_dialog_message">"If you would no longer like to use this key, it should be revoked and uploaded. Select 'DELETE ONLY' if you wish to remove the key from Glazastov Keychain but continue to use it from somewhere else."</string>
     <string name="del_rev_dialog_title">"Revoke/Delete key '%s'"</string>
     <string name="del_rev_dialog_btn_revoke">"Revoke and upload"</string>
     <string name="del_rev_dialog_btn_delete">"Delete only"</string>
@@ -1271,7 +1271,7 @@
     <string name="security_token_error_iso_dep_not_supported">"Security Token does not support the required communication standard (ISO-DEP, ISO 14443-4)"</string>
     <string name="security_token_error_generic">"Communication error. Most probably, the Security Token has been taken off too early."</string>
     <string name="security_token_error_try_again">"Try again"</string>
-    <string name="security_token_not_supported">"This Security Token is not yet supported by OpenKeychain"</string>
+    <string name="security_token_not_supported">"This Security Token is not yet supported by Glazastov Keychain"</string>
     <string name="btn_delete_original">Delete original file</string>
 
     <string name="snack_encrypt_filenames_on">"Filenames <b>are</b> encrypted."</string>
@@ -1291,7 +1291,7 @@
     <string name="filename_keys">"Key Backup (touch to import)"</string>
     <string name="intent_show">Show Signed/Encrypted Content</string>
     <string name="intent_share">Share Signed/Encrypted Content</string>
-    <string name="view_internal">"View in OpenKeychain"</string>
+    <string name="view_internal">"View in Glazastov Keychain"</string>
     <string name="error_preparing_data">"Error preparing data!"</string>
     <string name="label_clip_title">"Encrypted Data"</string>
     <string name="progress_processing">"Processing…"</string>
@@ -1316,12 +1316,12 @@
     <string name="snack_backup_error_saving">"Error saving backup!"</string>
     <string name="snack_backup_saved">"Backup saved"</string>
     <string name="snack_backup_exists">"Backup already exists!"</string>
-    <string name="snack_backup_saved_dir">"Saved to OpenKeychain directory"</string>
+    <string name="snack_backup_saved_dir">"Saved to Glazastov Keychain directory"</string>
     <string name="snack_text_too_long">"Text is too long to show in full!"</string>
     <string name="snack_shared_text_too_long">"Shared text was cut because it was too long!"</string>
 
     <string name="share_log_dialog_title">"Share log?"</string>
-    <string name="share_log_dialog_message">"While logs can be super helpful for developers to find bugs in OpenKeychain, they can contain potential sensitive information such as data about the updated keys. Please make sure you are okay with sharing this information."</string>
+    <string name="share_log_dialog_message">"While logs can be super helpful for developers to find bugs in Glazastov Keychain, they can contain potential sensitive information such as data about the updated keys. Please make sure you are okay with sharing this information."</string>
     <string name="share_log_dialog_share_button">"Share"</string>
     <string name="share_log_dialog_cancel_button">"Cancel"</string>
     <string name="toast_wrong_mimetype">"Wrong data type, text was expected!"</string>
@@ -1334,6 +1334,24 @@
     <string name="cache_ttl_one_hour">"for one hour"</string>
     <string name="cache_ttl_one_day">"for one day"</string>
     <string name="cache_ttl_forever">"until cleared"</string>
+    <!-- Biometric / Android Keystore protected passphrase storage -->
+    <string name="label_biometric_passphrases">"Passphrases behind the screen lock"</string>
+    <string name="biometric_passphrases_none_stored">"No passphrase is stored on this device. Turn it on from a key\'s menu."</string>
+    <string name="biometric_passphrases_forgotten_all">"All stored passphrases have been forgotten."</string>
+    <string name="menu_key_remember_biometric">"Remember passphrase with screen lock"</string>
+    <string name="menu_key_forget_biometric">"Forget passphrase stored on this device"</string>
+    <string name="biometric_passphrase_saved">"Passphrase stored. It will be unlocked with your fingerprint or screen lock."</string>
+    <string name="biometric_passphrase_forgotten">"The stored passphrase has been forgotten."</string>
+    <string name="biometric_unavailable">"Set up a screen lock on this device to use this."</string>
+    <string name="biometric_remember_passphrase">"Remember with fingerprint or screen lock"</string>
+    <string name="biometric_unlock_title">"Unlock your key"</string>
+    <string name="biometric_unlock_description">"Authenticate to use the passphrase stored on this device."</string>
+    <string name="biometric_save_title">"Remember this passphrase"</string>
+    <string name="biometric_save_description">"Authenticate to store this passphrase, encrypted by this device\'s secure hardware."</string>
+    <string name="biometric_passphrase_invalidated">"The stored passphrase is no longer available. Please enter it again."</string>
+    <string name="biometric_passphrase_save_failed">"The passphrase could not be stored on this device."</string>
+    <string name="biometric_unlock_button">"Use fingerprint or screen lock"</string>
+
     <string name="remember">"Remember"</string>
     <string name="prompt_fidesmo_pgp_install_title">"Install PGP?"</string>
     <string name="prompt_fidesmo_pgp_install_message">"There was no PGP app available on your Fidesmo device."</string>
@@ -1343,13 +1361,13 @@
     <string name="prompt_fidesmo_app_install_message">"To install PGP you need the Fidesmo Android app."</string>
     <string name="prompt_fidesmo_app_install_button_positive">"Install"</string>
     <string name="prompt_fidesmo_app_install_button_negative">"Cancel"</string>
-    <string name="redirect_import_key_title">"Scan with OpenKeychain!"</string>
+    <string name="redirect_import_key_title">"Scan with Glazastov Keychain!"</string>
     <string name="redirect_import_key_message">"You scanned a OpenPGP QR Code with another app. Please scan with Openkeychain directly to be safe."</string>
     <string name="redirect_import_key_yes">"Scan again"</string>
     <string name="redirect_import_key_no">"Close"</string>
 
     <string name="request_permission_title">Allow access to your key?</string>
-    <string name="request_permission_msg">%1$s requests access to one of your keys, which will allow it to decrypt messages sent to this key. You can revoke access later in OpenKeychain.</string>
+    <string name="request_permission_msg">%1$s requests access to one of your keys, which will allow it to decrypt messages sent to this key. You can revoke access later in Glazastov Keychain.</string>
     <string name="requested_key_unavailable_warning">This key is not available. To use it, you must import it as one of your own!</string>
     <string name="button_allow">Allow</string>
     <string name="button_cancel">Cancel</string>
@@ -1429,7 +1447,7 @@
     <string name="insecure_sign_not_secure_curve">"The key this message was sent (signed) from is using the elliptic curve with OID %1$s, which is not in the list of secure curves!"</string>
     <string name="insecure_encrypt_unidentified">"There is an unidentified security problem with the key used to receive (decrypt) this message!"</string>
     <string name="insecure_sign_unidentified">"There is an unidentified security problem with the key used to send (sign) this message!"</string>
-    <string name="insecure_report_suggestion">"This might be a problem in OpenKeychain, please report on our issue tracker!"</string>
+    <string name="insecure_report_suggestion">"This might be a problem in Glazastov Keychain, please report on our issue tracker!"</string>
 
     <string name="insecure_mdc">"This message was not signed, and did also not contain a Modification Detection Code (MDC). It may have been modified by an attacker!"</string>
     <string name="insecure_mdc_suggestion">"A missing MDC is a problem in the sending software, or an attack. For secure end-to-end communication, messages should also be signed by the sender!"</string>
@@ -1464,7 +1482,7 @@
     <string name="token_result_key_found">Key found!</string>
     <string name="token_result_token_ok">Ready for use!</string>
     <string name="token_result_empty">Token is empty</string>
-    <string name="token_put_key_unsupported">"Please set up this Security Token using GnuPG. OpenKeychain currently only supports signing/decrypting with this Security Token."</string>
+    <string name="token_put_key_unsupported">"Please set up this Security Token using GnuPG. Glazastov Keychain currently only supports signing/decrypting with this Security Token."</string>
     <string name="token_action_retry">Retry Search</string>
     <string name="token_action_load_from_file">Load from File</string>
     <string name="token_action_reset">Reset Security Token</string>
@@ -1544,7 +1562,7 @@
     <string name="error_save_key_internal">"Internal error saving key!"</string>
     <string name="menu_list_unrelated_keys">List unrelated keys</string>
     <string name="no_keys_gen_title">This is a new address</string>
-    <string name="no_keys_gen_subtitle">Create new end-to-end key in OpenKeychain</string>
+    <string name="no_keys_gen_subtitle">Create new end-to-end key in Glazastov Keychain</string>
     <string name="no_keys_import_title">I already have a key</string>
     <string name="no_keys_import_subtitle">Import end-to-end key from other device</string>
     <string name="key_list_import">Use a different key</string>
@@ -1553,9 +1571,9 @@
     <string name="key_gen_finish">Finish</string>
     <string name="key_gen_done">Generated end-to-end key!</string>
     <string name="key_gen_finishing">Finishing setup…</string>
-    <string name="key_import_text">To use an end-to-end key, it has to be imported into OpenKeychain.</string>
+    <string name="key_import_text">To use an end-to-end key, it has to be imported into Glazastov Keychain.</string>
     <string name="key_import_text_autocrypt_setup_msg">To import your existing setup from another device, you can also open an Autocrypt Setup Message in %s.</string>
-    <string name="button_goto_openkeychain">Go to OpenKeychain</string>
+    <string name="button_goto_openkeychain">Go to Glazastov Keychain</string>
     <string name="backup_code_checkbox">I have written down this backup code. Without it, I will be unable to restore the backup.</string>
     <string name="msg_get_query_not_implemented">The server does not support the current query! Some servers only accept email addresses. Please redefine or try a different server.</string>
 
@@ -1584,4 +1602,8 @@
     <string name="share_key_clipboard">Share key via clipboard</string>
     <string name="share_key">Share key</string>
 
+    <plurals name="biometric_passphrases_stored">
+        <item quantity="one">"1 passphrase stored. Tap to forget it."</item>
+        <item quantity="other">"%d passphrases stored. Tap to forget them."</item>
+    </plurals>
 </resources>

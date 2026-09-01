@@ -1,0 +1,405 @@
+package org.bouncycastle.bcpg;
+
+import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
+import java.io.IOException;
+
+/**
+ * Basic type for a symmetric encrypted session key packet
+ */
+public class SymmetricKeyEncSessionPacket
+    extends ContainedPacket
+{
+    /**
+     * Version 4 SKESK packet.
+     * Used only with {@link SymmetricEncIntegrityPacket#VERSION_1 V1 SEIPD} or {@link SymmetricEncDataPacket SED} packets.
+     */
+    public static final int VERSION_4 = 4;
+
+    /**
+     * Version 5 SKESK packet.
+     * LibrePGP only.
+     * Used only with {@link AEADEncDataPacket AED} packets.
+     */
+    public static final int VERSION_5 = 5;
+
+    /**
+     * Version 6 SKESK packet.
+     * Used only with {@link SymmetricEncIntegrityPacket#VERSION_2 V2 SEIPD} packets.
+     */
+    public static final int VERSION_6 = 6;
+
+    private final int version;          // V4, V5, V6
+    private final int encAlgorithm;     // V4, V5, V6
+    private final int aeadAlgorithm;    // V5, V6
+    private S2K s2k;                    // V4, V5, V6
+    private byte[] secKeyData;          // V4, V5, V6
+    private byte[] iv;                  // V5, V6
+    private byte[] authTag;             // V5, V6
+
+    public SymmetricKeyEncSessionPacket(
+        BCPGInputStream in)
+        throws IOException
+    {
+        this(in, false);
+    }
+
+    public SymmetricKeyEncSessionPacket(
+        BCPGInputStream in,
+        boolean newPacketFormat)
+        throws IOException
+    {
+        super(SYMMETRIC_KEY_ENC_SESSION, newPacketFormat);
+
+        version = in.read();
+        if (version == VERSION_4)
+        {
+            encAlgorithm = in.read();
+            aeadAlgorithm = 0;
+
+            s2k = new S2K(in);
+
+            this.secKeyData = in.readAll();
+        }
+        else if (version == VERSION_5 || version == VERSION_6)
+        {
+            int ivLen = 0;
+            if (version == VERSION_6)
+            {
+                // https://www.rfc-editor.org/rfc/rfc9580.html#section-5.3.2-3.2.1
+                // SymAlg + AEADAlg + S2KCount + S2K + IV
+                ivLen = in.read(); // next5Fields5Count
+            }
+            encAlgorithm = in.read();
+            aeadAlgorithm = in.read();
+            if (version == VERSION_6)
+            {
+                // https://www.rfc-editor.org/rfc/rfc9580.html#section-5.3.2-3.5.1
+                int s2kOctetCount = in.read();
+                ivLen = ivLen - 3 - s2kOctetCount;
+            }
+            else
+            {
+                try
+                {
+                    ivLen = AEADUtils.getIVLength(aeadAlgorithm);
+                }
+                catch (IllegalArgumentException e)
+                {
+                    throw new MalformedPacketException(e.getMessage(), e);
+                }
+            }
+
+            if (ivLen < 0)
+            {
+                throw new MalformedPacketException("IV length cannot be negative.");
+            }
+
+            s2k = new S2K(in);
+
+            iv = new byte[ivLen]; // also called nonce
+            if (in.read(iv) != iv.length)
+            {
+                throw new EOFException("Premature end of stream.");
+            }
+
+            int authTagLen;
+            try
+            {
+                authTagLen = AEADUtils.getAuthTagLength(aeadAlgorithm);
+            }
+            catch (IllegalArgumentException e)
+            {
+                throw new MalformedPacketException("Unknown AEAD algorithm.", e);
+            }
+            authTag = new byte[authTagLen];
+
+            // Read all trailing bytes
+            byte[] sessKeyAndAuthTag = in.readAll();
+            if (sessKeyAndAuthTag.length - authTagLen < 0)
+            {
+                throw new MalformedPacketException("AuthTagLen exceeds session key data.");
+            }
+            // determine session key length by subtracting auth tag
+            this.secKeyData = new byte[sessKeyAndAuthTag.length - authTagLen];
+
+            System.arraycopy(sessKeyAndAuthTag, 0, secKeyData, 0, secKeyData.length);
+            System.arraycopy(sessKeyAndAuthTag, secKeyData.length, authTag, 0, authTagLen);
+        }
+        else
+        {
+            throw new UnsupportedPacketVersionException("Unsupported PGP symmetric-key encrypted session key packet version encountered: " + version);
+        }
+    }
+
+    /**
+     * Create a v4 SKESK packet.
+     *
+     * @param encAlgorithm symmetric encryption algorithm
+     * @param s2k          s2k specifier
+     * @param secKeyData   encrypted session key
+     */
+    public static SymmetricKeyEncSessionPacket createV4Packet(
+        int encAlgorithm,
+        S2K s2k,
+        byte[] secKeyData)
+    {
+        return new SymmetricKeyEncSessionPacket(encAlgorithm, s2k, secKeyData);
+    }
+
+    /**
+     * Create a v5 SKESK packet.
+     *
+     * @param encAlgorithm  symmetric encryption algorithm
+     * @param aeadAlgorithm aead algorithm
+     * @param iv            initialization vector
+     * @param s2k           s2k specifier
+     * @param secKeyData    encrypted session key
+     * @param authTag       authentication tag
+     */
+    public static SymmetricKeyEncSessionPacket createV5Packet(
+        int encAlgorithm,
+        int aeadAlgorithm,
+        byte[] iv,
+        S2K s2k,
+        byte[] secKeyData,
+        byte[] authTag)
+    {
+        return new SymmetricKeyEncSessionPacket(VERSION_5, encAlgorithm, aeadAlgorithm, iv, s2k, secKeyData, authTag);
+    }
+
+    /**
+     * Create a v6 SKESK packet.
+     *
+     * @param encAlgorithm  symmetric encryption algorithm
+     * @param aeadAlgorithm aead algorithm
+     * @param s2k           s2k specifier
+     * @param iv            initialization vector
+     * @param secKeyData    encrypted session key
+     * @param authTag       authentication tag
+     */
+    public static SymmetricKeyEncSessionPacket createV6Packet(
+        int encAlgorithm,
+        int aeadAlgorithm,
+        byte[] iv,
+        S2K s2k,
+        byte[] secKeyData,
+        byte[] authTag)
+    {
+        return new SymmetricKeyEncSessionPacket(VERSION_6, encAlgorithm, aeadAlgorithm, iv, s2k, secKeyData, authTag);
+    }
+
+    /**
+     * Create a v4 SKESK packet.
+     *
+     * @param encAlgorithm symmetric encryption algorithm
+     * @param s2k          s2k
+     * @param secKeyData   encrypted session key
+     * @deprecated use {@link #createV4Packet(int, S2K, byte[])} instead
+     */
+    public SymmetricKeyEncSessionPacket(
+        int encAlgorithm,
+        S2K s2k,
+        byte[] secKeyData)
+    {
+        super(SYMMETRIC_KEY_ENC_SESSION);
+
+        this.version = VERSION_4;
+        this.encAlgorithm = encAlgorithm;
+        this.aeadAlgorithm = 0;
+        this.s2k = s2k;
+        this.secKeyData = secKeyData;
+    }
+
+    /**
+     * Create a v5 or v6 SKESK packet.
+     *
+     * @param encAlgorithm  symmetric encryption algorithm
+     * @param aeadAlgorithm aead algorithm
+     * @param iv            initialization vector
+     * @param s2k           s2k specifier
+     * @param secKeyData    encrypted session key
+     * @param authTag       authentication tag
+     */
+    private SymmetricKeyEncSessionPacket(
+        int version,
+        int encAlgorithm,
+        int aeadAlgorithm,
+        byte[] iv,
+        S2K s2k,
+        byte[] secKeyData,
+        byte[] authTag)
+    {
+        super(SYMMETRIC_KEY_ENC_SESSION);
+
+        this.version = version;
+        this.encAlgorithm = encAlgorithm;
+        this.aeadAlgorithm = aeadAlgorithm;
+        this.s2k = s2k;
+        this.secKeyData = secKeyData;
+
+        int expectedIVLen = AEADUtils.getIVLength(aeadAlgorithm);
+        if (expectedIVLen != iv.length)
+        {
+            throw new IllegalArgumentException("Mismatched AEAD IV length. " +
+                "Expected " + expectedIVLen + ", got " + iv.length);
+        }
+        this.iv = iv;
+
+        int expectedAuthTagLen = AEADUtils.getAuthTagLength(aeadAlgorithm);
+        if (expectedAuthTagLen != authTag.length)
+        {
+            throw new IllegalArgumentException("Mismatched AEAD AuthTag length. " +
+                "Expected " + expectedAuthTagLen + ", got " + authTag.length);
+        }
+        this.authTag = authTag;
+    }
+
+    /**
+     * @return int
+     */
+    public int getEncAlgorithm()
+    {
+        return encAlgorithm;
+    }
+
+    /**
+     * @return S2K
+     */
+    public S2K getS2K()
+    {
+        return s2k;
+    }
+
+    /**
+     * @return byte[]
+     */
+    public byte[] getSecKeyData()
+    {
+        return secKeyData;
+    }
+
+    /**
+     * @return int
+     */
+    public int getVersion()
+    {
+        return version;
+    }
+
+    /**
+     * Return the AEAD algorithm tag.
+     * V5 packet only.
+     *
+     * @return aead algorithm
+     */
+    public int getAeadAlgorithm()
+    {
+        return aeadAlgorithm;
+    }
+
+    /**
+     * Return the IV for the AEAD mode. This is also called nonce.
+     * V5 packet only.
+     *
+     * @return iv
+     */
+    public byte[] getIv()
+    {
+        return iv;
+    }
+
+    /**
+     * Return the authentication tag for the AEAD mode.
+     * V5 packet only.
+     *
+     * @return AEAD auth tag
+     */
+    public byte[] getAuthTag()
+    {
+        return authTag;
+    }
+
+    public byte[] getAAData()
+    {
+        return createAAData(getVersion(), getEncAlgorithm(), getAeadAlgorithm());
+    }
+
+    public static byte[] createAAData(int version, int encAlgorithm, int aeadAlgorithm)
+    {
+        byte[] aaData = new byte[4];
+        aaData[0] = (byte)(0xC0 | PacketTags.SYMMETRIC_KEY_ENC_SESSION);
+        aaData[1] = (byte)(version & 0xff);
+        aaData[2] = (byte)(encAlgorithm & 0xff);
+        aaData[3] = (byte)(aeadAlgorithm & 0xff);
+        return aaData;
+    }
+
+    public void encode(
+        BCPGOutputStream out)
+        throws IOException
+    {
+        PacketFormat packetFormat = version > 4 ? PacketFormat.CURRENT : PacketFormat.ROUNDTRIP;
+
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+        BCPGOutputStream pOut = new BCPGOutputStream(bOut, packetFormat);
+
+        pOut.write(version);
+
+        switch (version)
+        {
+        case VERSION_4:
+        {
+            pOut.write(encAlgorithm);
+            s2k.encode(pOut);
+
+            if (secKeyData != null && secKeyData.length > 0)
+            {
+                pOut.write(secKeyData);
+            }
+            break;
+        }
+        case VERSION_5:
+        {
+            pOut.write(encAlgorithm);
+            pOut.write(aeadAlgorithm);
+            s2k.encode(pOut);
+            pOut.write(iv);
+
+            if (secKeyData != null && secKeyData.length > 0)
+            {
+                pOut.write(secKeyData);
+            }
+
+            pOut.write(authTag);
+            break;
+        }
+        case VERSION_6:
+        {
+            byte[] s2kEncoded = s2k.getEncoded();
+            int count = 1 + 1 + 1 + s2kEncoded.length + iv.length; // len of 5 following fields
+
+            pOut.write(count);
+            pOut.write(encAlgorithm);
+            pOut.write(aeadAlgorithm);
+            pOut.write(s2kEncoded.length);
+            pOut.write(s2kEncoded);
+            pOut.write(iv);
+
+            if (secKeyData != null && secKeyData.length > 0)
+            {
+                pOut.write(secKeyData);
+            }
+
+            pOut.write(authTag);
+            break;
+        }
+        default:
+            throw new IllegalStateException();
+        }
+
+        pOut.close();
+
+        out.writePacket(hasNewPacketFormat(), SYMMETRIC_KEY_ENC_SESSION, bOut.toByteArray());
+    }
+}

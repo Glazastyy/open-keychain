@@ -200,8 +200,7 @@ public class KeychainExternalProvider extends ContentProvider {
                 if (uidStatus == null) {
                     return null;
                 }
-                return CustomColumnAdapters.VERIFICATON_STATUS_ADAPTER.decode(
-                        uidStatus.getKey_status_int()) == VerificationStatus.VERIFIED_SECRET ?
+                return uidStatus.getKey_status_int() == VerificationStatus.VERIFIED_SECRET ?
                         KeychainExternalContract.KEY_STATUS_VERIFIED :
                         KeychainExternalContract.KEY_STATUS_UNVERIFIED;
             }
