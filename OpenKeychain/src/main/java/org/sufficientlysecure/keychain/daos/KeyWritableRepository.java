@@ -61,6 +61,7 @@ import org.sufficientlysecure.keychain.pgp.WrappedSignature;
 import org.sufficientlysecure.keychain.pgp.WrappedUserAttribute;
 import org.sufficientlysecure.keychain.pgp.exception.PgpGeneralException;
 import org.sufficientlysecure.keychain.ui.util.KeyFormattingUtils;
+import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
 import org.sufficientlysecure.keychain.util.IterableIterator;
 import org.sufficientlysecure.keychain.util.Preferences;
 import org.sufficientlysecure.keychain.util.Utf8Util;
@@ -559,6 +560,7 @@ public class KeyWritableRepository extends KeyRepository {
             return false;
         }
         autocryptPeerDao.deleteByMasterKeyId(masterKeyId);
+        BiometricPassphraseStorage.create(context).removePassphrase(masterKeyId);
 
         getDatabase().getKeyRingsPublicQueries().deleteByMasterKeyId(masterKeyId);
         int deletedRows = getDatabase().getUtilQueries().selectChanges().executeAsOne().intValue();

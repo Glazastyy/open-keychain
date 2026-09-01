@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import org.sufficientlysecure.keychain.service.PassphraseCacheService;
+import org.sufficientlysecure.keychain.util.BiometricPassphraseStorage;
 
 /**
  * Responder for Guardianproject's PANIC app
@@ -39,6 +40,7 @@ public class PanicResponderActivity extends Activity {
         Intent intent = getIntent();
         if (intent != null && PANIC_TRIGGER_ACTION.equals(intent.getAction())) {
             PassphraseCacheService.clearCachedPassphrases(this);
+            BiometricPassphraseStorage.create(this).removeAllPassphrases();
             PanicExitActivity.exitAndRemoveFromRecentApps(this);
         }
 
