@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.apache.james:apache-mime4j-dom:0.8.14'
     implementation "app.cash.sqldelight:android-driver:$sqldelight_version"
     implementation "app.cash.sqldelight:primitive-adapters:$sqldelight_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
 
     // UI
     implementation project(':extern:html-textview')
